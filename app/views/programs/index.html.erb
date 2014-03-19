@@ -1,0 +1,45 @@
+<h1>Listing programs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Cmu facilities</th>
+      <th>Off campus facilities</th>
+      <th>Num minors</th>
+      <th>Num adults supervising</th>
+      <th>Irb approval</th>
+      <th>Contact</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programs.each do |program| %>
+      <tr>
+        <td><%= program.name %></td>
+        <td><%= program.description %></td>
+        <td><%= program.start_date %></td>
+        <td><%= program.end_date %></td>
+        <td><%= program.cmu_facilities %></td>
+        <td><%= program.off_campus_facilities %></td>
+        <td><%= program.num_minors %></td>
+        <td><%= program.num_adults_supervising %></td>
+        <td><%= program.irb_approval %></td>
+        <td><%= program.contact_id %></td>
+        <td><%= link_to 'Show', program %></td>
+        <td><%= link_to 'Edit', edit_program_path(program) %></td>
+        <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Program', new_program_path %>

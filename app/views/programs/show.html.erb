@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @program.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @program.description %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @program.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @program.end_date %>
+</p>
+
+<p>
+  <strong>Cmu facilities:</strong>
+  <%= @program.cmu_facilities %>
+</p>
+
+<p>
+  <strong>Off campus facilities:</strong>
+  <%= @program.off_campus_facilities %>
+</p>
+
+<p>
+  <strong>Num minors:</strong>
+  <%= @program.num_minors %>
+</p>
+
+<p>
+  <strong>Num adults supervising:</strong>
+  <%= @program.num_adults_supervising %>
+</p>
+
+<p>
+  <strong>Irb approval:</strong>
+  <%= @program.irb_approval %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @program.contact_id %>
+</p>
+
+<%= link_to 'Edit', edit_program_path(@program) %> |
+<%= link_to 'Back', programs_path %>

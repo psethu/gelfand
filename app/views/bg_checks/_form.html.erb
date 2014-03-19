@@ -1,0 +1,37 @@
+<%= form_for(@bg_check) do |f| %>
+  <% if @bg_check.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bg_check.errors.count, "error") %> prohibited this bg_check from being saved:</h2>
+
+      <ul>
+      <% @bg_check.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date_approved %><br>
+    <%= f.date_select :date_approved %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.number_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :criminal_date %><br>
+    <%= f.date_select :criminal_date %>
+  </div>
+  <div class="field">
+    <%= f.label :child_abuse_date %><br>
+    <%= f.date_select :child_abuse_date %>
+  </div>
+  <div class="field">
+    <%= f.label :verification_date %><br>
+    <%= f.date_select :verification_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

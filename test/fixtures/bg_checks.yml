@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_approved: 2014-03-19
+  status: 1
+  criminal_date: 2014-03-19
+  child_abuse_date: 2014-03-19
+  verification_date: 2014-03-19
+
+two:
+  date_approved: 2014-03-19
+  status: 1
+  criminal_date: 2014-03-19
+  child_abuse_date: 2014-03-19
+  verification_date: 2014-03-19

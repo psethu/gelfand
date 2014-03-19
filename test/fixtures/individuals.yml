@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  f_name: MyString
+  l_name: MyString
+  role: 1
+  dob: 2014-03-19
+  active: false
+  bg_check_id: 1
+  contact_id: 1
+
+two:
+  f_name: MyString
+  l_name: MyString
+  role: 1
+  dob: 2014-03-19
+  active: false
+  bg_check_id: 1
+  contact_id: 1

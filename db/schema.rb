@@ -11,7 +11,100 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319155434) do
+ActiveRecord::Schema.define(version: 20140319162241) do
+
+  create_table "affiliations", force: true do |t|
+    t.integer  "organization_id"
+    t.integer  "program_id"
+    t.text     "description"
+    t.boolean  "followed_process"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bg_checks", force: true do |t|
+    t.date     "date_approved"
+    t.integer  "status"
+    t.date     "criminal_date"
+    t.date     "child_abuse_date"
+    t.date     "verification_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.string   "title"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "nickname"
+    t.text     "notes"
+    t.string   "street"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "individuals", force: true do |t|
+    t.string   "f_name"
+    t.string   "l_name"
+    t.integer  "role"
+    t.date     "dob"
+    t.boolean  "active"
+    t.integer  "bg_check_id"
+    t.integer  "contact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memberships", force: true do |t|
+    t.integer  "individual_id"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "org_users", force: true do |t|
+    t.integer  "organization_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.boolean  "is_partner"
+    t.text     "description"
+    t.boolean  "active"
+    t.string   "department"
+    t.integer  "contact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "participants", force: true do |t|
+    t.integer  "program_id"
+    t.integer  "individual_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "programs", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "cmu_facilities"
+    t.text     "off_campus_facilities"
+    t.integer  "num_minors"
+    t.integer  "num_adults_supervising"
+    t.integer  "irb_approval"
+    t.integer  "contact_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

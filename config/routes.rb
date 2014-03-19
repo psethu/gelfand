@@ -1,4 +1,12 @@
 Gelfand::Application.routes.draw do
+  resources :programs
+
+  resources :individuals
+
+  resources :organizations
+
+  resources :bg_checks
+
   devise_for :users
   root :to => "home#index"
 

@@ -1,0 +1,35 @@
+<h1>Listing bg_checks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date approved</th>
+      <th>Status</th>
+      <th>Criminal date</th>
+      <th>Child abuse date</th>
+      <th>Verification date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bg_checks.each do |bg_check| %>
+      <tr>
+        <td><%= bg_check.date_approved %></td>
+        <td><%= bg_check.status %></td>
+        <td><%= bg_check.criminal_date %></td>
+        <td><%= bg_check.child_abuse_date %></td>
+        <td><%= bg_check.verification_date %></td>
+        <td><%= link_to 'Show', bg_check %></td>
+        <td><%= link_to 'Edit', edit_bg_check_path(bg_check) %></td>
+        <td><%= link_to 'Destroy', bg_check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bg check', new_bg_check_path %>

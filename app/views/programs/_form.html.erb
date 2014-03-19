@@ -1,0 +1,57 @@
+<%= form_for(@program) do |f| %>
+  <% if @program.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
+
+      <ul>
+      <% @program.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :cmu_facilities %><br>
+    <%= f.text_area :cmu_facilities %>
+  </div>
+  <div class="field">
+    <%= f.label :off_campus_facilities %><br>
+    <%= f.text_area :off_campus_facilities %>
+  </div>
+  <div class="field">
+    <%= f.label :num_minors %><br>
+    <%= f.number_field :num_minors %>
+  </div>
+  <div class="field">
+    <%= f.label :num_adults_supervising %><br>
+    <%= f.number_field :num_adults_supervising %>
+  </div>
+  <div class="field">
+    <%= f.label :irb_approval %><br>
+    <%= f.number_field :irb_approval %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_id %><br>
+    <%= f.number_field :contact_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

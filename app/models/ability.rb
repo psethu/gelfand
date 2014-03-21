@@ -7,7 +7,18 @@ can accepts 2 arguments
 =end
 
   def initialize(user)
-    can :read, :all
+    # if no login has been done, ie. user object is nil:
+    user  ||= User.new # creates user so can use methods like .role?
+
+     can :read, :all
+=begin
+- this code was giving problems since there is no "role?" method for user
+    if user.role? :admin
+        can :manage, :all
+    else
+        can :read, :all
+    end
+=end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

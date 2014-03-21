@@ -23,8 +23,16 @@
         <td><%= bg_check.child_abuse_date %></td>
         <td><%= bg_check.verification_date %></td>
         <td><%= link_to 'Show', bg_check %></td>
-        <td><%= link_to 'Edit', edit_bg_check_path(bg_check) %></td>
-        <td><%= link_to 'Destroy', bg_check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <% if can? :update, @bg_checks %>
+              <%= link_to 'Edit', edit_bg_check_path(bg_check) %>
+            <% end %>
+          </td>
+          <td>
+            <% if can? :destroy, @bg_checks %>
+              <%= link_to 'Destroy', bg_check, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </td>
       </tr>
     <% end %>
   </tbody>

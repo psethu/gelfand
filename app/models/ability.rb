@@ -1,7 +1,13 @@
 class Ability
   include CanCan::Ability
 
+=begin
+can accepts 2 arguments
+    1st is the action, 2nd is the model class u want to perform action on - "all" would accept all models
+=end
+
   def initialize(user)
+    can :read, :all
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

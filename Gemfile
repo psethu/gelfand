@@ -44,3 +44,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use Foundation for clean CSS/JS
+gem 'foundation-rails'

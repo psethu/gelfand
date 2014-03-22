@@ -1,4 +1,5 @@
 class IndividualsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_individual, only: [:show, :edit, :update, :destroy]
 
   # GET /individuals

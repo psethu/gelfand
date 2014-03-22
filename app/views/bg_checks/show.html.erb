@@ -25,8 +25,5 @@
   <%= @bg_check.verification_date %>
 </p>
 
-<% if can? :update, @bg_checks %>
   <%= link_to 'Edit', edit_bg_check_path(@bg_check) %> |
-<% end %>
-
  <%= link_to 'Back', bg_checks_path %>

@@ -21,7 +21,7 @@ class BgChecksController < ApplicationController
 
   # GET /bg_checks/1/edit
   def edit
-    authorize! :update, @bg_check # raise unauthorized exception if person cannot update bg_check
+
   end
 
   # POST /bg_checks

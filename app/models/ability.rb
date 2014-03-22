@@ -7,27 +7,23 @@ can accepts 2 arguments
 =end
 
   def initialize(user)
-    # if no login has been done, ie. user object is nil:
-    user  ||= User.new # creates user so can use methods like .role?
-
-     can :read, :all
+    # Note: if no login has been done, ie. user object is nil:
+       user ||= User.new # guest user (not logged in)
+       if user.admin?
+         can :manage, :all
+       elsif user.member?
+         can :create, :all
+         can :update, :all
+         can :read, :all
+       else
+         can :read, :all # this is a guest
+       end
 =begin
-- this code was giving problems since there is no "role?" method for user
-    if user.role? :admin
-        can :manage, :all
-    else
-        can :read, :all
-    end
+ Summary: admins can do anything
+          members can edit but not destroy
+          guests can only see the index page of all other models, but allowed to do nothing else
 =end
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
+
     # The first argument to `can` is the action you are giving the user 
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

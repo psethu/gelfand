@@ -33,6 +33,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# cancan gem for authorization, source: https://github.com/ryanb/cancan
+gem 'cancan'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

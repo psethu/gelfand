@@ -2,5 +2,5 @@ class BgCheck < ActiveRecord::Base
 
     # Relationships
     # -------------
-    has_one :individual
+    belongs_to :individual
 end

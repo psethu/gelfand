@@ -6,6 +6,7 @@ class Organization < ActiveRecord::Base
     has_many :affiliations
     has_many :programs, through: :affiliations
     has_many :org_users
+    has_many :users, through: :org_users
     has_many :memberships
     has_many :individuals, through: :memberships
 end

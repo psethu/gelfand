@@ -5,5 +5,5 @@ class Individual < ActiveRecord::Base
     belongs_to :contact
     has_many :memberships
     has_many :participants
-    belongs_to :bg_check
+    has_one :bg_check
 end

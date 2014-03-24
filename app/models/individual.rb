@@ -6,6 +6,6 @@ class Individual < ActiveRecord::Base
     has_many :memberships
     has_many :organizations, through: :memberships
     has_many :participants
-    has_many :projects, through: :participants
+    has_many :programs, through: :participants
     has_one :bg_check
 end

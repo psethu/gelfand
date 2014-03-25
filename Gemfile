@@ -36,6 +36,11 @@ end
 # cancan gem for authorization, source: https://github.com/ryanb/cancan
 gem 'cancan'
 
+# hirb gem makes rails console look nicer, https://github.com/cldwalker/hirb/tree/master#readme
+gem 'hirb'
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -49,4 +54,4 @@ gem 'cancan'
 # gem 'debugger', group: [:development, :test]
 
 # Use Foundation for clean CSS/JS
-gem 'foundation-rails'
+# gem 'foundation-rails'

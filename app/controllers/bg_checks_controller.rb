@@ -1,6 +1,4 @@
 class BgChecksController < ApplicationController
-  load_and_authorize_resource # this makes it so no longer necessary to set instance variables like 
-                              # in show or edit methods below
   before_action :set_bg_check, only: [:show, :edit, :update, :destroy]
 
   # GET /bg_checks

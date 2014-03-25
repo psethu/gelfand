@@ -8,4 +8,5 @@ class Individual < ActiveRecord::Base
     has_many :participants
     has_many :programs, through: :participants
     has_one :bg_check
+
 end

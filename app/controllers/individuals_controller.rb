@@ -1,4 +1,5 @@
 class IndividualsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_individual, only: [:show, :edit, :update, :destroy]
 
   # GET /individuals
@@ -10,18 +11,18 @@ class IndividualsController < ApplicationController
   # GET /individuals/1
   # GET /individuals/1.json
   def show
-    authorize! :show, @individual
+    #authorize! :show, @individual
   end
 
   # GET /individuals/new
   def new
-    @individual = Individual.new
-    authorize! :new, @individual
+    #@individual = Individual.new
+    #authorize! :new, @individual
   end
 
   # GET /individuals/1/edit
   def edit
-    authorize! :update, @individual
+    #authorize! :update, @individual
   end
 
   # POST /individuals

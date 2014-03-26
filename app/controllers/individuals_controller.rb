@@ -8,23 +8,6 @@ class IndividualsController < ApplicationController
     @individuals = Individual.all
   end
 
-  # GET /individuals/1
-  # GET /individuals/1.json
-  def show
-    #authorize! :show, @individual
-  end
-
-  # GET /individuals/new
-  def new
-    #@individual = Individual.new
-    #authorize! :new, @individual
-  end
-
-  # GET /individuals/1/edit
-  def edit
-    #authorize! :update, @individual
-  end
-
   # POST /individuals
   # POST /individuals.json
   def create

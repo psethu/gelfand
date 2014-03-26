@@ -8,21 +8,6 @@ class BgChecksController < ApplicationController
     @bg_checks = BgCheck.all
   end
 
-  # GET /bg_checks/1
-  # GET /bg_checks/1.json
-  def show
-  end
-
-  # GET /bg_checks/new
-  def new
-    @bg_check = BgCheck.new
-  end
-
-  # GET /bg_checks/1/edit
-  def edit
-
-  end
-
   # POST /bg_checks
   # POST /bg_checks.json
   def create

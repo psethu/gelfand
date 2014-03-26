@@ -8,20 +8,6 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.all
   end
 
-  # GET /organizations/1
-  # GET /organizations/1.json
-  def show
-  end
-
-  # GET /organizations/new
-  def new
-    @organization = Organization.new
-  end
-
-  # GET /organizations/1/edit
-  def edit
-  end
-
   # POST /organizations
   # POST /organizations.json
   def create

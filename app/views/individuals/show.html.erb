@@ -35,5 +35,8 @@
   <%= @individual.contact_id %>
 </p>
 
-<%= link_to 'Edit', edit_individual_path(@individual) %> |
+<% if can? :update, @individual %>
+  <%= link_to 'Edit', edit_individual_path(@individual) %> |
+<% end %>
+
 <%= link_to 'Back', individuals_path %>

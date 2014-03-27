@@ -1,25 +1,11 @@
 class OrganizationsController < ApplicationController
-
+  load_and_authorize_resource
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
   # GET /organizations
   # GET /organizations.json
   def index
     @organizations = Organization.all
-  end
-
-  # GET /organizations/1
-  # GET /organizations/1.json
-  def show
-  end
-
-  # GET /organizations/new
-  def new
-    @organization = Organization.new
-  end
-
-  # GET /organizations/1/edit
-  def edit
   end
 
   # POST /organizations

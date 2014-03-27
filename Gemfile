@@ -33,8 +33,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# cancan gem for authorization, source: https://github.com/ryanb/cancan
-gem 'cancan'
+# cancancan gem for authorization for Rails 4+, source: https://github.com/CanCanCommunity/cancancan
+gem 'cancancan', '~> 1.7'
 
 # hirb gem makes rails console look nicer, https://github.com/cldwalker/hirb/tree/master#readme
 gem 'hirb'

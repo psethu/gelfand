@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :dob %><br>
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, :order => [:month, :day, :year], :start_year => Date.today.year - 90 %>
   </div>
   <div class="field">
     <%= f.label :active %><br>

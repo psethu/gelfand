@@ -1,25 +1,11 @@
 class BgChecksController < ApplicationController
+  load_and_authorize_resource
   before_action :set_bg_check, only: [:show, :edit, :update, :destroy]
 
   # GET /bg_checks
   # GET /bg_checks.json
   def index
     @bg_checks = BgCheck.all
-  end
-
-  # GET /bg_checks/1
-  # GET /bg_checks/1.json
-  def show
-  end
-
-  # GET /bg_checks/new
-  def new
-    @bg_check = BgCheck.new
-  end
-
-  # GET /bg_checks/1/edit
-  def edit
-
   end
 
   # POST /bg_checks

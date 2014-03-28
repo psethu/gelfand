@@ -1,25 +1,11 @@
 class ProgramsController < ApplicationController
-
+  load_and_authorize_resource
   before_action :set_program, only: [:show, :edit, :update, :destroy]
 
   # GET /programs
   # GET /programs.json
   def index
     @programs = Program.all
-  end
-
-  # GET /programs/1
-  # GET /programs/1.json
-  def show
-  end
-
-  # GET /programs/new
-  def new
-    @program = Program.new
-  end
-
-  # GET /programs/1/edit
-  def edit
   end
 
   # POST /programs

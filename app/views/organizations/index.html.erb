@@ -1,8 +1,11 @@
-<img style="position:absolute; top:10px; left:10px; border: 2px dotted gray;height:150px; width: 200px;" src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+<div style="background-color:#580000; width:225px; height: 600px;border: 2px solid purple">
+    <img style="position:absolute; top:10px; left:10px; border: 3px dotted gray;height:150px; width: 200px;" src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+</div>
 
-<h1 style="position:absolute; top:10px; left:235px;">Listing organizations</h1>
+<div style="position:absolute; left:225px; top:0px; background-color:#ccc; width:1025px; height: 600px;">
+<h1 style="position:relative; top:10px; left:35px;">Listing organizations</h1>
 
-<table style="left:235px;top:75px; position: absolute; border: 2px solid gray;">
+<table style="left:35px;top:15px; position: relative; border: 2px solid gray;">
   <thead style="background-color:sienna;">
     <tr >
       <th style="color:white;">Name</th>
@@ -31,8 +34,9 @@
   </tbody>
 </table>
 
+</div>
 <br>
 
-<div style="position:absolute; top:190px; left:10px;">
+<div style="position:absolute; top:190px; left:10px; color: white;">
 <em><%= link_to 'New Organization', new_organization_path %></em>
 </div>

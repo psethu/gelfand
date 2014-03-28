@@ -12,32 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :f_name %><br>
+    <%= f.label "First Name" %><br>
     <%= f.text_field :f_name %>
   </div>
   <div class="field">
-    <%= f.label :l_name %><br>
+    <%= f.label "Last Name" %><br>
     <%= f.text_field :l_name %>
   </div>
   <div class="field">
     <%= f.label :role %><br>
-    <%= f.number_field :role %>
+    <%= f.select(:role, options_for_select([["Student", 0], ["Faculty", 1], ["Off-Campus", 2]], 0)) %>
   </div>
-  <div class="field">
+  <div id="dobfield" class="field">
     <%= f.label :dob %><br>
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, order: [:month, :day, :year], :use_short_month => true, :start_year => 1950, :end_year => 2005, :selected => 1992 %>
   </div>
-  <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active %>
+  <div class="hidden">
+    <div class="field">
+      <%= f.label :active %><br>
+      <%= f.check_box :active, :default => true %>
+    </div>
   </div>
   <div class="field">
     <%= f.label :bg_check_id %><br>
-    <%= f.number_field :bg_check_id %>
+    <%= f.number_field :bg_check_id, :disabled => true, :placeholder => "This probably shouldn't be a text field." %>
   </div>
-  <div class="field">
-    <%= f.label :contact_id %><br>
-    <%= f.number_field :contact_id %>
+  <div class="hidden">
+    <div class="field">
+      <%= f.label :contact_id %><br>
+      <%= f.number_field :contact_id %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>

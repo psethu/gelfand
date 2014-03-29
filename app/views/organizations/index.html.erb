@@ -1,42 +1,48 @@
-<div style="background-color:#580000; width:225px; height: 600px;border: 2px solid purple">
-    <img style="position:absolute; top:10px; left:10px; border: 3px dotted gray;height:150px; width: 200px;" src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-</div>
+<div class="row">
+  <div class="small-3 columns">
+       
+        <div class="indexLeftHalf">
+            <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+            <em><strong><%= link_to 'New Organization', new_organization_path %></strong></em>
+        </div>
+  
+    </div>
 
-<div style="position:absolute; left:225px; top:0px; background-color:#ccc; width:1025px; height: 600px;">
-<h1 style="position:relative; top:10px; left:35px;">Listing organizations</h1>
+  <div class="small-9 columns">
+      <div class="indexRightHalf">
+      <h1>Listing organizations</h1>
 
-<table style="left:35px;top:15px; position: relative; border: 2px solid gray;">
-  <thead style="background-color:sienna;">
-    <tr >
-      <th style="color:white;">Name</th>
-      <th style="color:white;">Is partner</th>
-      <th style="color:white;">Description</th>
-      <th style="color:white;">Active</th>
-      <th style="color:white;">Department</th>
-      <th style="color:white;">Contact</th>
-    </tr>
-  </thead>
+      <table >
+        <thead>
+          <tr >
+            <th>Name</th>
+            <th>Is partner</th>
+            <th>Description</th>
+            <th>Active</th>
+            <th>Department</th>
+            <th>Contact</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @organizations.each do |organization| %>
-      <tr>
-        <td><%= organization.name %></td>
-        <td><%= organization.is_partner %></td>
-        <td><%= organization.description %></td>
-        <td><%= organization.active %></td>
-        <td><%= organization.department %></td>
-        <td><%= organization.contact_id %></td>
-        <td><%= link_to 'Show', organization %></td>
-        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @organizations.each do |organization| %>
+            <tr>
+              <td><%= organization.name %></td>
+              <td><%= organization.is_partner %></td>
+              <td><%= organization.description %></td>
+              <td><%= organization.active %></td>
+              <td><%= organization.department %></td>
+              <td><%= organization.contact_id %></td>
+              <td><%= link_to 'Show', organization %></td>
+              <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
+              <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-</div>
-<br>
+        </div>
+    </div>
+</div>    
 
-<div style="position:absolute; top:190px; left:10px; color: white;">
-<em><strong><%= link_to 'New Organization', new_organization_path %></strong></em>
-</div>
+

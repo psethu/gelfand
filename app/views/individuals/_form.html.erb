@@ -1,4 +1,3 @@
-<%= form_for(@individual) do |f| %>
   <% if @individual.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@individual.errors.count, "error") %> prohibited this individual from being saved:</h2>
@@ -12,31 +11,25 @@
   <% end %>
   <div class="row">
     <div class="field">
-      <%= f.label "First Name" %><br>
-      <%= f.text_field :f_name %>
+      <%= form.label "First Name" %><br>
+      <%= form.text_field :f_name %>
     </div>
   </div>
   <div class="row">
     <div class="field">
-      <%= f.label "Last Name" %><br>
-      <%= f.text_field :l_name %>
+      <%= form.label "Last Name" %><br>
+      <%= form.text_field :l_name %>
     </div>
   </div>
   <div class="row">
     <div class="field">
-      <%= f.label :role %><br>
-      <%= f.select(:role, options_for_select([["Student", 0], ["Faculty", 1], ["Off-Campus", 2]], 0)) %>
+      <%= form.label :role %><br>
+      <%= form.select(:role, options_for_select([["Student", 0], ["Faculty", 1], ["Off-Campus", 2]], 0)) %>
     </div>
   </div>
   <div class="row">
     <div class="field">
-      <%= f.label :dob %><br>
-      <%= f.date_select :dob, order: [:month, :day, :year], :use_short_month => true, :start_year => 1950, :end_year => 2005, :selected => 1992 %>
+      <%= form.label :dob %><br>
+      <%= form.date_select :dob, order: [:month, :day, :year], :use_short_month => true, :start_year => 1950, :end_year => 2005, :selected => 1992 %>
     </div>
   </div>
-  <div class="row">
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  </div>
-<% end %>

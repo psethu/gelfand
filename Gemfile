@@ -42,6 +42,8 @@ gem 'hirb'
 #Validates_timeliness for date and time validations
 gem 'validates_timeliness'
 
+gem 'factory_girl_rails', '4.2.1'
+
 
 
 # Use ActiveModel has_secure_password

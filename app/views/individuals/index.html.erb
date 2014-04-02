@@ -2,7 +2,11 @@
 
   <div class="small-3 columns leftNav">
     <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-    <em><strong><%= link_to 'New Individual', new_individual_path %></strong></em>
+    <em><strong><%= link_to 'Create New Individual', new_individual_path %></strong></em>
+    <br />
+    <em><strong><%= link_to 'Organizations', organizations_path %></strong></em>
+    <br />
+    <em><strong><%= link_to 'Programs', programs_path %></strong></em>
   </div>
 
   <div class="small-9 columns rightContent">
@@ -18,7 +22,7 @@
           <th>Active</th>
           <th>Bg check</th>
           <th>Contact</th>
-          <th></th>
+          <th>Actions</th>
           <th></th>
           <th></th>
         </tr>

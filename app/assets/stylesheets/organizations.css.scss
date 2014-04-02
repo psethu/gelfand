@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$height_Main_content: 500px;
+
 th{
 	background-color: sienna;
 	font-size:5px;
@@ -32,10 +34,10 @@ table {
 .indexLeftHalf{
 	background-color:#580000; 
 	border: 2px solid purple;
+	height: $height_Main_content;
 }
 
 .indexRightHalf{
 	background-color:#ccc; 
+	height: $height_Main_content;
 }
-
-//style="left:35px;top:15px; position: relative; border: 2px solid gray;"

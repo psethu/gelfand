@@ -9,8 +9,8 @@ class Membership < ActiveRecord::Base
     scope :for_organization, lambda {|organization_id| where("organization_id = ?", organization_id) }
 
     #Validations
-    validates_numericality_of :individual_id, :only_integer => true
-    validates_numericality_of :organization_id, :only_integer => true 
+    validates_numericality_of :individual_id, :only_integer => true, :greater_than => 0
+    validates_numericality_of :organization_id, :only_integer => true, :greater_than => 0 
 
     validate :organization_is_active_in_system, :on => :create
     validate :individual_is_active_in_system, :on => :create

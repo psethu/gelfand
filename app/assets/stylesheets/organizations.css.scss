@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$height_Main_content: 500px;
+
 th{
 	background-color: sienna;
 	font-size:5px;
@@ -11,8 +13,6 @@ th{
 img{
 	margin:8px;
 	border: 3px solid gray;
-	height:150px; 
-	width: 200px;
 }
 
 h1{
@@ -28,22 +28,16 @@ table thead tr th{
 
 table {
 	position:relative; 
-	top:10px; 
-	left:15px; 
 	border: 3px solid gray;
 }
 
 .indexLeftHalf{
 	background-color:#580000; 
-	width:225px; 
-	height: 600px;
 	border: 2px solid purple;
+	height: $height_Main_content;
 }
 
 .indexRightHalf{
 	background-color:#ccc; 
-	height:750px;
-	width:1000px;
+	height: $height_Main_content;
 }
-
-//style="left:35px;top:15px; position: relative; border: 2px solid gray;"

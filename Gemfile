@@ -39,6 +39,9 @@ gem 'cancancan', '~> 1.7'
 # hirb gem makes rails console look nicer, https://github.com/cldwalker/hirb/tree/master#readme
 gem 'hirb'
 
+#Validates_timeliness for date and time validations
+gem 'validates_timeliness'
+
 
 
 # Use ActiveModel has_secure_password

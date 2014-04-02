@@ -9,6 +9,20 @@ class Individual < ActiveRecord::Base
     has_many :programs, through: :participants
     has_one :bg_check
 
+
+    validates :f_name, :presence => true
+    validates :l_name, :presence => true
+
+    #TBD by future ERD
+    validates :role, :presence => true, :numericality => {:only_integer => true, :less_than_or_equal_to => 2, :greater_than_or_equal_to => 0}
+    
+    validates_date :dob, :on_or_before => lambda {Date.current}
+
+
+
+    
+
+
     # Callbacks
     # ---------
     before_create :set_defaults
@@ -18,6 +32,7 @@ class Individual < ActiveRecord::Base
     scope :alphabetical, order('name')
     scope :active, where('active = ?', true)
     scope :inactive, where('active = ?', false)
+    scope :no_bg_check, where('bg_check_id IS NULL')
 
     # Class Methods
     # -------------
@@ -43,4 +58,9 @@ class Individual < ActiveRecord::Base
     		self.bg_check = nil
     		self.contact_id = nil
     	end
+
+    	def name
+    		"#{l_name}, #{f_name}"
+    	end
+
 end

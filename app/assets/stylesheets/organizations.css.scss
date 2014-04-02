@@ -1,3 +1,49 @@
 // Place all the styles related to the organizations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+th{
+	background-color: sienna;
+	font-size:5px;
+	color:white;
+}
+
+img{
+	margin:8px;
+	border: 3px solid gray;
+	height:150px; 
+	width: 200px;
+}
+
+h1{
+	font-size: 36px; 
+	font-weight: bold;
+	margin:5px;
+	padding:10px;
+}
+
+table thead tr th{
+	color:white;
+}
+
+table {
+	position:relative; 
+	top:10px; 
+	left:15px; 
+	border: 3px solid gray;
+}
+
+.indexLeftHalf{
+	background-color:#580000; 
+	width:225px; 
+	height: 600px;
+	border: 2px solid purple;
+}
+
+.indexRightHalf{
+	background-color:#ccc; 
+	height:750px;
+	width:1000px;
+}
+
+//style="left:35px;top:15px; position: relative; border: 2px solid gray;"

@@ -18,21 +18,27 @@
 
 
 <br>
+<div style="position:relative;top:250px;">
 --------------------------------------------------------------------------------
 <h5><em>Below text is just for debugging, should change later </em></h5>
 The current user:
+
 <% unless current_user.nil? %>
 <strong> <%= current_user.email %> </strong> <br>
+Is admin: <strong> <%= current_user.admin %> </strong> <br>
+Is member: <strong> <%= current_user.member %> </strong> <br>
 <%= link_to 'Users edit', edit_user_registration_path %> | 
 <%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+
 <% else %>
 <strong> N/A </strong>
 <br>
 <%= link_to 'Sign in', new_user_session_path %>
+
 <% end %>
 <br>
 --------------------------------------------------------------------------------
-
+</div>
 
   </body>
 </html>

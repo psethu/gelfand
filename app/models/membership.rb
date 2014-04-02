@@ -12,6 +12,10 @@ class Membership < ActiveRecord::Base
     validates_numericality_of :individual_id, :only_integer => true
     validates_numericality_of :organization_id, :only_integer => true 
 
+    validate :organization_is_active_in_system, :on => :create
+    validate :individual_is_active_in_system, :on => :create
+    validate :membership_is_not_already_in_system, :on => :create
+
     private
 
     def organization_is_active_in_system

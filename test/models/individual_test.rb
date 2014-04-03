@@ -2,7 +2,9 @@ require 'test_helper'
 
 class IndividualTest < ActiveSupport::TestCase
 	# Test Relationships
-
+	should belong_to(:contact)
+	should have_many(:participants)
+	should have_many(:programs).through(:participants)
 
 
   	# Test Validations

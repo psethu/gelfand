@@ -2,7 +2,7 @@ class Individual < ActiveRecord::Base
 
     # Relationships
     # -------------
-    has_one :contact
+    belongs_to :contact
     has_many :memberships
     has_many :organizations, through: :memberships
     has_many :participants
@@ -28,10 +28,10 @@ class Individual < ActiveRecord::Base
 
     # Scopes
     # ------
-    scope :alphabetical, order('name')
-    scope :active, where('active = ?', true)
-    scope :inactive, where('active = ?', false)
-    scope :no_bg_check, where('bg_check_id IS NULL')
+    scope :alphabetical, -> { order('name') }
+    scope :active, -> { where(active: true) }
+    scope :inactive, -> { where(active: false) }
+    scope :no_bg_check, -> { where(bg_check_id: nil) }
 
     # Class Methods
     # -------------

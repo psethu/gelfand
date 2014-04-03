@@ -15,5 +15,8 @@ class ActiveSupport::TestCase
   	@indiv = FactoryGirl.create(:individual)
   end
 
-  # Add more helper methods to be used by all tests here...
+  def remove_individual_context
+  	@indiv.delete
+  end
+
 end

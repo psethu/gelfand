@@ -4,5 +4,6 @@ FactoryGirl.define do
 		l_name "Doe"
 		dob Date.today - 3.years
 		role 0
+		active true
 	end
 end

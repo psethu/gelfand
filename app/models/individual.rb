@@ -2,7 +2,7 @@ class Individual < ActiveRecord::Base
 
     # Relationships
     # -------------
-    has_one :contact
+    belongs_to :contact
     has_many :memberships
     has_many :organizations, through: :memberships
     has_many :participants
@@ -13,14 +13,10 @@ class Individual < ActiveRecord::Base
     validates :f_name, :presence => true
     validates :l_name, :presence => true
     validates_presence_of :active
-    validates :contact_id, :only_integer => true, :allow_blank => true
-    validates :user_id, :only_integer => true, :allow_blank => true
+    validates :contact_id, :numericality => { :only_integer => true }, :allow_blank => true
 
     #TBD by future ERD
     validates :role, :presence => true, :numericality => {:only_integer => true, :less_than_or_equal_to => 2, :greater_than_or_equal_to => 0}
-    
-    validates_date :dob, :on_or_before => lambda {Date.current}
-
 
 
     # Callbacks
@@ -29,10 +25,11 @@ class Individual < ActiveRecord::Base
 
     # Scopes
     # ------
-    scope :alphabetical, order('name')
-    scope :active, where('active = ?', true)
-    scope :inactive, where('active = ?', false)
-    scope :no_bg_check, where('bg_check_id IS NULL')
+    scope :alphabetical, -> { order('l_name') }
+    scope :alpha_by_first, -> { ( order('f_name') ) }
+    scope :active, -> { where(active: true) }
+    scope :inactive, -> { where(active: false) }
+    scope :no_bg_check, -> { where(bg_check_id: nil) }
 
     # Class Methods
     # -------------
@@ -50,6 +47,14 @@ class Individual < ActiveRecord::Base
     	end
     end
 
+	def name
+		"#{l_name}, #{f_name}"
+	end
+
+	def proper_name
+		"#{f_name} #{l_name}"
+	end
+
     # Private Methods
     # ---------------
     private
@@ -59,8 +64,6 @@ class Individual < ActiveRecord::Base
     		self.contact_id = nil
     	end
 
-    	def name
-    		"#{l_name}, #{f_name}"
-    	end
+
 
 end

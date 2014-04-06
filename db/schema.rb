@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406000918) do
+ActiveRecord::Schema.define(version: 20140406151457) do
 
   create_table "affiliations", force: true do |t|
     t.integer  "organization_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140406000918) do
     t.date     "verification_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "bg_check_id"
+    t.integer  "individual_id"
   end
 
   create_table "contacts", force: true do |t|

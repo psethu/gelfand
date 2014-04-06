@@ -15,9 +15,9 @@ class BgCheck < ActiveRecord::Base
 
     # Scopes
     # ------
-    scope :started, where('status = ?', 0)
-    scope :processing, where('status = ?', 1)
-   	scope :complete, where('status = ?', 2)
+    scope :started, -> { where('status = ?', 0) }
+    scope :processing, ->{ where('status = ?', 1) }
+   	scope :complete, -> { where('status = ?', 2) }
 
    	# Class Methods
    	# -------------

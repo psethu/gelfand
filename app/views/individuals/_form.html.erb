@@ -27,9 +27,3 @@
       <%= form.select(:role, options_for_select([["Student", 0], ["Faculty", 1], ["Off-Campus", 2]], 0)) %>
     </div>
   </div>
-  <div class="row">
-    <div class="field">
-      <%= form.label :dob %><br>
-      <%= form.date_select :dob, order: [:month, :day, :year], :use_short_month => true, :start_year => 1950, :end_year => 2005, :selected => 1992 %>
-    </div>
-  </div>

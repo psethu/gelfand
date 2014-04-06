@@ -17,9 +17,6 @@ class Individual < ActiveRecord::Base
 
     #TBD by future ERD
     validates :role, :presence => true, :numericality => {:only_integer => true, :less_than_or_equal_to => 2, :greater_than_or_equal_to => 0}
-    
-    validates_date :dob, :on_or_before => lambda {Date.current}
-
 
 
     # Callbacks
@@ -28,7 +25,8 @@ class Individual < ActiveRecord::Base
 
     # Scopes
     # ------
-    scope :alphabetical, -> { order('name') }
+    scope :alphabetical, -> { order('l_name') }
+    scope :alpha_by_first, -> { ( order('f_name') ) }
     scope :active, -> { where(active: true) }
     scope :inactive, -> { where(active: false) }
     scope :no_bg_check, -> { where(bg_check_id: nil) }
@@ -49,6 +47,14 @@ class Individual < ActiveRecord::Base
     	end
     end
 
+	def name
+		"#{l_name}, #{f_name}"
+	end
+
+	def proper_name
+		"#{f_name} #{l_name}"
+	end
+
     # Private Methods
     # ---------------
     private
@@ -58,8 +64,6 @@ class Individual < ActiveRecord::Base
     		self.contact_id = nil
     	end
 
-    	def name
-    		"#{l_name}, #{f_name}"
-    	end
+
 
 end

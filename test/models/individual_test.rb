@@ -54,14 +54,12 @@ class IndividualTest < ActiveSupport::TestCase
   		end
 
   		should "list users by specific role" do
-
+  			
   		end
 
   		teardown do
   			remove_individual_context
   		end
-
-  		
 	  	
   	end
 end

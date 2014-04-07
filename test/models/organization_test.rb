@@ -26,6 +26,10 @@ class OrganizationTest < ActiveSupport::TestCase
 
 		# Attribute Formatting
 
+		# Scopes and Sorting
+
+		
+
 		teardown do
 			remove_organization_context
 		end

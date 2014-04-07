@@ -11,9 +11,9 @@ class Organization < ActiveRecord::Base
     has_many :individuals, through: :memberships
 
   # Scopes
-  scope :alphabetical, order('name')
-  scope :active, where('active = ?', true)
-  scope :inactive, where('active = ?', false)
+  scope :alphabetical, -> { order('name') }
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
 
   # Validations
   validates_presence_of :name, :description, :department

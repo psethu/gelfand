@@ -2,7 +2,7 @@ class Organization < ActiveRecord::Base
 
     # Relationships
     # ------------- 
-    belongs_to :contact
+    has_one :contact
     has_many :affiliations
     has_many :programs, through: :affiliations
     has_many :org_users

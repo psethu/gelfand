@@ -36,4 +36,19 @@ class ActiveSupport::TestCase
   	@zena.delete
   end
 
+  def create_organization_context
+  	@standard = FactoryGirl.create(:organization)
+  	@scotch = FactoryGirl.create(:organization, name: "Scotch'n'Soda", description: "A student-run theatre troupe")
+  	@civE = FactoryGirl.create(:organization, name: "Civil Engineering", description: "The Civil Engineering Department at Carnegie Mellon", department: "CIT")
+  	@partner = FactoryGirl.create(:organization, name: "Pittsburgh Public Schools", description: "Public Schooling in Allegheny County", is_partner: true, department: "OffCampus")
+
+  end
+
+  def remove_organization_context
+  	@standard.delete
+  	@scotch.delete
+  	@civE.delete
+  	@partner.delete
+  end
+
 end

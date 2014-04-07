@@ -1,15 +1,19 @@
 // Place all the styles related to the home controller here
 
+$height_Main_content: 500px;
+
 .test{
 	margin: 15px;
 	// color: white; <- currently not working, find out why
 }
 
-.leftNav{
+.indexLeftHalf{
 	background-color:#580000; 
 	border: 2px solid purple;
+	height: $height_Main_content;
 }
 
-.rightContent{
-	background-color: #ccc
+.indexRightHalf{
+	background-color:#ccc; 
+	height: $height_Main_content;
 }

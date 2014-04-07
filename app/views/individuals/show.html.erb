@@ -20,15 +20,6 @@
   <%= @individual.active %>
 </p>
 
-<p>
-  <strong>Bg check:</strong>
-  <%= @individual.bg_check_id %>
-</p>
-
-<p>
-  <strong>Contact:</strong>
-  <%= @individual.contact_id %>
-</p>
 
 <% if can? :update, @individual %>
   <%= link_to 'Edit', edit_individual_path(@individual) %> |

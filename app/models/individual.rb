@@ -12,8 +12,6 @@ class Individual < ActiveRecord::Base
 
     validates :f_name, :presence => true
     validates :l_name, :presence => true
-    validates_presence_of :active
-    validates :contact_id, :numericality => { :only_integer => true }, :allow_blank => true
 
     #TBD by future ERD
     validates :role, :presence => true, :numericality => {:only_integer => true, :less_than_or_equal_to => 2, :greater_than_or_equal_to => 0}
@@ -61,7 +59,6 @@ class Individual < ActiveRecord::Base
     	def set_defaults
     		self.active = true
     		self.bg_check = nil
-    		self.contact_id = nil
     	end
 
 

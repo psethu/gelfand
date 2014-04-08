@@ -1,5 +1,9 @@
 <div class="row">
 
+  <div class="header">
+  	<%= render "shared_partials/header_login" %>
+  </div>	
+
   <div class="small-3 columns indexLeftHalf">
     <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
 
@@ -10,7 +14,15 @@
 			<h1> Home </h1>
 		</div>
 
-	</div>
+  </div>
+
+  <div class="footer">
+  	<br>
+  	Home  ::   About AMK School  ::   Contact Us  ::   Privacy Policy <br>
+			Webmaster: JeCoSaSe © 2014
+
+  </div>
+
 </div>
 
 <p><%= flash[:error] %></p>

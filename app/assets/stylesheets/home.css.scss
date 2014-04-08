@@ -14,6 +14,21 @@ $height_Main_content: 500px;
 }
 
 .indexRightHalf{
-	background-color:#ccc; 
+	background-color:#580000; // why is this still gray?
 	height: $height_Main_content;
 }
+
+.header{
+	background-color: #c96;
+	font-size: 14px;
+	padding: 10px;
+	text-align: left;	
+}
+
+.footer {	
+	background-color: #c96;
+	font-size: 14px;
+	padding: 10px;
+	text-align:center;
+}
+

@@ -12,7 +12,9 @@ class Participant < ActiveRecord::Base
     validate :individual_is_active_in_system, :on => :create
     validate :participant_is_not_already_in_system, :on => :create
 
-
+    #scopes
+    scope :for_program, lambda {|program_id| where("program_id = ?", program_id)}
+    scope :for_individual, lambda {|individual_id| where("individual_id = ?", individual_id)}
 
     private
     def program_is_active_in_system

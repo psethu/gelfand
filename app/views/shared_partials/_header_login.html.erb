@@ -1,0 +1,14 @@
+<% unless current_user.nil? %>
+
+<strong> <%= current_user.email %> </strong> <br>
+Is admin: <strong> <%= current_user.admin %> </strong> <br>
+Is member: <strong> <%= current_user.member %> </strong> <br>
+<%= link_to 'Users edit', edit_user_registration_path %> | 
+<%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+
+<% else %>
+
+<%= link_to 'Sign in', new_user_session_path %> |
+<a href="/users/sign_up">Sign up</a><br />
+
+<% end %>

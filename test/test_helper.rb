@@ -40,7 +40,7 @@ class ActiveSupport::TestCase
   	@scotch = FactoryGirl.create(:organization, name: "Scotch'n'Soda", description: "A student-run theatre troupe")
   	@civE = FactoryGirl.create(:organization, name: "Civil Engineering", description: "The Civil Engineering Department at Carnegie Mellon", department: "CIT")
   	@partner = FactoryGirl.create(:organization, name: "Pittsburgh Public Schools", description: "Public Schooling in Allegheny County", is_partner: true, department: "OffCampus")
-    @inactive = FactoryGirl.create(:organization, name: "Inactive Org", description: "Mortem est.", department:"The Olde KGB")
+    @inactive = FactoryGirl.create(:organization, name: "Inactive Org", description: "Mortem est.", department:"The Olde KGB", active: false)
   	@alpha_list = ["Civil Engineering", "Fringe", "Pittsburgh Public Schools", "Scotch'n'Soda"]
     @non_partners_list = ["Civil Engineering", "Fringe", "Scotch'n'Soda"]
     @partners_list = ["Pittsburgh Public Schools"]

@@ -1,8 +1,8 @@
 <% unless current_user.nil? %>
 
-<strong> <%= current_user.email %> </strong> <br>
-Is admin: <strong> <%= current_user.admin %> </strong> <br>
-Is member: <strong> <%= current_user.member %> </strong> <br>
+<strong> <%= current_user.email %> </strong>
+(Admin: <strong> <%= current_user.admin %> </strong>
+Member: <strong> <%= current_user.member %> </strong> )  <br>
 <%= link_to 'Users edit', edit_user_registration_path %> | 
 <%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
 

@@ -2,7 +2,7 @@ class Organization < ActiveRecord::Base
 
     # Relationships
     # ------------- 
-    has_one :contact
+    belongs_to :contact
     has_many :affiliations
     has_many :programs, through: :affiliations
     has_many :org_users
@@ -11,8 +11,10 @@ class Organization < ActiveRecord::Base
     has_many :individuals, through: :memberships
 
   # Scopes
+  default_scope { where(active: true) }
   scope :alphabetical, -> { order('name') }
-  scope :active, -> { where(active: true) }
+  scope :cmu_orgs, -> { where(is_partner: false) }
+  scope :partner_orgs, -> { where(is_partner: true) }
   scope :inactive, -> { where(active: false) }
 
   # Validations

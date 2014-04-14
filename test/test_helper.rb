@@ -11,10 +11,6 @@ class ActiveSupport::TestCase
     assert !condition, msg
   end
 
-  def assert_contents_equal(l1, l2)
-  	#no code. haven't decided if necessary
-  end
-
   def create_individual_context
   	#Populate db
   	@standard = FactoryGirl.create(:individual)
@@ -26,6 +22,9 @@ class ActiveSupport::TestCase
   	#Lists for verification
   	@alphabetical_by_last = ['Zena', 'Alvin', 'John', 'Max', 'Dave']
   	@alphabetical_by_first = ['Alvin', 'Dave', 'John', 'Max', 'Zena']
+    @students_only = ['Zena', 'Alvin', 'John']
+    @faculty_only = ['Dave']
+    @off_campus_only = ['Max']
   end
 
   def remove_individual_context
@@ -41,7 +40,11 @@ class ActiveSupport::TestCase
   	@scotch = FactoryGirl.create(:organization, name: "Scotch'n'Soda", description: "A student-run theatre troupe")
   	@civE = FactoryGirl.create(:organization, name: "Civil Engineering", description: "The Civil Engineering Department at Carnegie Mellon", department: "CIT")
   	@partner = FactoryGirl.create(:organization, name: "Pittsburgh Public Schools", description: "Public Schooling in Allegheny County", is_partner: true, department: "OffCampus")
-
+    @inactive = FactoryGirl.create(:organization, name: "Inactive Org", description: "Mortem est.", department:"The Olde KGB")
+  	@alpha_list = ["Civil Engineering", "Fringe", "Pittsburgh Public Schools", "Scotch'n'Soda"]
+    @non_partners_list = ["Civil Engineering", "Fringe", "Scotch'n'Soda"]
+    @partners_list = ["Pittsburgh Public Schools"]
+    @inactive_orgs = ["Inactive Org"]
   end
 
   def remove_organization_context

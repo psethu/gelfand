@@ -4,6 +4,9 @@
   	<%= render "shared_partials/header_login" %>
   </div>	
 
+<p><h3><strong><%= flash[:error] %></strong></h3></p>
+
+
   <div class="small-3 columns indexLeftHalf">
     <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
 
@@ -25,5 +28,5 @@
 
 </div>
 
-<p><%= flash[:error] %></p>
+
 

@@ -20,9 +20,8 @@ class Organization < ActiveRecord::Base
   # Validations
   validates_presence_of :name, :description, :department
   validates_uniqueness_of :name
-
-  # This doesn't work.
-  #validates_format_of :department, :with => /\A[\w]+\Z/i, :multiline => true, :message => "Can only contain alphabetical characters, lower or uppercase"
+  validates_format_of :department, :with => /^[ a-zA-Z]+$/, :multiline => true, 
+  									:message => "Can only contain alphabetical characters, lower or uppercase"
   #validates_inclusion_of :active, :in => [true, false], :message => "must be true or false"
 
 end

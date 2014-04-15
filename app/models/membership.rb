@@ -34,7 +34,7 @@ class Membership < ActiveRecord::Base
 
     def membership_is_not_already_in_system
         return true if self.individual_id.nil? || self.organization_id.nil?
-        possible_repeat = Memebership.where(organization_id: organization_id, student_id: student_id)
+        possible_repeat = Memebership.where(organization_id: organization_id, individual_id: individual_id)
         unless possible_repeat.empty?
             errors.add(:individual_id, "is already a member of this organization")
         end

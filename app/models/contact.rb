@@ -9,10 +9,12 @@ class Contact < ActiveRecord::Base
     
     #Valiations
     validates_format_of :phone, :with => /^\(?\d{3}\)?[-. ]?\d{3}[-.]?\d{4}$/, :message => "should be 10 digits (area code needed) and delimited with dashes only", :allow_blank => true
-    validates_inclusion_of :state, :in => STATES_LIST.map {|k, v| v}, :message => "is not a recognized state in the system"
-    validates_format_of :zip, :with => /^\d{5}$/, :message => "should be five digits long"
     validates_uniqueness_of :email, :case_sensitive => false
     validates_format_of :email, :with => /^[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))$/i, :message => "is not a valid format"
+
+    validates_presence_of :street, :city, :state, :zip, if: :address?
+    validates_inclusion_of :state, :in => STATES_LIST.map {|k, v| v}, :message => "is not a recognized state in the system"
+    validates_format_of :zip, :with => /^\d{5}$/, :message => "should be five digits long"
     #Scopes
 
 
@@ -21,5 +23,12 @@ class Contact < ActiveRecord::Base
         phone = self.phone.to_s  # change to string in case input as all numbers 
         phone.gsub!(/[^0-9]/,"") # strip all non-digits
         self.phone = phone       # reset self.phone to new string
+      end
+
+      def address?
+        if street || street2 || city || state || zip 
+            return true
+        end
+        return false  
       end
 end

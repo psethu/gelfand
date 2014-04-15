@@ -1,0 +1,34 @@
+// Place all the styles related to the home controller here
+
+$height_Main_content: 500px;
+
+.test{
+	margin: 15px;
+	// color: white; <- currently not working, find out why
+}
+
+.indexLeftHalf{
+	background-color:#580000; 
+	border: 2px solid purple;
+	height: $height_Main_content;
+}
+
+.indexRightHalf{
+	background-color:#580000; // why is this still gray?
+	height: $height_Main_content;
+}
+
+.header{
+	background-color: #FFF;
+	font-size: 14px;
+	padding: 10px;
+	text-align: left;	
+}
+
+.footer {	
+	background-color: #c96;
+	font-size: 14px;
+	padding: 10px;
+	text-align:center;
+}
+

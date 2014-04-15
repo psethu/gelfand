@@ -1,5 +1,11 @@
 <div class="row">
 
+  <div class="header">
+    <%= render "shared_partials/file_2_TEST" %>
+  </div>  
+
+  <p><h3><strong><%= flash[:error] %></strong></h3></p>
+
   <div class="small-3 columns leftNav">
     <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
     <em><strong><%= link_to 'Create New Individual', new_individual_path %></strong></em>

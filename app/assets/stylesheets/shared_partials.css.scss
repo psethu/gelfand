@@ -50,12 +50,12 @@ nav #login-content {
   border: 1px solid black;
   display: none;
   position: absolute;
-  top: 24px;
+  top: 45px; // change this to move the dropdown up or down
   right: 0;
   z-index: 999;    
   background: #fff;
   background-image: linear-gradient(top, #fff, #eee);  
-  padding: 15px;
+  padding: 0 15px 0 15px;
   box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
   border-radius: 3px 0 3px 3px;
 }
@@ -64,6 +64,14 @@ nav li #login-content {
   right: 0;
   width: 250px;  
 }
+
+/* Uncomment this to get rid of border
+	- looks like Foundation places a border on a fieldset
+fieldset {
+	border-style:none;
+}
+*/
+
 
 /*--------------------*/
 
@@ -91,6 +99,7 @@ nav li #login-content {
 }
 
 #login #submit {    
+	float: right;
   background-color: #d14545;
   background-image: linear-gradient(top, #e97171, #d14545);
   -moz-border-radius: 3px;
@@ -99,7 +108,6 @@ nav li #login-content {
   text-shadow: 0 1px 0 rgba(0,0,0,.5);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
   border: 1px solid #7e1515;
-  float: left;
   height: 30px;
   padding: 0;
   width: 100px;

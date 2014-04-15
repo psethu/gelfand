@@ -12,6 +12,8 @@ class BgCheckTest < ActiveSupport::TestCase
 			create_bg_checks_context
 		end
 
+		
+
 		teardown do
 			remove_bg_checks_context
 		end

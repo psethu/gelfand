@@ -61,7 +61,7 @@ class Individual < ActiveRecord::Base
     private
     	def set_defaults
     		self.active = true
-    		self.bg_check = nil
+    		self.bg_check_id = nil
     	end
 
 

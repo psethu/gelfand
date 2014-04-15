@@ -37,8 +37,14 @@ class IndividualTest < ActiveSupport::TestCase
   		end
 
   		should "format roles correctly" do
+            role = "Student"
+            assert_equal(role, @standard.format_role)
+
   			role = "Faculty"
   			assert_equal(role, @dave.format_role)
+
+            role = "Off-Campus"
+            assert_equal(role, @max.format_role)
   		end
 
   		# Scopes and Sorting

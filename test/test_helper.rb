@@ -54,6 +54,15 @@ class ActiveSupport::TestCase
     end
 
     def create_bg_checks_context
+        #Create some Individuals
+        @jondoe = FactoryGirl.create(:individual)
+        @littletommy = FactoryGirl.create(:individual, f_name: "Little", l_name: "Tommy")
+        @ronswan = FactoryGirl.create(:individual, f_name: "Ron", l_name: "Swanson", role: 1)
+
+        #Create BG_Checks
+        @standard = FactoryGirl.create(:bg_check)
+        @passed_criminal = FactoryGirl.create(:bg_check, criminal_date: 3.days.ago)
+        @passed_child_abuse = FactoryGirl.create(:bg_check, date_approved: , criminal_date: 2.years.ago, child_abuse_date: 2.years.ago + 10.days)
 
     end
 

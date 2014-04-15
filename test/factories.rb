@@ -16,5 +16,6 @@ FactoryGirl.define do
 
 	factory :bg_check do
 		status 0
+		date_requested 10.days.ago
 	end
 end

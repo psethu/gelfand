@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406151457) do
+ActiveRecord::Schema.define(version: 20140407144919) do
 
   create_table "affiliations", force: true do |t|
     t.integer  "organization_id"
@@ -46,13 +46,15 @@ ActiveRecord::Schema.define(version: 20140406151457) do
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "individual_id"
+    t.integer  "organization_id"
+    t.integer  "program_id"
   end
 
   create_table "individuals", force: true do |t|
     t.string   "f_name"
     t.string   "l_name"
     t.boolean  "active"
-    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "role"
@@ -78,7 +80,6 @@ ActiveRecord::Schema.define(version: 20140406151457) do
     t.text     "description"
     t.boolean  "active"
     t.string   "department"
-    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -100,7 +101,6 @@ ActiveRecord::Schema.define(version: 20140406151457) do
     t.integer  "num_minors"
     t.integer  "num_adults_supervising"
     t.integer  "irb_approval"
-    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -127,4 +127,3 @@ ActiveRecord::Schema.define(version: 20140406151457) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
-

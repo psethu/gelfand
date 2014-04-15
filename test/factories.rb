@@ -13,4 +13,8 @@ FactoryGirl.define do
 		active true
 		is_partner false
 	end
+
+	factory :bg_check do
+		status 0
+	end
 end

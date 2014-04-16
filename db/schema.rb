@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416195044) do
+ActiveRecord::Schema.define(version: 20140416202951) do
 
   create_table "affiliations", force: true do |t|
     t.integer  "organization_id"
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 20140416195044) do
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
     t.boolean  "member",                 default: true
-    t.integer  "user_id"
+    t.integer  "individual_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

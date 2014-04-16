@@ -159,11 +159,10 @@ nav #titleLink{
   top:10px;  
   position: relative;
   color: white;
+  margin: 0 10px 0 10px;
 }
 
-nav #titleLink:hover {
-  font-weight: bold;
-  background-color: #383838 ; // Looks like foundation creates a blackbackground over hover, so I override it with this
+nav .name:hover{
+  background-color: #000 ; // Looks like foundation creates a blackbackground over hover, so I override it with this  
 }
-
 

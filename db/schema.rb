@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415234849) do
+ActiveRecord::Schema.define(version: 20140416195044) do
 
   create_table "affiliations", force: true do |t|
     t.integer  "organization_id"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20140415234849) do
   end
 
   create_table "bg_checks", force: true do |t|
-    t.date     "date_approved"
     t.integer  "status"
     t.date     "criminal_date"
     t.date     "child_abuse_date"

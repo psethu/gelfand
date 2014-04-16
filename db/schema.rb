@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416195044) do
+ActiveRecord::Schema.define(version: 20140416202951) do
 
   create_table "affiliations", force: true do |t|
     t.integer  "organization_id"
@@ -45,19 +45,16 @@ ActiveRecord::Schema.define(version: 20140416195044) do
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "individual_id"
-    t.integer  "organization_id"
-    t.integer  "program_id"
   end
 
   create_table "individuals", force: true do |t|
     t.string   "f_name"
     t.string   "l_name"
     t.boolean  "active"
+    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "role"
-    t.integer  "contact_id"
   end
 
   create_table "memberships", force: true do |t|
@@ -80,9 +77,9 @@ ActiveRecord::Schema.define(version: 20140416195044) do
     t.text     "description"
     t.boolean  "active"
     t.string   "department"
+    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "contact_id"
   end
 
   create_table "participants", force: true do |t|
@@ -102,9 +99,9 @@ ActiveRecord::Schema.define(version: 20140416195044) do
     t.integer  "num_minors"
     t.integer  "num_adults_supervising"
     t.integer  "irb_approval"
+    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "contact_id"
   end
 
   create_table "users", force: true do |t|
@@ -122,7 +119,7 @@ ActiveRecord::Schema.define(version: 20140416195044) do
     t.datetime "updated_at"
     t.boolean  "admin",                  default: false
     t.boolean  "member",                 default: true
-    t.integer  "user_id"
+    t.integer  "individual_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

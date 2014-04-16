@@ -8,6 +8,7 @@ class Individual < ActiveRecord::Base
     has_many :participants
     has_many :programs, through: :participants
     has_one :bg_check
+    has_one :user
 
 
     validates :f_name, :presence => true

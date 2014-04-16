@@ -1,6 +1,18 @@
-<h1>Editing individual</h1>
+<h1>Editing Individual</h1>
 
-<%= render 'form' %>
+<%= form_for(@individual) do |f| %>
+
+	<%= render partial: 'form', object: f  %>
+
+	<!-- This is where some methods for adding background checks and contact info goes. -->
+
+	<div class="row">
+    	<div class="actions">
+      		<%= f.submit %>
+		</div>
+  	</div>
+
+<% end %>
 
 <%= link_to 'Show', @individual %> |
 <%= link_to 'Back', individuals_path %>

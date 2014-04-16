@@ -33,8 +33,23 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# cancan gem for authorization, source: https://github.com/ryanb/cancan
-gem 'cancan'
+# cancancan gem for authorization for Rails 4+, source: https://github.com/CanCanCommunity/cancancan
+gem 'cancancan', '~> 1.7'
+
+# hirb gem makes rails console look nicer, https://github.com/cldwalker/hirb/tree/master#readme
+gem 'hirb'
+
+#Validates_timeliness for date and time validations
+gem 'validates_timeliness'
+
+group :test do
+	gem 'factory_girl_rails', '4.2.1'
+	gem 'shoulda'
+end
+
+
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
@@ -47,3 +62,6 @@ gem 'cancan'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use Foundation for clean CSS/JS
+# gem 'foundation-rails'

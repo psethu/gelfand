@@ -1,23 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>F name:</strong>
+  <strong>First Name: </strong>
   <%= @individual.f_name %>
 </p>
 
 <p>
-  <strong>L name:</strong>
+  <strong>Last Name: </strong>
   <%= @individual.l_name %>
 </p>
 
 <p>
-  <strong>Role:</strong>
+  <strong>Role: </strong>
   <%= @individual.role %>
-</p>
-
-<p>
-  <strong>Dob:</strong>
-  <%= @individual.dob %>
 </p>
 
 <p>
@@ -25,15 +20,9 @@
   <%= @individual.active %>
 </p>
 
-<p>
-  <strong>Bg check:</strong>
-  <%= @individual.bg_check_id %>
-</p>
 
-<p>
-  <strong>Contact:</strong>
-  <%= @individual.contact_id %>
-</p>
+<% if can? :update, @individual %>
+  <%= link_to 'Edit', edit_individual_path(@individual) %> |
+<% end %>
 
-<%= link_to 'Edit', edit_individual_path(@individual) %> |
 <%= link_to 'Back', individuals_path %>

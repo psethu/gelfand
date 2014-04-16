@@ -8,20 +8,6 @@ class IndividualsController < ApplicationController
     @individuals = Individual.all
   end
 
-  # GET /individuals/1
-  # GET /individuals/1.json
-  def show
-  end
-
-  # GET /individuals/new
-  def new
-    @individual = Individual.new
-  end
-
-  # GET /individuals/1/edit
-  def edit
-  end
-
   # POST /individuals
   # POST /individuals.json
   def create
@@ -55,6 +41,7 @@ class IndividualsController < ApplicationController
   # DELETE /individuals/1
   # DELETE /individuals/1.json
   def destroy
+    authorize! :destroy, @individual
     @individual.destroy
     respond_to do |format|
       format.html { redirect_to individuals_url }

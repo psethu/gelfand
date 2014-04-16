@@ -1,37 +1,40 @@
-<h1>Listing organizations</h1>
+<div class="row">
+  <div class="small-3 columns indexLeftHalf">
+            <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+            <em><strong><%= link_to 'New Organization', new_organization_path %></strong></em>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Is partner</th>
-      <th>Description</th>
-      <th>Activr</th>
-      <th>Department</th>
-      <th>Contact</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <div class="small-9 columns indexRightHalf">
+      <h1>Organizations</h1>
 
-  <tbody>
-    <% @organizations.each do |organization| %>
-      <tr>
-        <td><%= organization.name %></td>
-        <td><%= organization.is_partner %></td>
-        <td><%= organization.description %></td>
-        <td><%= organization.active %></td>
-        <td><%= organization.department %></td>
-        <td><%= organization.contact_id %></td>
-        <td><%= link_to 'Show', organization %></td>
-        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <table >
+        <thead>
+          <tr >
+            <th>Name</th>
+            <th>Is partner</th>
+            <th>Description</th>
+            <th>Active</th>
+            <th>Department</th>
+            <th>Contact</th>
+          </tr>
+        </thead>
 
-<br>
+        <tbody>
+          <% @organizations.each do |organization| %>
+            <tr>
+              <td><%= organization.name %></td>
+              <td><%= organization.is_partner %></td>
+              <td><%= organization.description %></td>
+              <td><%= organization.active %></td>
+              <td><%= organization.department %></td>
+              <td><%= link_to 'Show', organization %></td>
+              <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
+              <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+   </div>
+</div>    
 
-<%= link_to 'New Organization', new_organization_path %>
+

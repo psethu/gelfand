@@ -19,9 +19,24 @@ can accepts 2 arguments
        if user.admin?
          can :manage, :all
        elsif user.member?
-         can :create, :all
-         can :update, :all
-         can :read, :all
+          can :create, :all
+
+          can :update, User do |u|
+            u.id == user.id
+          end 
+
+          can :show, User do |u|
+            u.id == user.id
+          end
+
+          can :update, Individual do |i|
+            i.id == user.individual_id
+          end
+          
+          can :read, Individual do |i|
+            i.id == user.individual_id
+          end
+
        else
          can :read, :all # this is a guest
        end

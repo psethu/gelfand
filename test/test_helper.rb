@@ -60,14 +60,18 @@ class ActiveSupport::TestCase
         @ronswan = FactoryGirl.create(:individual, f_name: "Ron", l_name: "Swanson", role: 1)
 
         #Create BG_Checks
-        @standard = FactoryGirl.create(:bg_check)
-        @passed_criminal = FactoryGirl.create(:bg_check, criminal_date: 3.days.ago)
-        @passed_child_abuse = FactoryGirl.create(:bg_check, date_approved: , criminal_date: 2.years.ago, child_abuse_date: 2.years.ago + 10.days)
-
+        @standard = FactoryGirl.create(:bg_check, individual_id: @jondoe.id)
+        @passed_criminal = FactoryGirl.create(:bg_check, individual_id: @littletommy.id, criminal_date: 3.days.ago)
+        @passed_child_abuse = FactoryGirl.create(:bg_check, individual_id: @ronswan.id, date_requested: 1.year.ago, criminal_date: 1.year.ago + 3.days, child_abuse_date: 1.year.ago + 10.days)
     end
 
     def remove_bg_checks_context
-
+        @jondoe.delete
+        @littletommy.delete
+        @ronswan.delete
+        @standard.delete
+        @passed_criminal.delete
+        @passed_child_abuse.delete
     end
 
 end

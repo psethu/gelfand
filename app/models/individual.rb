@@ -37,14 +37,14 @@ class Individual < ActiveRecord::Base
 
     def format_role
     	case self.role
-    	when 0
-    		return "Student"
-		when 1
-			return "Faculty"
-		when 2
-			return "Off-Campus"
-		else
-			return "attr_error"
+            when 0
+                return "Student"
+            when 1
+                return "Faculty"
+            when 2
+                return "Off-Campus"
+            else
+                return "attr_error"
     	end
     end
 

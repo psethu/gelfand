@@ -59,9 +59,9 @@ class Individual < ActiveRecord::Base
     # Private Methods
     # ---------------
     private
+    
     	def set_defaults
     		self.active = true
-    		self.bg_check_id = nil
     	end
 
 

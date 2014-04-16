@@ -19,9 +19,22 @@ class User < ActiveRecord::Base
   	member # this is a boolean that holds a true or false value
   end
 
-  def organizations
-    self.organizations
+  def get_org_ids
+    org_ids = self.org_users.map{|ou| ou.org_id}
+    org_ids
   end
+
+  def get_prog_ids
+    prog_ids = []
+    org_ids = self.get_org_ids
+    org_ids.each do |oi|
+      Organization.find(oi).affiliations.program_id.each do |pi|
+        prog_ids << pi
+      end
+    end
+    prog_ids
+  end
+
 
   
 

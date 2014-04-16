@@ -16,6 +16,7 @@ class BgCheck < ActiveRecord::Base
     # ---------
 
     before_create :give_initial_date
+    before_save :update_status
 
     # Scopes
     # ------
@@ -55,6 +56,18 @@ class BgCheck < ActiveRecord::Base
     def give_initial_date
         unless date_requested
             self.date_requested = Date.today
+        end
+    end
+
+    # Method to update the status of a bg_check if the date is updated
+    def auto_update_status
+        unless self.status > 1
+            if self.child_abuse_date
+                self.status = 2
+            end
+            elsif self.criminal_date
+                self.status = 1
+            end
         end
     end
 

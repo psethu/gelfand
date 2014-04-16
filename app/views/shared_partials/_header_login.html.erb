@@ -52,16 +52,26 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	       </a>
 	       	<!-- form stuff for 'Login' tab-->
 			      <div id="login-content">
-			        <form>
-			          <fieldset id="inputs">
-			            <input id="username" type="email" name="Email" placeholder="Email address" required>   
-			            <input id="password" type="password" name="Password" placeholder="Password" required>
-			            <br>
-			            <input type="submit" id="submit" value="Log in">
-			          </fieldset>
-			            <label><input type="checkbox"> Forgot password?</label>
-			        </form>
-			      </div>                     
+
+
+			        <!-- NOTE: for signUp dropdown use this url " form_for User.new, :url => user_registration_path" 
+			        	src: https://groups.google.com/forum/#!topic/plataformatec-devise/tngYOedkyCE
+			    -->
+			      <%= form_for(User.new, :url => user_session_path) do |f| %>
+				      	<fieldset>
+				      		<div id="inputs">
+
+							  <%= f.email_field :email, :autofocus => true, :id => 'username' , :placeholder => "Email address", :required => true %>
+
+							  <%= f.password_field :password, :id => 'password', :placeholder=>"Password", :required => true %>
+							  <br>
+							  <%= f.submit "Log in" , id: 'submit' %>
+							</div>
+						</fieldset>
+
+				  <% end %>
+					<a id="forgotPass" href="/users/password/new">Forgot password? </a>
+				  </div>                     
 	    </li>
     </ul>
 
@@ -69,6 +79,9 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
   </nav>
 </div>
 
-
+<!-- messages for Error, Success, Alrt -->
+<p><h3><strong><%= flash[:error] %></strong></h3></p>
+<p><h3><strong><%= flash[:notice] %></strong></h3></p>
+<p><h3><strong><%= flash[:alert] %></strong></h3></p>
 
 

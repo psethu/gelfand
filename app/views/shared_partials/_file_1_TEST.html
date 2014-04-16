@@ -1,23 +1,19 @@
-<!--
+ <!--
 =============================================================
-Use the below as a check for authority
+Form that drops down and looks cool but user couldnt actually log in
 -->
 
-<% unless current_user.nil? %>
-
-<strong> <%= current_user.email %> </strong>
-(Admin: <strong> <%= current_user.admin %> </strong>
-Member: <strong> <%= current_user.member %> </strong> )  <br>
-<%= link_to 'Users edit', edit_user_registration_path %> | 
-<%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
-
-<% else %>
-
-<%= link_to 'Sign in', new_user_session_path %> |
-<a href="/users/sign_up">Sign up</a>
-
-<% end %>
-
+        <form>
+          <fieldset id="inputs">
+            <input id="username" type="email" name="Email" placeholder="Email address" required>   
+            <input id="password" type="password" name="Password" placeholder="Password" required>
+            <br>
+            <input type="submit" id="submit" value="Log in">
+          </fieldset>
+            <!-- <label><input type="checkbox"> Forgot password?</label> -->            
+            	<a id="forgotPass" href="/users/password/new">Forgot password? </a>
+        
+	</form>
 <!-- 
 =============================================================
 -->

@@ -33,9 +33,11 @@ can accepts 2 arguments
             i.id == user.individual_id
           end
           
-          can :read, Individual do |i|
+          can :show, Individual do |i|
             i.id == user.individual_id
           end
+
+          can :read, Organization
 
        else
          can :read, :all # this is a guest

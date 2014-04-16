@@ -26,7 +26,7 @@ nav #signup a {
   *zoom: 1;
   height: 45px;
   line-height: 25px;
-  padding: 0 8px;
+  padding: 10px 8px;
   text-decoration: none;
   color: white;
 
@@ -153,6 +153,17 @@ fieldset {
 }
 #forgotPass:hover{
 	font-weight:bold;
+}
+
+nav #titleLink{
+  top:10px;  
+  position: relative;
+  color: white;
+}
+
+nav #titleLink:hover {
+  font-weight: bold;
+  background-color: #383838 ; // Looks like foundation creates a blackbackground over hover, so I override it with this
 }
 
 

@@ -12,8 +12,9 @@
   </head>
 
   <body>
-    <%= render "shared_partials/header_login" %>
-
+    <div class="row">
+      <%= render "shared_partials/header_login" %>
+    </div>
     <%= yield %>
     <%= javascript_include_tag "application" %>
 

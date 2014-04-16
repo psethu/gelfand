@@ -32,7 +32,11 @@ class BgCheckTest < ActiveSupport::TestCase
 		# Attribute Formatting
 
 		should "format status of background check correctly" do
-			
+			status = "Requested"
+			assert_equal(@standard.format_status)
+
+			status = "Child Abuse Passed"
+			assert_equal(status, @passed_child_abuse.format_status)
 		end
 
 

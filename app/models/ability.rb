@@ -37,7 +37,14 @@ can accepts 2 arguments
             i.id == user.individual_id
           end
 
+          can :show, Bg_check do |b|
+            b.id == user.get_bg_check_id
+          end
+
+
           can :read, Organization
+          can :show, Organization
+
 
        else
          can :read, :all # this is a guest

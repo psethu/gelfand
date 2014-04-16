@@ -35,6 +35,9 @@ class User < ActiveRecord::Base
     prog_ids
   end
 
+  def get_bg_check_id
+    self.individual.bg_check.id
+  end
 
   
 

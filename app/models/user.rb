@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
     # ------------- 
     has_many :org_users
     has_many :organizations, through: :org_users
+    belongs_to :individual
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -17,4 +18,12 @@ class User < ActiveRecord::Base
   def member?
   	member # this is a boolean that holds a true or false value
   end
+
+  def organizations
+    self.organizations
+  end
+
+  
+
+
 end

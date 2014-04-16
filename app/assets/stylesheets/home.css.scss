@@ -2,7 +2,7 @@
 
 $height_Main_content: 500px;
 
-.test{
+.title{
 	margin: 15px;
 	// color: white; <- currently not working, find out why
 }
@@ -18,12 +18,7 @@ $height_Main_content: 500px;
 	height: $height_Main_content;
 }
 
-.header{
-	background-color: #FFF;
-	font-size: 14px;
-	padding: 10px;
-	text-align: left;	
-}
+
 
 .footer {	
 	background-color: #c96;

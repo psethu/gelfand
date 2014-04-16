@@ -58,11 +58,16 @@ class ActiveSupport::TestCase
         @jondoe = FactoryGirl.create(:individual)
         @littletommy = FactoryGirl.create(:individual, f_name: "Little", l_name: "Tommy")
         @ronswan = FactoryGirl.create(:individual, f_name: "Ron", l_name: "Swanson", role: 1)
+        @tammy = FactoryGirl.create(:individual, f_name: "OhGod", l_name: "NotTammy", role: 1)
+        @eddieG = FactoryGirl.create(:individual, f_name: "Ed", l_name: "Gruberman", role: 1)
 
         #Create BG_Checks
         @standard = FactoryGirl.create(:bg_check, individual_id: @jondoe.id)
         @passed_criminal = FactoryGirl.create(:bg_check, individual_id: @littletommy.id, criminal_date: 3.days.ago)
         @passed_child_abuse = FactoryGirl.create(:bg_check, individual_id: @ronswan.id, date_requested: 1.year.ago, criminal_date: 1.year.ago + 3.days, child_abuse_date: 1.year.ago + 10.days)
+        @sorrytammy = FactoryGirl.create(:bg_check, individual_id: @tammy, date_requested: 2.years.ago, status: 4)
+        @standard2 = FactoryGirl.create(:bg_check, individual_id: @eddieG)
+
     end
 
     def remove_bg_checks_context

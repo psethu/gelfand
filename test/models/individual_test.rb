@@ -54,14 +54,19 @@ class IndividualTest < ActiveSupport::TestCase
   		end
 
   		should "list users by specific role" do
+  			list = Individual.students.sort_by!{ |i| i.l_name.downcase }.map(&:f_name)
+        assert_equal(list, @students_only)
 
+        list = Individual.faculty.sort_by!{ |i| i.l_name.downcase }.map(&:f_name)
+        assert_equal(list, @faculty_only)
+
+        list = Individual.off_campus.sort_by!{ |i| i.l_name.downcase}.map(&:f_name)
+        assert_equal(list, @off_campus_only)
   		end
 
   		teardown do
   			remove_individual_context
   		end
-
-  		
 	  	
   	end
 end

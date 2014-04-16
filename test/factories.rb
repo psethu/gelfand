@@ -6,5 +6,11 @@ FactoryGirl.define do
 		active true
 	end
 
-
+	factory :organization do
+		name "Fringe"
+		description "A student organization primarily focused on buggy."
+		department "Student Activities"
+		active true
+		is_partner false
+	end
 end

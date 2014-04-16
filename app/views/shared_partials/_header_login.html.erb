@@ -14,7 +14,7 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
    <nav class="top-bar" data-topbar>
 	  <ul class="title-area">
 	    <li class="name">
-	      <h1><a href="/">Gelfand Center</a></h1>
+	      <a id="titleLink" href="/">Gelfand Center</a>
 		    </li>
 	    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
 	  </ul>
@@ -37,12 +37,13 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 
   	    <!-- Right Nav Section -->
 	<ul class="right">
-	      <li><a href="/gelfand_contact_page.html">Contact</a></li>
+	      <li><a href="/gelfand_contact_page.html">Contact Us</a></li>
 	      <li class="divider"></li>
 
 		  <li id="signup">
-		      <a href="">Sign up</a>
-		  </li>
+	       <a href="/users/sign_in" id="signupLink">
+	         Sign Up
+	       </a>
 
 		  <li class="divider"></li>
           
@@ -53,15 +54,11 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	       	<!-- form stuff for 'Login' tab-->
 			      <div id="login-content">
 
-
-			        <!-- NOTE: for signUp dropdown use this url " form_for User.new, :url => user_registration_path" 
-			        	src: https://groups.google.com/forum/#!topic/plataformatec-devise/tngYOedkyCE
-			    -->
 			      <%= form_for(User.new, :url => user_session_path) do |f| %>
 				      	<fieldset>
 				      		<div id="inputs">
 
-							  <%= f.email_field :email, :autofocus => true, :id => 'username' , :placeholder => "Email address", :required => true %>
+							  <%= f.email_field :email, :autofocus => true, :id => 'email' , :placeholder => "Email address", :required => true %>
 
 							  <%= f.password_field :password, :id => 'password', :placeholder=>"Password", :required => true %>
 							  <br>

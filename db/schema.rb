@@ -45,9 +45,6 @@ ActiveRecord::Schema.define(version: 20140416195044) do
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "individual_id"
-    t.integer  "organization_id"
-    t.integer  "program_id"
   end
 
   create_table "individuals", force: true do |t|

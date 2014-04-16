@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     org_ids
   end
 
-  def get_prog_ids
+  def get_admin_prog_ids
     prog_ids = []
     org_ids = self.get_org_ids
     org_ids.each do |oi|
@@ -35,6 +35,13 @@ class User < ActiveRecord::Base
     prog_ids
   end
 
+  def get_member_prog_ids
+    self.individual.participants.map{|p| p.program_id}
+  end
+
+  def get_bg_check_id
+    self.individual.bg_check.id
+  end
 
   
 

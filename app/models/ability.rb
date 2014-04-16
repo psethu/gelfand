@@ -33,9 +33,32 @@ can accepts 2 arguments
             i.id == user.individual_id
           end
           
-          can :read, Individual do |i|
+          can :show, Individual do |i|
             i.id == user.individual_id
           end
+
+          can :show, BgCheck do |b|
+            b.id == user.get_bg_check_id
+          end
+
+
+          can :read, Organization
+          can :show, Organization
+
+          user.get_org_ids.each do |i|
+            can :update, Organization do |o|
+              o.id == i
+            end
+          end
+
+          user.get_admin_prog_ids.each do |i|
+            can :update, Program do |p|
+              p.id == i
+            end
+          end
+
+
+
 
        else
          can :read, :all # this is a guest

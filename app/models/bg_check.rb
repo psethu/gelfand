@@ -64,7 +64,6 @@ class BgCheck < ActiveRecord::Base
         unless self.status > 1
             if self.child_abuse_date
                 self.status = 2
-            end
             elsif self.criminal_date
                 self.status = 1
             end

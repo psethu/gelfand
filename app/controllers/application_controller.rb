@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   # below makes access denied errors more user friendly
   rescue_from CanCan::AccessDenied do |exception|
-  	flash[:error] = "Sorry, action denied."
+  	flash[:error] = "Sorry, you do not have permission to view this page."
   	redirect_to root_url
   end
+
 end

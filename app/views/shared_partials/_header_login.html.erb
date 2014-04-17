@@ -37,6 +37,10 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 
   	    <!-- Right Nav Section -->
 	<ul class="right">
+		<% if !current_user.nil?%>
+			<li><%= link_to "My Account", individual_path(current_user.individual) %>
+			</li>
+		<%end%>
 	      <li><a href="/gelfand_contact_page.html">Contact Us</a></li>
 	      <li class="divider"></li>
 

@@ -14,67 +14,100 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
    <nav class="top-bar" data-topbar>
 	  <ul class="title-area">
 	    <li class="name">
-	      <a id="titleLink" href="/">Gelfand Center</a>
-		    </li>
+	      <a id="title_link" href="/">Gelfand Center</a>
+		</li>
+
 	    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
 	  </ul>
 
+	
+	
   <section class="top-bar-section"> <!-- changing this to <section class="top-bar-section"> hides dropdowns, but does not re-					appear -->
 	  <ul class="left">
-		<!-- Code for search: Start -->
-			<li class="has-form">
-			  <div class="row collapse">
-			    <div class="large-8 small-9 columns">
-			      <input type="text" placeholder="Find something">
-			    </div>
-			    <div class="large-4 small-3 columns">
-			      <a href="#" class="alert button expand">Search</a>
-			    </div>
-			  </div>
-			</li>
-			<!-- Code for search: End-->
+	  	<li class="divider"></li>
+	  	<li class="divider"></li>
 	  </ul>
 
   	    <!-- Right Nav Section -->
 	<ul class="right">
-		<% if !current_user.nil?%>
-			<li><%= link_to "My Account", individual_path(current_user.individual) %>
-			</li>
-		<%end%>
-	      <li><a href="/gelfand_contact_page.html">Contact Us</a></li>
-	      <li class="divider"></li>
 
-		  <li id="signup">
+		<% unless current_user.nil? %>
+	  	  <li class="divider"></li>
+	      <li><a href="/bg_checks">Background Check</a></li>
+	  	  <li class="divider"></li>
+	      <li><a href="/organizations">Organizations</a></li>
+		<% end %>
+	      <li class="divider"></li>
+		  <li><a href="/gelfand_contact_page.html">Contact Us</a></li>
+		  <li class="divider"></li>
+	    	
+	    <% if current_user.nil? %>
+		  <li>
 	       <a href="/users/sign_in" id="signupLink">
 	         Sign Up
 	       </a>
+	      </li>
+	<% else %>
+	<% end %>
 
-		  <li class="divider"></li>
+        
+
+    <% unless current_user.nil? %>
+			<!-- show login tab -->
+			 <li id="login">
+			       <a id="login-trigger">
+			        	Hi <%= current_user.get_first_name %> <span>▼</span>
+			       </a>
+			       	<!-- form stuff for 'Login' tab-->
+					      <div id="login-content">
+					      		</fieldset>
+						      		<div id="inputs">
+						      			<br>
+						      			<a id="my_account" href="#"> My account </a>
+						      			<hr id="logout_myaccount_divider">
+											Not <%= current_user.get_first_name %>? 
+											<br>
+											<%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class=>"button [radius round]", :id => "logout-button-text" %>	
+											<br>
+											<br>
+											<br>
+											<!--  -->
+									</div>
+								</fieldset>
+
+					  </div>                     
+			</li>
+	<% else %>
+			<!-- show login tab -->
+			 <li id="login">
+			       <a id="login-trigger">
+			         Log in <span>▼</span>
+			       </a>
+			       	<!-- form stuff for 'Login' tab-->
+					      <div id="login-content">
+
+					      <%= form_for(User.new, :url => user_session_path) do |f| %>
+						      	<fieldset>
+						      		<div id="inputs">
+
+									  <%= f.email_field :email, :autofocus => true, :id => 'email' , :placeholder => "Email address", :required => true %>
+
+									  <%= f.password_field :password, :id => 'password', :placeholder=>"Password", :required => true %>
+									  <br>
+									  <%= f.submit "Submit" , id: 'submit' %>
+									</div>
+								</fieldset>
+
+						  <% end %>
+							<a id="forgotPass" href="/users/password/new">Forgot password? </a>
+						  </div>                     
+			</li>
+	<% end %>
           
-          <li id="login">
-	       <a id="login-trigger">
-	         Log in <span>▼</span>
-	       </a>
-	       	<!-- form stuff for 'Login' tab-->
-			      <div id="login-content">
-
-			      <%= form_for(User.new, :url => user_session_path) do |f| %>
-				      	<fieldset>
-				      		<div id="inputs">
-
-							  <%= f.email_field :email, :autofocus => true, :id => 'email' , :placeholder => "Email address", :required => true %>
-
-							  <%= f.password_field :password, :id => 'password', :placeholder=>"Password", :required => true %>
-							  <br>
-							  <%= f.submit "Submit" , id: 'submit' %>
-							</div>
-						</fieldset>
-
-				  <% end %>
-					<a id="forgotPass" href="/users/password/new">Forgot password? </a>
-				  </div>                     
-	    </li>
+         
     </ul>
+
+
 
   </section>
   </nav>

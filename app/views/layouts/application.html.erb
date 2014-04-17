@@ -14,12 +14,18 @@
   <body>
     <div class="row">
       <%= render "shared_partials/header_login" %>
-    </div>
     <%= yield %>
+      <%= render "shared_partials/footer" %>
+
     <%= javascript_include_tag "application" %>
 
 
+
 <br><br><br>
+
+    </div>
+
+<br>
 <div style="position:relative;top:-15px;">
 --------------------------------------------------------------------------------
 <h5><em>Below text is just for debugging, should change later </em></h5>

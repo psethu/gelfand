@@ -55,7 +55,7 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 			<!-- show login tab -->
 			 <li id="login">
 			       <a id="login-trigger">
-			        	Hi <%= current_user.email %> <span>▼</span>
+			        	Hi <%= current_user.get_first_name %> <span>▼</span>
 			       </a>
 			       	<!-- form stuff for 'Login' tab-->
 					      <div id="login-content">
@@ -64,9 +64,12 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 						      			<br>
 						      			<a id="my_account" href="#"> My account </a>
 						      			<hr id="logout_myaccount_divider">
-											Not <%= current_user.email %>? <%= link_to 'Log out', destroy_user_session_path, :method => :delete, :id => "logout-button-text" %>	
+											Not <%= current_user.get_first_name %>? 
+											<br>
+											<%= link_to 'Log out', destroy_user_session_path, :method => :delete, :id => "logout-button-text" %>	
 											<br>
 											<br>
+											<!--  -->
 									</div>
 								</fieldset>
 

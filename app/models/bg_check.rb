@@ -6,17 +6,17 @@ class BgCheck < ActiveRecord::Base
     
 	# Validations
 	# -----------
-  	validates :status, :presence => true, :numericality => {:only_integer => true, :less_than_or_equal_to => 4, :greater_than_or_equal_to => 0}
+  	validates :status, :numericality => {:only_integer => true, :less_than_or_equal_to => 4, :greater_than_or_equal_to => 0}
     validates :individual_id, :presence => true, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0 }
-    validates_date :date_requested, :allow_blank => false, :on_or_before => :today
+    validates_date :date_requested, :allow_blank => true, :on_or_before => :today
     validates_date :criminal_date, :after => :date_requested, :allow_blank => true
     validates_date :child_abuse_date, :after => :criminal_date, :allow_blank => true
 
     # Callbacks
     # ---------
 
-    before_create :give_initial_date
-    before_save :update_status
+    before_create :set_initial_date
+    before_save :auto_update_status
 
     # Scopes
     # ------
@@ -53,10 +53,14 @@ class BgCheck < ActiveRecord::Base
     private
 
     # Method to set the request date to the current date if there is no given date
-    def give_initial_date
+    def set_initial_date
         unless date_requested
             self.date_requested = Date.today
         end
+    end
+
+    def set_initial_status
+        self.status = 0
     end
 
     # Method to update the status of a bg_check if the date is updated
@@ -66,6 +70,8 @@ class BgCheck < ActiveRecord::Base
                 self.status = 2
             elsif self.criminal_date
                 self.status = 1
+            else
+                self.status = 0
             end
         end
     end

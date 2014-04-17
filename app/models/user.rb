@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
     has_many :organizations, through: :org_users
     belongs_to :individual
 
+    # The below scope probably unecessary but could be useful in future
+    # scope :for_individual, lambda {|individual_id| where("individiual_id = ?", individual_id) }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -43,7 +46,9 @@ class User < ActiveRecord::Base
     self.individual.bg_check.id
   end
 
-  
+  def get_first_name
+    Individual.find(self.individual_id).f_name
+  end  
 
 
 end

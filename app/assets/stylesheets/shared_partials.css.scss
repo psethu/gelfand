@@ -118,6 +118,7 @@ fieldset {
 
 #login #submit:hover,
 #login #submit:focus {    
+  color: black;
   background-color: #e97171;
   background-image: linear-gradient(top, #d14545, #e97171);
 } 
@@ -155,15 +156,45 @@ fieldset {
 	font-weight:bold;
 }
 
-nav #titleLink{
+nav #title_ink{
   top:10px;  
   position: relative;
   color: white;
+  margin: 0 10px 0 10px;
+  font-size: 30px; // not working, not sure why
 }
 
-nav #titleLink:hover {
+
+nav .name:hover{
+  background-color: #000 ; // Looks like foundation creates a blackbackground over hover, so I override it with this  
+}
+
+#logout-button-text {
+  color: white;
+  top: 10px;
+  position: relative;
+  font-size: 14px;
+ border-radius:5px;
+}
+
+#my_account {
+  background-color: white;
+}
+
+#logout_myaccount_divider {
+  margin: 0 -5px 15px -5px;
+  border: 1px solid #404040 ;
+}
+
+#inputs a:hover {
+  color: #000;
   font-weight: bold;
-  background-color: #383838 ; // Looks like foundation creates a blackbackground over hover, so I override it with this
 }
 
-
+.footer { 
+  background-color: #c96;
+  font-size: 14px;
+  text-align:center;
+  height:50px;
+  padding: 5px;
+}

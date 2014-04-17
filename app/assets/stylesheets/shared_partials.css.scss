@@ -156,12 +156,14 @@ fieldset {
 	font-weight:bold;
 }
 
-nav #titleLink{
+nav #title_ink{
   top:10px;  
   position: relative;
   color: white;
   margin: 0 10px 0 10px;
+  font-size: 30px; // not working, not sure why
 }
+
 
 nav .name:hover{
   background-color: #000 ; // Looks like foundation creates a blackbackground over hover, so I override it with this  

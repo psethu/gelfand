@@ -14,10 +14,13 @@
   <body>
     <div class="row">
       <%= render "shared_partials/header_login" %>
-    </div>
     <%= yield %>
+      <%= render "shared_partials/footer" %>
+
     <%= javascript_include_tag "application" %>
 
+
+    </div>
 
 <br>
 <div style="position:relative;top:-15px;">

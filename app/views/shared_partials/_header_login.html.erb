@@ -20,16 +20,27 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
 	  </ul>
 
+	
+	
   <section class="top-bar-section"> <!-- changing this to <section class="top-bar-section"> hides dropdowns, but does not re-					appear -->
 	  <ul class="left">
+	  	<li class="divider"></li>
+	  	<li class="divider"></li>
 	  </ul>
 
   	    <!-- Right Nav Section -->
 	<ul class="right">
-	      <li><a href="/gelfand_contact_page.html">Contact Us</a></li>
+		<% unless current_user.nil? %>
+	  	  <li class="divider"></li>
+	      <li><a href="/gelfand_contact_page.html">Background Check</a></li>
+	  	  <li class="divider"></li>
+	      <li><a href="/gelfand_contact_page.html">Organizations</a></li>
+		<% end %>
 	      <li class="divider"></li>
-
-    <% if current_user.nil? %>
+		  <li><a href="/gelfand_contact_page.html">Contact Us</a></li>
+		  <li class="divider"></li>
+	    	
+	    <% if current_user.nil? %>
 		  <li>
 	       <a href="/users/sign_in" id="signupLink">
 	         Sign Up
@@ -38,11 +49,29 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	<% else %>
 	<% end %>
 
-		  <li class="divider"></li>
+        
 
     <% unless current_user.nil? %>
-		<%= link_to 'Log out', destroy_user_session_path, :method => :delete, :id => "logout" %>	
-		
+			<!-- show login tab -->
+			 <li id="login">
+			       <a id="login-trigger">
+			        	Hi <%= current_user.email %> <span>▼</span>
+			       </a>
+			       	<!-- form stuff for 'Login' tab-->
+					      <div id="login-content">
+					      		</fieldset>
+						      		<div id="inputs">
+						      			<br>
+						      			<a id="my_account" href="#"> My account </a>
+						      			<hr>
+											Not <%= current_user.email %>? <%= link_to 'Log out', destroy_user_session_path, :method => :delete, :id => "logout" %>	
+											<br>
+											<br>
+									</div>
+								</fieldset>
+
+					  </div>                     
+			</li>
 	<% else %>
 			<!-- show login tab -->
 			 <li id="login">
@@ -67,7 +96,7 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 						  <% end %>
 							<a id="forgotPass" href="/users/password/new">Forgot password? </a>
 						  </div>                     
-				    </li>
+			</li>
 	<% end %>
           
          

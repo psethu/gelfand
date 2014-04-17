@@ -118,6 +118,7 @@ fieldset {
 
 #login #submit:hover,
 #login #submit:focus {    
+  color: black;
   background-color: #e97171;
   background-image: linear-gradient(top, #d14545, #e97171);
 } 
@@ -167,11 +168,11 @@ nav .name:hover{
 }
 
 #logout-button-text {
-  color:white;
+  color: white;
   top: 10px;
   position: relative;
   font-size: 14px;
-  padding: 5px;
+ border-radius:5px;
 }
 
 #my_account {

@@ -66,7 +66,7 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 						      			<hr id="logout_myaccount_divider">
 											Not <%= current_user.get_first_name %>? 
 											<br>
-											<%= link_to 'Log out', destroy_user_session_path, :method => :delete, :id => "logout-button-text" %>	
+											<%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class=>"button [radius round]", :id => "logout-button-text" %>	
 											<br>
 											<br>
 											<!--  -->

@@ -166,7 +166,7 @@ nav .name:hover{
   background-color: #000 ; // Looks like foundation creates a blackbackground over hover, so I override it with this  
 }
 
-#logout {
+#logout-button-text {
   color:white;
   top: 10px;
   position: relative;
@@ -176,6 +176,11 @@ nav .name:hover{
 
 #my_account {
   background-color: white;
+}
+
+#logout_myaccount_divider {
+  margin: 0 -5px 15px -5px;
+  border: 1px solid #404040 ;
 }
 
 #inputs a:hover {

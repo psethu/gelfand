@@ -30,6 +30,7 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 
   	    <!-- Right Nav Section -->
 	<ul class="right">
+
 		<% unless current_user.nil? %>
 	  	  <li class="divider"></li>
 	      <li><a href="/bg_checks">Background Check</a></li>
@@ -62,7 +63,7 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 					      		</fieldset>
 						      		<div id="inputs">
 						      			<br>
-						      			<a id="my_account" href="#"> My account </a>
+						      			<%= link_to 'My Account', individual_path(current_user.individual), :id => "my_account"%>
 						      			<hr id="logout_myaccount_divider">
 											Not <%= current_user.get_first_name %>? 
 											<br>

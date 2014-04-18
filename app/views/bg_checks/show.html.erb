@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Date approved:</strong>
-  <%= @bg_check.date_approved %>
-</p>
-
-<p>
   <strong>Status:</strong>
   <%= @bg_check.status %>
 </p>
@@ -20,10 +15,6 @@
   <%= @bg_check.child_abuse_date %>
 </p>
 
-<p>
-  <strong>Verification date:</strong>
-  <%= @bg_check.verification_date %>
-</p>
 
   <%= link_to 'Edit', edit_bg_check_path(@bg_check) %> |
  <%= link_to 'Back', bg_checks_path %>

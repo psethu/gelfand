@@ -50,5 +50,14 @@ class User < ActiveRecord::Base
     Individual.find(self.individual_id).f_name
   end  
 
+  def get_bgCheck
+      bgObject = self.individual.bg_check
+      if bgObject.nil?
+        return nil
+      end
+        return bgObject
+
+  end
+
 
 end

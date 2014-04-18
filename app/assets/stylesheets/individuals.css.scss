@@ -46,3 +46,30 @@ table {
 	background-color: #ccc;
 	height: $height_Main_content;
 }
+
+.side-nav {
+	margin-top: 30px;
+	padding:0px;
+
+}
+
+.side-nav li{
+	background-color: #B8B8B8;
+	padding: 10px;
+	margin: 0px;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+side-nav li a{
+	font-size: 18px;
+	color: green;
+}
+
+
+.side-nav li:hover,
+.side-nav li a:hover{
+	background-color: green;
+	color: #00ff3;
+}

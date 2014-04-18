@@ -53,30 +53,30 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
         
 
     <% unless current_user.nil? %>
-			<!-- show login tab -->
-			 <li id="login">
-			       <a id="login-trigger">
-			        	Hi <%= current_user.get_first_name %> <span>▼</span>
-			       </a>
-			       	<!-- form stuff for 'Login' tab-->
-					      <div id="login-content">
-					      		</fieldset>
-						      		<div id="inputs">
-						      			<br>
-						      			<%= link_to 'My Account', individual_path(current_user.individual), :id => "my_account"%>
-						      			<hr id="logout_myaccount_divider">
-											Not <%= current_user.get_first_name %>? 
-											<br>
-											<%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class=>"button [radius round]", :id => "logout-button-text" %>	
-											<br>
-											<br>
-											<br>
-											<!--  -->
-									</div>
-								</fieldset>
+		<!-- show login tab -->
+		 <li id="login">
+	       <a id="login-trigger">
+	        	Hi <%= current_user.get_first_name %> <span>▼</span>
+	       </a>
+	       	<!-- form stuff for 'Login' tab-->
+		      <div id="login-content">
+	      		</fieldset>
+		      		<div id="inputs">
+		      			<br>
+		      			<%= link_to 'My Account', individual_path(current_user.individual), :id => "my_account"%>
+		      			<hr id="logout_myaccount_divider">
+							Not <%= current_user.get_first_name %>? 
+							<br>
+							<%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class=>"button [radius round]", :id => "logout-button-text" %>	
+							<br>
+							<br>
+							<br>
+							<!--  -->
+					</div>
+				</fieldset>
 
-					  </div>                     
-			</li>
+		  	</div>                     
+		</li>
 	<% else %>
 			<!-- show login tab -->
 			 <li id="login">

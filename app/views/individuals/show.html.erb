@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-    <div class="small-2 columns indexLeftHalf">
-            <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-            <em><strong>
+    <div class="small-2 columns leftNav">
+        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+        <ul class="side-nav">
             <% if can? :update, @individual %>
-                <%= link_to 'Edit', edit_individual_path(@individual) %>
+                <li><%= link_to 'Edit', edit_individual_path(@individual) %></li>
+                <li><a href="/users/password/new">Change Password</a></li>
             <% end %>
-            </strong></em>
+        </ul>
     </div>
-    <div class="small-10 columns indexRightHalf">
+    <div class="small-10 columns rightContent">
         <h1>Account Information</h1>
         <p>
           <strong>Name: </strong>

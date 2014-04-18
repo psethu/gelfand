@@ -18,4 +18,10 @@ FactoryGirl.define do
 		status 0
 		date_requested 10.days.ago
 	end
+
+	factory :user do
+		email "default@yahoo.com"
+		password "password1"
+		password_confirmation "password1"
+	end
 end

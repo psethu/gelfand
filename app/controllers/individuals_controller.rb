@@ -10,6 +10,10 @@ class IndividualsController < ApplicationController
 
   # POST /individuals
   # POST /individuals.json
+
+  def show
+    @individual = Individual.find(params[:id])
+  end
   def create
     @individual = Individual.new(individual_params)
 

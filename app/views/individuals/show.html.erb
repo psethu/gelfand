@@ -1,28 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First Name: </strong>
-  <%= @individual.f_name %>
-</p>
+<div class="row">
+    <div class="small-2 columns indexLeftHalf">
+            <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+            <em><strong>
+            <% if can? :update, @individual %>
+                <%= link_to 'Edit', edit_individual_path(@individual) %>
+            <% end %>
+            </strong></em>
+    </div>
+    <div class="small-10 columns indexRightHalf">
+        <h1>Account Information</h1>
+        <p>
+          <strong>Name: </strong>
+          <%= @individual.proper_name %>
+        </p>
 
-<p>
-  <strong>Last Name: </strong>
-  <%= @individual.l_name %>
-</p>
-
-<p>
-  <strong>Role: </strong>
-  <%= @individual.role %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @individual.active %>
-</p>
+        <p>
+          <strong>Active:</strong>
+          <%= @individual.active ? "Yes" : "No"%>
+        </p>
 
 
-<% if can? :update, @individual %>
-  <%= link_to 'Edit', edit_individual_path(@individual) %> |
-<% end %>
+    
 
-<%= link_to 'Back', individuals_path %>
+    <%= link_to 'Back', individuals_path %>
+    </div>
+
+</div>

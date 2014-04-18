@@ -31,6 +31,14 @@ $(document).ready(function(){
     else $(this).find('span').html('&#x25BC;')
     })
 
+  // Changes to mouse cursor to pointer For gelfand block in title of Nav bar
+  $('.name').css( 'cursor', 'pointer' );
+
+  $('.name').click(function() {
+  		var url = window.location.pathname;
+  		window.location = ('/');
+  });
+
 });
 
 $(function(){ $(document).foundation(); });

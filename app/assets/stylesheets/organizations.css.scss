@@ -40,6 +40,39 @@ table {
 }
 
 .indexRightHalf{
-	background-color:#ccc; 
+	background-color:#C8C8C8    ; 
 	height: $height_Main_content;
+}
+
+/******************************
+		Side nav
+******************************/
+
+.side-nav {
+	margin-top: 30px;
+	padding:0px;
+
+}
+
+.side-nav li{
+	background-color: #B8B8B8;
+	padding: 0px;
+	margin: 0px;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+.side-nav li a{
+	font-size: 18px;
+	color: green;
+	height:inherit;
+	padding:10px;
+	border-radius: 5px;
+}
+
+
+.side-nav li:hover,
+.side-nav li a:hover{
+	background-color: #060;
 }

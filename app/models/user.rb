@@ -42,11 +42,22 @@ class User < ActiveRecord::Base
     prog_ids = []
     org_ids = self.get_org_ids
     org_ids.each do |oi|
-      Organization.find(oi).affiliations.program_id.each do |pi|
-        prog_ids << pi
+      Organization.find(oi).affiliations.each do |affiliation|
+        prog_ids << affiliation.program_id
       end
     end
+    
+    if prog_ids == [] 
+      return nil
+    end
     prog_ids
+  end
+
+  def get_admin_programs
+      if self.get_admin_prog_ids.nil?
+          return nil
+      end
+      self.get_admin_prog_ids.map {|pi| Program.find(pi) }
   end
 
   def get_member_prog_ids

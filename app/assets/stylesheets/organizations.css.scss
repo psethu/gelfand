@@ -64,11 +64,13 @@ table {
 }
 
 .side-nav li a {
-	font-size: 18px;
+	font-size: 16px;
 	color: green;
 	height:inherit;
 	padding:10px;
 	border-radius: 5px;
+
+	font-family: Lucida Sans Unicode;
 }
 
 
@@ -87,4 +89,24 @@ table {
 
 #underManage a{
 	padding-left:50px;
+}
+
+.my_memberships_outerDiv {
+	border: 2px solid black;
+	margin-left: 20px;
+	padding: 10px 0 10px 15px;
+	width: 300px; // remove makes responsive, but extends to width of entire nav
+	box-shadow: -7px 7px 5px #888888;
+}
+
+ul.my_memberships_list {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+
+ul.my_memberships_list li, 
+ul.my_memberships_list li a
+{
+	margin: 0 0 0 10px;
 }

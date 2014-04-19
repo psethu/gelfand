@@ -10,7 +10,7 @@
     <br>
 
     <% unless current_user.get_orgs.nil? %>
-            <li><%= link_to 'Manage', organizations_path %> </li>
+            <li><strong><%= link_to 'Manage', organizations_path %> </strong></li>
             <% current_user.get_orgs.each do |org| %>
                 <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
             <% end %>
@@ -24,35 +24,26 @@
   <div class="small-9 columns indexRightHalf">
       <h1>Organizations</h1>
 
-      <table >
-        <thead>
-          <tr >
-            <th>Name</th>
-            <th>Is partner</th>
-            <th>Description</th>
-            <th>Active</th>
-            <th>Department</th>
-          </tr>
-        </thead>
+    <% if current_user.get_orgs.nil? %>
+      <% current_user.get_first_name %> is not part of any Organizations
 
-        <tbody>
-          <% @organizations.each do |organization| %>
-            <tr>
-              <td><%= link_to organization.name, organization_path(organization) %></td>
-              <td><%= organization.is_partner %></td>
-              <td><%= organization.description %></td>
-              <td><%= organization.active %></td>
-              <td><%= organization.department %></td>
-              <td>
-                <%if can? :update, organization%>
-                  <%= link_to 'Edit', edit_organization_path(organization) %>
-                <%end%>
-              </td>
-              <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <% else  %>
+        <div class="my_memberships_outerDiv">
+            <h3> Memberships </h3>
+            <% current_user.get_orgs.each do |org| %>
+                    <ul class="my_memberships_list"><%= link_to org.name, edit_organization_path(org) %>
+            
+            <% unless current_user.get_admin_programs.nil? %>
+            <% current_user.get_admin_programs.each do |program| %>
+                    <li id="prog_under_org"><%= link_to program.name, edit_program_path(program) %></li>
+            <% end %>
+                    </ul>
+            <% end %>
+            <% end %>
+        </div>
+    <% end %>
+
+    
    </div>
 </div>    
 

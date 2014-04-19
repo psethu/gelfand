@@ -8,9 +8,7 @@
       </ul> 
       <br />
 
-    <% if current_user.get_orgs.nil? %>
-        <p style="color: #ccc; font-weight:bold;"> Not admin to any orgs </p>
-    <% else %>
+    <% unless current_user.get_orgs.nil? %>
         <ul class="side-nav">
             <li><%= link_to 'Manage', organizations_path %> </li>
             <% current_user.get_orgs.each do |org| %>

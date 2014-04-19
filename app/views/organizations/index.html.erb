@@ -2,12 +2,25 @@
   <div class="small-3 columns indexLeftHalf">
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
       <ul class="side-nav">
+          <li><%= link_to 'View Information', organizations_path, :id => "active" %> </li>
           <li><%= link_to 'Create a Organization', new_organization_path %> </li>
          <li><%= link_to 'Create a Program', new_program_path %></li>
       </ul> 
       <br />
 
+    <% if current_user.get_orgs.nil? %>
+        <p style="color: #ccc; font-weight:bold;"> Not admin to any orgs </p>
+    <% else %>
+        <ul class="side-nav">
+            <li><%= link_to 'Manage', organizations_path %> </li>
+            <% current_user.get_orgs.each do |org| %>
+                <li><%= link_to org.name, edit_organization_path(org) %> </li>
+            <% end %>
+        </ul> 
+    <% end %>
+
     </div>
+
 
   <div class="small-9 columns indexRightHalf">
       <h1>Organizations</h1>

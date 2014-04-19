@@ -63,7 +63,7 @@ table {
 	border-radius: 5px;
 }
 
-.side-nav li a{
+.side-nav li a {
 	font-size: 18px;
 	color: green;
 	height:inherit;
@@ -75,4 +75,12 @@ table {
 .side-nav li:hover,
 .side-nav li a:hover{
 	background-color: #060;
+}
+
+.side-nav #active{
+	background-color: #040;	
+}
+
+.side-nav #active {
+	color: #D0D0D0 ;	
 }

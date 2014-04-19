@@ -5,19 +5,20 @@
           <li><%= link_to 'View Information', organizations_path, :id => "active" %> </li>
           <li><%= link_to 'Create a Organization', new_organization_path %> </li>
          <li><%= link_to 'Create a Program', new_program_path %></li>
-      </ul> 
-      <br />
+
+    <br>
+    <br>
 
     <% unless current_user.get_orgs.nil? %>
-        <ul class="side-nav">
             <li><%= link_to 'Manage', organizations_path %> </li>
             <% current_user.get_orgs.each do |org| %>
-                <li><%= link_to org.name, edit_organization_path(org) %> </li>
+                <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
             <% end %>
-        </ul> 
+        
     <% end %>
 
-    </div>
+    </ul> 
+  </div>
 
 
   <div class="small-9 columns indexRightHalf">

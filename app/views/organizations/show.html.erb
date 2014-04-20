@@ -31,6 +31,9 @@
   <%= @organization.department %>
 </p>
 
+          <strong>    Members: </strong> <%=  @organization.get_membership_size %> 
+<br>
+<br>
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
 

@@ -26,6 +26,20 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	  <ul class="left">
 	  	<li class="divider"></li>
 	  	<li class="divider"></li>
+	  	<% if current_user.admin? %>
+	 		<!-- Code for search: Start -->
+	 			<li class="has-form">
+	 			  <div class="row collapse">
+	 			    <div class="large-8 small-9 columns">
+	 			      <input type="text" placeholder="Find an individual">
+	 			    </div>
+	 			    <div class="large-4 small-3 columns">
+	 			      <a href="#" class="alert button expand">Search</a>
+	 			    </div>
+	 			  </div>
+	 			</li>
+	 			<!-- Code for search: End-->
+	 	<% end %>
 	  </ul>
 
   	    <!-- Right Nav Section -->
@@ -45,7 +59,11 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	      		<% end %>
 	      
 	  	  <li class="divider"></li>
-	      <li><%= link_to 'Organizations', organizations_path %></li>
+	      		<% if current_user.admin? %>
+	      			<li><%= link_to 'Orgs', organizations_path %></li>
+				<% else %>
+					<li><%= link_to 'Organizations', organizations_path %></li>
+				<% end %>
 		<% end %>
 	      <li class="divider"></li>
 		  <li><a href="/gelfand_contact_page.html">Contact Us</a></li>

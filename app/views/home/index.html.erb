@@ -8,13 +8,14 @@
 
 		<% if (current_user != nil) && current_user.admin? %>
 			<%= render 'home_for_admin' %>
-		<% else %>
-			<h3> Welcome to the Gelfand Center! </h3>
+		<% elsif (current_user != nil) && current_user.member? %>
+			<h3> Welcome back to the Gelfand Center! </h3>
 			Here you can:	<br>
 				- track your background check <br>
 				- create/manage your organization <br>
 				- add individuals to your organization <br>
-
+		<% else %>
+			<h3> Welcome to the Gelfand Center! </h3>
 		<% end %>
 
   </div>

@@ -43,9 +43,14 @@ table {
 }
 
 .rightContent{
-	background-color: white;
+	background-color: white; 
 	height: $height_Main_content;
 }
+
+/******************************
+		Side nav
+******************************/
+
 
 .side-nav {
 	margin-top: 30px;
@@ -55,19 +60,24 @@ table {
 
 .side-nav li{
 	background-color: white;
-	padding: 10px;
+	padding: 0px;
 	margin: 0px;
 	border-bottom: 1px solid black;
 	font-weight: bold;
 	border-radius: 5px;
 }
 
-#test li .a{
+.side-nav li a{
 	font-size: 18px;
+	color: green;
+	height:inherit;
+	padding:10px;
+	border-radius: 5px;
+	background-color: white;
 }
 
 
 .side-nav li:hover,
 .side-nav li a:hover{
-	background-color: green;
+	background-color: #060;
 }

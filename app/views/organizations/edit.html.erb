@@ -1,6 +1,19 @@
-<h1>Editing organization</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="small-3 columns indexLeftHalf">
+      <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+  </div>
 
-<%= link_to 'Show', @organization %> |
-<%= link_to 'Back', organizations_path %>
+  <div class="small-9 columns indexRightHalf">
+		<h1>Editing organization</h1>
+
+		<div class="org_form">
+			<%= render 'form' %>
+		</div>
+
+		<div class="orgs_actions">
+			<%= link_to 'Show', @organization %> |
+			<%= link_to 'Back', organizations_path %>
+		</div>
+	</div>
+</div>

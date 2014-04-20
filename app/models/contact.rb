@@ -14,6 +14,7 @@ class Contact < ActiveRecord::Base
     validates_format_of :zip, :with => /^\d{5}$/, :message => "should be five digits long"
     #Scopes
 
+    CONTACTS_LIST = Contact.all.map { |c| [c.title, city.id] }
 
     private
       def reformat_phone

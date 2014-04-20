@@ -31,25 +31,14 @@ $(document).ready(function(){
     else $(this).find('span').html('&#x25BC;')
     })
 
-  // Changes to mouse cursor to pointer for
+  // Changes cursor to pointer for:
   	// gelfand block in title of Nav bar
   $('.name').css( 'cursor', 'pointer' );
-  	// side nav under individuals
-  $('.side-nav').css( 'cursor', 'pointer' );
 
   $('.name').click(function() {
   		window.location = ('/');
   });
-
-  $('.side-nav :nth-child(1)').click(function() {
-  		window.location = ('/individuals/new');
-  });
-  $('.side-nav :nth-child(2)').click(function() {
-  		window.location = ('/organizations');
-  });
-  $('.side-nav :nth-child(3)').click(function() {
-  		window.location = ('/programs');
-  });
+  
 });
 
 $(function(){ $(document).foundation(); });

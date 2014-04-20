@@ -1,41 +1,56 @@
 <div class="row">
   <div class="small-3 columns indexLeftHalf">
-            <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-            <em><strong><%= link_to 'New Organization', new_organization_path %></strong></em>
-    </div>
+      <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+      <ul class="side-nav">
+          <li><%= link_to 'View Information', organizations_path, :id => "active" %> </li>
+          <li><%= link_to 'Create a Organization', new_organization_path %> </li>
+         <li><%= link_to 'Create a Program', new_program_path %></li>
+
+    <br>
+    <br>
+
+    <% unless current_user.get_orgs.nil? %>
+            <li><strong><%= link_to 'Manage', organizations_path %> </strong></li>
+            <% current_user.get_orgs.each do |org| %>
+                <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
+            <% end %>
+        
+    <% end %>
+
+    </ul> 
+  </div>
+
 
   <div class="small-9 columns indexRightHalf">
       <h1>Organizations</h1>
 
-      <table >
-        <thead>
-          <tr >
-            <th>Name</th>
-            <th>Is partner</th>
-            <th>Description</th>
-            <th>Active</th>
-            <th>Department</th>
-          </tr>
-        </thead>
+    <% if current_user.get_orgs.nil? %>
+      Hi <%= current_user.get_first_name %>. <br>
+      Currently you are not part of any Organizations and consequently programs. <br>
+      Click on the side bar to create an Organization or Program. <br>
+      Or wait until someone adds you to their Organization and Program.
 
-        <tbody>
-          <% @organizations.each do |organization| %>
-            <tr>
-              <td><%= link_to organization.name, organization_path(organization) %></td>
-              <td><%= organization.is_partner %></td>
-              <td><%= organization.description %></td>
-              <td><%= organization.active %></td>
-              <td><%= organization.department %></td>
-              <td>
-                <%if can? :update, organization%>
-                  <%= link_to 'Edit', edit_organization_path(organization) %>
-                <%end%>
-              </td>
-              <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+
+    <% else  %>
+        <div class="my_memberships_outerDiv">
+            <h3> Memberships </h3>
+            <% current_user.get_orgs.each do |org| %>
+                    <ul class="my_memberships_list"><%= link_to org.name, organization_path(org) %>
+            
+            <% if current_user.get_programs_for_an_org(org).nil? %>
+                    <li id="prog_under_org"><%= link_to "-- No programs yet -- Click here", new_program_path %></li> 
+            <% else %>
+                <% current_user.get_programs_for_an_org(org).each do |program| %>
+                        <li id="prog_under_org"><%= link_to program.name, program_path(program) %></li>
+                <% end %>
+            <% end %>
+                    </ul>
+
+            <% end %>
+        </div>
+    <% end %>
+
+    
    </div>
 </div>    
 

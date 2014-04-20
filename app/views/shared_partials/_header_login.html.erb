@@ -53,13 +53,12 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 				<% end %>
 		<% end %>
 	      <li class="divider"></li>
-		  		
-	      		<% unless current_user.admin? %>
+	    	<% if current_user.nil? || current_user.member? %>
 		  			<li><a href="/gelfand_contact_page.html">Contact Us</a></li>
-		  		<% end %>
+
 		  <li class="divider"></li>
 	    	
-	    <% if current_user.nil? %>
+
 		  <li>
 	       <a href="/users/sign_up" id="signupLink">
 	         Sign Up

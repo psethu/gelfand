@@ -15,6 +15,12 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
+                # create an associated Org_user
+                @org_user = OrgUser.new
+                @org_user.organization_id = @organization.id
+                @org_user.user_id = current_user.id
+                @org_user.save
+
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render action: 'show', status: :created, location: @organization }
       else

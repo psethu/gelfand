@@ -9,7 +9,7 @@
 		<% Organization.all.each do |org| %>
 			<h5><%= org.name %></h5>
 			Programs: <%= org.affiliations.size %> <br>
-			Members: <%= org.get_membership_size %> <br> <br>
+			Members: <%= org.memberships.size %> <br> <br>
 		<% end %>
 
 

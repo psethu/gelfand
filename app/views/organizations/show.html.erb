@@ -6,35 +6,45 @@
 <p id="notice"><%= notice %></p>
 
   <div class="small-9 columns indexRightHalf">
-<p>
-  <h3>Organization Name:</h3>
-  <%= @organization.name %>
-</p>
 
-<p>
+  <h1>  <%= @organization.name %></h1>
+
   <strong>Is partner:</strong>
   <%= @organization.is_partner %>
-</p>
 
-<p>
+<br>
+
   <strong>Description:</strong>
   <%= @organization.description %>
-</p>
 
-<p>
+<br>
+
   <strong>Active:</strong>
   <%= @organization.active %>
-</p>
 
-<p>
+<br>
+
   <strong>Department:</strong>
   <%= @organization.department %>
-</p>
+<br>
 
-          <strong>    Members: </strong> <%=  @organization.get_membership_size %> 
+          <strong>    Members: </strong> <%=  @organization.memberships.size %> 
 <br>
 <br>
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
+
+  <% unless current_user.org_users.nil? %>
+    <!-- there is at least 1 org_user for the Current user -->
+      <% if @organization.memberships.empty? %>
+        <%= @organization.name %> currently has no members.
+      <% else %>
+        <h3> <%= @organization.name %> members </h3>
+         <%= render 'indivs_for_an_org' %>
+      <% end %>
+  <% end %>
+
+<br>
+<br>
+<%= link_to 'Edit Org', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
 
 </div>

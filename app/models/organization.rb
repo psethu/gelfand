@@ -23,10 +23,13 @@ class Organization < ActiveRecord::Base
   validates_format_of :department, :with => /^[ a-zA-Z]+$/, :multiline => true, 
   									:message => "Can only contain alphabetical characters, lower or uppercase"
 
-  def get_members
+  def get_memberships
     self.memberships
   end
 
+  def get_all_individuals
+    self.memberships.map{|mems| Individual.find(mems.individual_id) }
+  end
 
   def get_membership_size
     self.memberships.length

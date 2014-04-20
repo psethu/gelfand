@@ -4,6 +4,24 @@
 
 $height_Main_content: 525px;
 
+th{
+	background-color: sienna;
+	font-size:5px;
+	color:white;
+}
+
+table thead tr th{
+	color:white;
+}
+
+table {
+	position:relative; 
+	border: 3px solid gray;
+	margin-right: 15px;
+	margin-left:30px;
+	margin-bottom: 10px;
+}
+
 
 img{
 	margin:8px;

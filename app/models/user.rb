@@ -31,6 +31,21 @@ class User < ActiveRecord::Base
   
   end
 
+  def is_orgUser_for_specific_org(org)
+    # if below if cond. nil then user isnt an OrgUser for any org
+      if self.get_org_ids == nil
+        return false
+      end
+    org_ids = self.get_org_ids
+    # Below: if there is a match, then User is an orgUser (admin for the Org) for given org
+    org_ids.include?(org.id)
+  end
+
+  # method assumes 
+  def get_memberships_for_non_orgUser
+
+  end 
+
   def get_orgs
     if self.org_users == []
       return nil

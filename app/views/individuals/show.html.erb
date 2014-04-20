@@ -24,8 +24,13 @@
 
 
     
+    <% if !@individual.bg_check.nil?%>
+        <%= link_to 'My Background Check', bg_check_path(@individual.bg_check.id), :class => "button" %>
+    <%else%>
+        <%= link_to 'Start Background Check', new_bg_check_path, :class => "button" %>
+    <%end%>
 
-    <%= link_to 'Back', individuals_path %>
+
     </div>
 
 </div>

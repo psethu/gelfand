@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
   end
 
   def get_first_name
-    Individual.find(self.individual_id).f_name
+    self.individual.f_name
   end  
 
   def get_bgCheck

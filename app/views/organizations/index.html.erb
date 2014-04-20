@@ -25,7 +25,11 @@
       <h1>Organizations</h1>
 
     <% if current_user.get_orgs.nil? %>
-      <% current_user.get_first_name %> is not part of any Organizations
+      Hi <%= current_user.get_first_name %>. <br>
+      Currently you are not part of any Organizations and consequently programs. <br>
+      Click on the side bar to create an Organization or Program. <br>
+      Or wait until someone adds you to their Organization and Program.
+
 
     <% else  %>
         <div class="my_memberships_outerDiv">

@@ -33,7 +33,14 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 
 		<% unless current_user.nil? %>
 	  	  <li class="divider"></li>
-	      <li><a href="/bg_checks">Background Check</a></li>
+	      <li>
+	      		<% if current_user.get_bgCheck.nil? %>
+	      			<%= link_to 'Background Check', bg_checks_path(current_user.get_bgCheck) %>
+	      		<% else %>
+	      			<%= link_to 'Background Check', bg_check_path(current_user.get_bgCheck)%>
+	      		<% end %>
+
+	      </li>
 	  	  <li class="divider"></li>
 	      <li><a href="/organizations">Organizations</a></li>
 		<% end %>
@@ -43,7 +50,7 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	    	
 	    <% if current_user.nil? %>
 		  <li>
-	       <a href="/users/sign_in" id="signupLink">
+	       <a href="/users/sign_up" id="signupLink">
 	         Sign Up
 	       </a>
 	      </li>

@@ -53,11 +53,15 @@ class User < ActiveRecord::Base
     prog_ids
   end
 
-  def get_admin_programs
-      if self.get_admin_prog_ids.nil?
+  def get_programs_for_an_org(org)
+      if org.affiliations == []
           return nil
       end
-      self.get_admin_prog_ids.map {|pi| Program.find(pi) }
+      programs = []
+      org.affiliations.each do |affiliation|
+        programs << Program.find(affiliation.program_id)
+      end
+      programs
   end
 
   def get_member_prog_ids

@@ -100,15 +100,19 @@ table {
 }
 
 ul.my_memberships_list {
-	margin:0;
+	margin-top: 5px;
 	padding:0;
 	list-style-type:none;
+	font-weight: bold;
+	letter-spacing: 3px;
 }
 
 ul.my_memberships_list li, 
 ul.my_memberships_list li a
 {
 	margin: 0 0 0 10px;
+	font-weight: normal;
+	letter-spacing: normal;
 }
 
 .orgs_actions {

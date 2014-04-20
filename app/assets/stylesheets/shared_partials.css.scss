@@ -202,9 +202,17 @@ nav .name:hover{
 }
 
 .footer { 
-  background-color: #c96;
+  background-color: #00824a;
   font-size: 14px;
   text-align:center;
   height:50px;
   padding: 5px;
+}
+
+.footer a {
+  color: white
+}
+
+.footer p {
+  color: white
 }

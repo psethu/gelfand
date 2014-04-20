@@ -35,13 +35,13 @@
         <div class="my_memberships_outerDiv">
             <h3> Memberships </h3>
             <% current_user.get_orgs.each do |org| %>
-                    <ul class="my_memberships_list"><%= link_to org.name, edit_organization_path(org) %>
+                    <ul class="my_memberships_list"><%= link_to org.name, organization_path(org) %>
             
             <% if current_user.get_programs_for_an_org(org).nil? %>
-                    <li id="prog_under_org"><%= link_to "-- No programs yet -- Click Me", new_program_path %></li> 
+                    <li id="prog_under_org"><%= link_to "-- No programs yet -- Click here", new_program_path %></li> 
             <% else %>
                 <% current_user.get_programs_for_an_org(org).each do |program| %>
-                        <li id="prog_under_org"><%= link_to program.name, edit_program_path(program) %></li>
+                        <li id="prog_under_org"><%= link_to program.name, program_path(program) %></li>
                 <% end %>
             <% end %>
                     </ul>

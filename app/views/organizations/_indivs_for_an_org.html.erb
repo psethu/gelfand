@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Active</th>
+      <th>Role</th>
+      <th></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @organization.get_all_individuals.each do |indiv| %>
+        <tr>
+          <td><%= indiv.f_name %></td>
+          <td><%= indiv.l_name %></td>
+          <td><%= indiv.active %></td>
+          <td><%= indiv.role %></td>
+
+          <td><%= link_to 'Show', individual_path(indiv) %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

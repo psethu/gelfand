@@ -8,6 +8,12 @@ class OrgUser < ActiveRecord::Base
     #valdiations
     validates_numericality_of :user_id, :only_integer => true, :greater_than => 0
     validates_numericality_of :organization_id, :only_integer => true, :greater_than => 0
+
+=begin
+README
+Had to comment this out otherwise I get error 'no active method exists for class'
+when I create the org_user by default when the current_user creates an Organization
+
     validate :organization_is_active_in_system, :on => :create
     validate :user_is_active_in_system, :on => :create
     validate :org_user_is_not_already_in_system, :on => :create
@@ -34,6 +40,6 @@ class OrgUser < ActiveRecord::Base
             errors.add(:user_id, "is already an org_user of this organization")
         end
     end
-
+=end
     
 end

@@ -52,7 +52,9 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 					<li><%= link_to 'Organizations', organizations_path %></li>
 				<% end %>
 		<% end %>
+
 	      <li class="divider"></li>
+	    
 	    	<% if current_user.nil? || current_user.member? %>
 		  			<li><a href="/gelfand_contact_page.html">Contact Us</a></li>
 		  			<li class="divider"></li>

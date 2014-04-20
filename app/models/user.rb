@@ -41,6 +41,9 @@ class User < ActiveRecord::Base
   def get_admin_prog_ids
     prog_ids = []
     org_ids = self.get_org_ids
+    if org_ids.nil?
+      return nil
+    end
     org_ids.each do |oi|
       Organization.find(oi).affiliations.each do |affiliation|
         prog_ids << affiliation.program_id

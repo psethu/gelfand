@@ -82,7 +82,8 @@ h1{
 .my_memberships_outerDiv {
 	border: 2px solid black;
 	margin-left: 20px;
-	padding: 10px 0 10px 15px;
+	padding: 10px 0 10px 30px;
+	border-radius: 5px;
 	width: 300px; // remove makes responsive, but extends to width of entire nav
 	box-shadow: -7px 7px 5px #888888;
 }

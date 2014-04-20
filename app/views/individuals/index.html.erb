@@ -1,9 +1,10 @@
 <div class="row">
+  <p><h3><strong><%= flash[:error] %></strong></h3></p>
 
-  <div class="small-3 columns leftNav">
+  <div class="small-2 columns leftNav">
     <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
      <ul class="side-nav">
-      <li><%= link_to 'Create New Individual', new_individual_path %> </li>
+      <li><%= link_to 'New Individual', new_individual_path %> </li>
       <li><%= link_to 'Organizations', organizations_path %> </li>
       <li><%= link_to 'Programs', programs_path %></li>
     </ul> 
@@ -11,7 +12,7 @@
   </div>
 
  
-  <div class="small-9 columns rightContent">
+  <div class="small-10 columns rightContent">
     <h1>All Registered Individuals</h1>
 
     <table>

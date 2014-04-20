@@ -1,5 +1,16 @@
 
 <div class="title">
-	<h1> Admin Dash </h1>
+	<h1> Admin Dashboard </h1>
 </div>
-<br>
+
+<div class="org_list">
+	<h3> Organization stats </h3>
+		<br>
+		<% Organization.all.each do |org| %>
+			<h5><%= org.name %></h5>
+			Programs: <%= org.affiliations.size %> <br>
+			Members: <%= org.get_membership_size %> <br> <br>
+		<% end %>
+
+
+</div>

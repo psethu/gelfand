@@ -4,11 +4,6 @@
   </div>
 
   <div class="small-10 columns rightContent">
-		<div class="title">
-			<h1> Home </h1>
-		</div>
-
-  </div>
 
 		<% if (current_user != nil) && current_user.admin? %>
 			<%= render 'home_for_admin' %>

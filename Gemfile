@@ -65,4 +65,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 # Use Foundation for clean CSS/JS
-# gem 'foundation-rails'
+gem 'foundation-rails'

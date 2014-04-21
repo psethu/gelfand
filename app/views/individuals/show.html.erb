@@ -1,28 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First Name: </strong>
-  <%= @individual.f_name %>
-</p>
+<div class="row">
+    <div class="small-2 columns leftNav">
+        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+        <ul class="side-nav">
+            <% if can? :update, @individual %>
+                <li><%= link_to 'Edit', edit_individual_path(@individual) %></li>
+                <li><a href="/users/password/new">Change Password</a></li>
+            <% end %>
+        </ul>
+    </div>
+    <div class="small-10 columns rightContent">
+        
+        <p id="notice"><%= notice %></p>
+        <h1>Account Information</h1>
+        <p>
+          <strong>Name: </strong>
+          <%= @individual.proper_name %>
+        </p>
 
-<p>
-  <strong>Last Name: </strong>
-  <%= @individual.l_name %>
-</p>
-
-<p>
-  <strong>Role: </strong>
-  <%= @individual.role %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @individual.active %>
-</p>
+        <p>
+          <strong>Active:</strong>
+          <%= @individual.active ? "Yes" : "No"%>
+        </p>
 
 
-<% if can? :update, @individual %>
-  <%= link_to 'Edit', edit_individual_path(@individual) %> |
-<% end %>
+    
+    <% if !@individual.bg_check.nil?%>
+        <%= link_to 'My Background Check', bg_check_path(@individual.bg_check.id), :class => "button" %>
+    <%else%>
+        <%= link_to 'Start Background Check', new_bg_check_path, :class => "button" %>
+    <%end%>
 
-<%= link_to 'Back', individuals_path %>
+
+    </div>
+
+</div>

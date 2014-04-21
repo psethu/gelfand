@@ -146,6 +146,7 @@ fieldset {
 /***********************
 ******************/
 
+
 #forgotPass {
 	float: right;
 	color: #1975FF;
@@ -156,17 +157,26 @@ fieldset {
 	font-weight:bold;
 }
 
-nav #title_ink{
+nav #title_link{
   top:10px;  
   position: relative;
   color: white;
   margin: 0 10px 0 10px;
-  font-size: 30px; // not working, not sure why
+  font-size: 30px; 
 }
 
+nav .name a:hover{
+  background-color: #505050 ; // foundation (or Rails) makes default bg color for 'a' selectors black
+
+}
+
+nav .name{
+box-shadow: -10px 10px 5px #888888;  
+}
 
 nav .name:hover{
-  background-color: #000 ; // Looks like foundation creates a blackbackground over hover, so I override it with this  
+  background-color: #505050  ;
+  box-shadow: -10px 10px 2px #500000  ;
 }
 
 #logout-button-text {

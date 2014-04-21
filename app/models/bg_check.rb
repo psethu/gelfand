@@ -49,7 +49,7 @@ class BgCheck < ActiveRecord::Base
                 return "attr_error"
         end
     end
-    
+   
     private
 
     # Method to set the request date to the current date if there is no given date

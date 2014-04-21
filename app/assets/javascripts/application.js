@@ -31,6 +31,14 @@ $(document).ready(function(){
     else $(this).find('span').html('&#x25BC;')
     })
 
+  // Changes cursor to pointer for:
+  	// gelfand block in title of Nav bar
+  $('.name').css( 'cursor', 'pointer' );
+
+  $('.name').click(function() {
+  		window.location = ('/');
+  });
+  
 });
 
 $(function(){ $(document).foundation(); });

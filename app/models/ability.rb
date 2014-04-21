@@ -45,15 +45,19 @@ can accepts 2 arguments
           can :read, Organization
           can :show, Organization
 
-          user.get_org_ids.each do |i|
-            can :update, Organization do |o|
-              o.id == i
+          unless user.get_org_ids.nil?
+            user.get_org_ids.each do |i|
+              can :update, Organization do |o|
+                o.id == i
+              end
             end
           end
 
-          user.get_admin_prog_ids.each do |i|
-            can :update, Program do |p|
-              p.id == i
+          unless user.get_admin_prog_ids.nil?
+            user.get_admin_prog_ids.each do |i|
+              can :update, Program do |p|
+                p.id == i
+              end
             end
           end
 

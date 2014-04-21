@@ -2,14 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$height_Main_content: 500px;
+$height_Main_content: 525px;
 
 th{
-	background-color:sienna;
+	background-color: sienna;
 	font-size:5px;
-	color:black;
-	border: none;
+	color:white;
 }
+
+table thead tr th{
+	color:white;
+}
+
+table {
+	position:relative; 
+	border: 3px solid gray;
+	margin-right: 15px;
+	margin-left:30px;
+	margin-bottom: 10px;
+}
+
 
 img{
 	margin:8px;
@@ -23,23 +35,99 @@ h1{
 	padding:10px;
 }
 
-table thead tr th{
-	color:white;
-}
 
-table {
-	position:relative; 
-	border: 3px solid gray;
-	margin-left:30px;
-}
 
-.indexLeftHalf{
+.leftNav{
 	background-color:#580000; 
 	border: 2px solid purple;
 	height: $height_Main_content;
 }
 
-.indexRightHalf{
-	background-color:#ccc; 
+.rightContent{
+	background-color: white; 
 	height: $height_Main_content;
+
+
+}
+
+/******************************
+		Side nav
+******************************/
+
+.side-nav {
+	margin-top: 30px;
+	padding:0px;
+
+}
+
+.side-nav li{
+	background-color: #B8B8B8;
+	padding: 0px;
+	margin: 0px;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+.side-nav li a {
+	font-size: 16px;
+	color: green;
+	height:inherit;
+	padding:10px;
+	border-radius: 5px;
+
+	font-family: Lucida Sans Unicode;
+}
+
+
+.side-nav li:hover,
+.side-nav li a:hover{
+	background-color: #060;
+}
+
+.side-nav #active{
+	background-color: #040;	
+}
+
+.side-nav #active {
+	color: #D0D0D0 ;	
+}
+
+#underManage a{
+	padding-left:50px;
+}
+
+.my_memberships_outerDiv {
+	border: 2px solid black;
+	margin-left: 20px;
+	padding: 10px 0 10px 30px;
+	border-radius: 5px;
+	width: 300px; // remove makes responsive, but extends to width of entire nav
+	box-shadow: -7px 7px 5px #888888;
+}
+
+ul.my_memberships_list {
+	margin-top: 5px;
+	padding:0;
+	list-style-type:none;
+	font-weight: bold;
+	letter-spacing: 3px;
+}
+
+ul.my_memberships_list li, 
+ul.my_memberships_list li a
+{
+	margin: 0 0 0 10px;
+	font-weight: normal;
+	letter-spacing: normal;
+}
+
+.orgs_actions {
+	margin-top: 20px;
+	font-weight:bold;
+	font-size: 24px;
+}
+
+.org_form{
+	padding-left: 12px;
 }

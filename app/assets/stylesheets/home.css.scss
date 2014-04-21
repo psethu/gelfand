@@ -14,10 +14,16 @@ $height_Main_content: 500px;
 }
 
 .indexRightHalf{
-	background-color:#580000; // why is this still gray?
 	height: $height_Main_content;
+	background-color:#E8E8E8 ;
 }
 
+.org_list {
+	margin-left: 40px;
+	padding: 0 0 0 20px;
+	width: 325px;
+	height:auto;
 
-
-
+	box-shadow: -7px 7px 2px #909090;
+	border: 2px solid black;
+}

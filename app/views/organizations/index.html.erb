@@ -3,15 +3,16 @@
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
       <ul class="side-nav">
           <li><%= link_to 'View Information', organizations_path, :id => "active" %> </li>
-          <li><p0[%= link_to 'Create a Organization', new_organization_path %> </li>
+          <li><%= link_to 'Create a Organization', new_organization_path %> </li>
          <li><%= link_to 'Create a Program', new_program_path %></li>
 
     <br>
     <br>
 
-    <% unless current_user.get_orgs.nil? %>
+    <% unless current_user.orgs_that_user_is_Admin_for.empty? %>
             <li><strong><%= link_to 'Manage', organizations_path %> </strong></li>
-            <% current_user.get_orgs.each do |org| %>
+            
+            <% current_user.orgs_that_user_is_Admin_for.each do |org| %>
                 <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
             <% end %>
         
@@ -24,7 +25,7 @@
   <div class="small-9 columns rightContent">
       <h1>Organizations</h1>
 
-    <% if current_user.get_orgs.nil? %>
+    <% if current_user.get_all_memberships.empty? %>
       Hi <%= current_user.get_first_name %>. <br>
       Currently you are not part of any Organizations and consequently programs. <br>
       Click on the side bar to create an Organization or Program. <br>
@@ -34,7 +35,7 @@
     <% else  %>
         <div class="my_memberships_outerDiv">
             <h3> Memberships </h3>
-            <% current_user.get_orgs.each do |org| %>
+            <% current_user.orgs_that_user_is_part_of.each do |org| %>
                     <ul class="my_memberships_list"><%= link_to org.name, organization_path(org) %>
             
             <% if current_user.get_programs_for_an_org(org).nil? %>

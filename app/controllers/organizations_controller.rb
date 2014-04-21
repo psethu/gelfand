@@ -21,6 +21,12 @@ class OrganizationsController < ApplicationController
                 @org_user.user_id = current_user.id
                 @org_user.save
 
+                # On default create a membership to the OrgUser/Admin/person_that_created_the_org
+                @membership = Membership.new
+                @membership.individual_id = current_user.individual_id
+                @membership.organization_id = @organization.id
+                @membership.save
+
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render action: 'show', status: :created, location: @organization }
       else

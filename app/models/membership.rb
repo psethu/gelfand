@@ -17,7 +17,7 @@ class Membership < ActiveRecord::Base
     validate :membership_is_not_already_in_system, :on => :create
 
     private
-
+=begin
     def organization_is_active_in_system
         active_organization_ids = Organization.active.all.map{|a| a.id}
         unless active_organization_ids.include?(self.organization_id)
@@ -39,4 +39,5 @@ class Membership < ActiveRecord::Base
             errors.add(:individual_id, "is already a member of this organization")
         end
     end
+=end
 end

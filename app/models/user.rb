@@ -41,16 +41,26 @@ class User < ActiveRecord::Base
     org_ids.include?(org.id)
   end
 
-  # method assumes 
-  def get_memberships_for_non_orgUser
+  # get all memberships for a user (Whether the user is a regular User or OrgUser)
+  def get_all_memberships
+      Membership.for_individual(self.individual_id)
+  end
 
-  end 
 
-  def get_orgs
-    if self.org_users == []
-      return nil
-    end
-    self.get_org_ids.map { |oi| Organization.find(oi) }
+# get all organizations a person is a part of (Whether the user is a regular User or OrgUser)
+# assumes get_all_memberships returns at least 1 membership
+  def orgs_that_user_is_part_of
+      orgIds = self.get_all_memberships.map {|mem| mem.organization_id}
+      orgIds.map{|oi| Organization.find(oi) }
+  end
+
+  # get all orgs that current_user is an OrgUser to
+  def orgs_that_user_is_Admin_for
+      if self.org_users == []
+        return []
+      end
+      # user is an OrgUser for at least 1 org
+      self.org_users.map{|org_user| Organization.find(org_user.organization_id)}
   end
 
   def get_admin_prog_ids

@@ -11,13 +11,13 @@ class Membership < ActiveRecord::Base
     #Validations
     validates_numericality_of :individual_id, :only_integer => true, :greater_than => 0
     validates_numericality_of :organization_id, :only_integer => true, :greater_than => 0 
-
+=begin
     validate :organization_is_active_in_system, :on => :create
     validate :individual_is_active_in_system, :on => :create
     validate :membership_is_not_already_in_system, :on => :create
 
     private
-=begin
+
     def organization_is_active_in_system
         active_organization_ids = Organization.active.all.map{|a| a.id}
         unless active_organization_ids.include?(self.organization_id)

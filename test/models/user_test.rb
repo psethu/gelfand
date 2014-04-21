@@ -1,5 +1,9 @@
 require 'test_helper'
 
+class ActionController::TestCase
+    include Devise::TestHelpers
+end
+
 class UserTest < ActiveSupport::TestCase
 
 	# Test Relationships
@@ -16,17 +20,13 @@ class UserTest < ActiveSupport::TestCase
  			create_users_context
  		end
 
- 		should "sign in and sign out" do
- 			sign_in @default
- 			assert user_signed_in?
-
- 			sign_out @default
- 			deny user_signed_in?
-		end	
-
  		should "show whether or not someone is an admin" do
  			assert @admin.admin?
  			deny @default.admin?
+ 		end
+
+ 		should "know which programs this user is running" do
+ 			sign_in @admin
  		end
 
  		teardown do

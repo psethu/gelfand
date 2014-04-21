@@ -15,20 +15,22 @@
             <th>Description</th>
             <th>Active</th>
             <th>Department</th>
-            <th>Contact</th>
           </tr>
         </thead>
 
         <tbody>
           <% @organizations.each do |organization| %>
             <tr>
-              <td><%= organization.name %></td>
+              <td><%= link_to organization.name, organization_path(organization) %></td>
               <td><%= organization.is_partner %></td>
               <td><%= organization.description %></td>
               <td><%= organization.active %></td>
               <td><%= organization.department %></td>
-              <td><%= link_to 'Show', organization %></td>
-              <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
+              <td>
+                <%if can? :update, organization%>
+                  <%= link_to 'Edit', edit_organization_path(organization) %>
+                <%end%>
+              </td>
               <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>

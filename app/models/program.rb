@@ -14,4 +14,6 @@ class Program < ActiveRecord::Base
     validates_date :start_date, :presence => true
     validates_date :end_date, :allow_blank => true, :after => :start_date
 
+    
+
 end

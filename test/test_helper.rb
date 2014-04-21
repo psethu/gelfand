@@ -85,6 +85,14 @@ class ActiveSupport::TestCase
         @passed_child_abuse.delete
     end
 
+    def create_programs_context
+        @standard = FactoryGirl.create(:program)
+    end
+
+    def remove_programs_context
+        @standard.delete
+    end
+
     def create_users_context
         @default = FactoryGirl.create(:user)
         @second = FactoryGirl.create(:user, email: "otheremail@yahoo.com", password: "password1", password_confirmation: "password1")
@@ -99,6 +107,3 @@ class ActiveSupport::TestCase
 
 end
 
-class ActionController::TestCase
-    include Devise::TestHelpers
-end

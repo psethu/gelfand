@@ -12,11 +12,18 @@
   </head>
 
   <body>
-    <%= render "shared_partials/header_login" %>
-
+    <div class="row">
+      <%= render "shared_partials/header_login" %>
     <%= yield %>
+      <%= render "shared_partials/footer" %>
+
     <%= javascript_include_tag "application" %>
 
+
+
+<br><br><br>
+
+    </div>
 
 <br>
 <div style="position:relative;top:-15px;">

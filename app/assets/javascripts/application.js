@@ -18,15 +18,14 @@
 // MENTION this: if user doesnt include the @ in the email, then a cool notification pops up
 $(document).ready(function(){
 
+ // for login dropdown in Navbar
   $('#login-trigger').click(function(){
 	$('#login-content').slideToggle(function(){
-    	$('#username').focus();
-	}); // slides up/down the login form
+    	$('#email').focus();
+	}); 
     
     $(this).toggleClass('active');          
-    
-    // If login-trigger has 'active' class, change the direction of the arrow
-    	// &#x25B2 represents downward arrow, &#x25BC represents upward arrow
+        
     if ($(this).hasClass('active')) 
     	$(this).find('span').html('&#x25B2;')
     else $(this).find('span').html('&#x25BC;')

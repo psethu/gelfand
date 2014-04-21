@@ -19,6 +19,16 @@ FactoryGirl.define do
 		date_requested 10.days.ago
 	end
 
+	factory :program do
+		name "CMU School of Music"
+		description "Assisting with the School of Music's Elementary School Program"
+		start_date 10.days.from_now
+		end_date 2.months.from_now
+		cmu_facilities "Margaret Morrison Hall"
+		num_minors 21
+		num_adults_supervising 13
+	end
+
 	factory :user do
 		email "default@yahoo.com"
 		password "password1"

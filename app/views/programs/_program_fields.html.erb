@@ -1,0 +1,17 @@
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+
+          <%= f.label :start_date %>
+          <%= f.date_select :start_date %>
+
+
+    <%= f.input :end_date, :label => "End date", :order => [:month, :day, :year], :as => :date, :start_year => Date.today.year, :end_year => Date.today.year + 25 %>
+
+          <%= f.label :num_minors %>
+          <%= f.number_field :num_minors %>
+
+          <%= f.label :contact_id %>
+          <%= f.number_field :contact_id %>
+
+</div>

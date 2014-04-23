@@ -1,0 +1,4 @@
+<div class="fields">
+		<%= f.input :organization_id, :label => 'Affiliate an organization with this program:', :collection => Organization.all %>
+		<%= f.input :program_id, :as => :hidden, :input_html => { :value => @program.id } %>
+</div>

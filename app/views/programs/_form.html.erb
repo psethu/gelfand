@@ -1,57 +1,29 @@
-<%= form_for(@program) do |f| %>
-  <% if @program.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@program.errors.count, "error") %> prohibited this program from being saved:</h2>
+<%= simple_nested_form_for @program, :html => { :class => 'form-horizontal' } do |program_form| %>
+<div class="row">
+<div class="small-6 columns leftNavPrograms">
 
-      <ul>
-      <% @program.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <!-- Form for Program-->
+      <fieldset>
+        <legend><%= controller.action_name.capitalize %> Program </legend>
+        <%= render :partial => "program_fields", :locals => { :f => program_form } %>
+      </fieldset>
+
+</div>
+<div class="small-5 columns rightContentPrograms">
+
+    <!-- Form for Affiliation-->
+    <legend>Make an affiliation to this Program</legend>      
+        <%= program_form.simple_fields_for :affiliation do |affiliation_form| %>
+          <%= render :partial => "affiliation_fields", :locals => { :f => affiliation_form } %>
+        <% end %> 
+    
     </div>
-  <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :cmu_facilities %><br>
-    <%= f.text_area :cmu_facilities %>
-  </div>
-  <div class="field">
-    <%= f.label :off_campus_facilities %><br>
-    <%= f.text_area :off_campus_facilities %>
-  </div>
-  <div class="field">
-    <%= f.label :num_minors %><br>
-    <%= f.number_field :num_minors %>
-  </div>
-  <div class="field">
-    <%= f.label :num_adults_supervising %><br>
-    <%= f.number_field :num_adults_supervising %>
-  </div>
-  <div class="field">
-    <%= f.label :irb_approval %><br>
-    <%= f.number_field :irb_approval %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_id %><br>
-    <%= f.number_field :contact_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="form-actions"> <!-- if there is no css made, change this to 'actions' -->
+    <%= program_form.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to 'Cancel', programs_path, :class => 'btn' %>
+</div>
+
 <% end %>
+

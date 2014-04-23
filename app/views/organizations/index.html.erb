@@ -2,7 +2,7 @@
   <div class="small-3 columns leftNav">
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
       <ul class="side-nav">
-          <li><%= link_to 'View Information', organizations_path, :id => "active" %> </li>
+          <li><div id="activeHeading">Actions </li>
           <li><%= link_to 'Create a Organization', new_organization_path %> </li>
          <li><%= link_to 'Create a Program', new_program_path %></li>
 
@@ -10,7 +10,7 @@
     <br>
 
     <% unless current_user.orgs_that_user_is_Admin_for.empty? %>
-            <li><strong><%= link_to 'Manage', organizations_path %> </strong></li>
+            <li><div id="activeHeading">Manage</a></li>
             
             <% current_user.orgs_that_user_is_Admin_for.each do |org| %>
                 <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>

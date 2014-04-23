@@ -33,10 +33,14 @@
   <%= link_to 'New Bg check', new_bg_check_path %>
 
 <%else%>
+  <% if current_user.individual.bg_check.nil?%>
+    <h1>Start a Background Check?</h1>
 
-  <h1>Start a Background Check?</h1>
-
-  <%= link_to 'Begin Process', new_bg_check_path %>
+    <%= link_to 'Begin Process', new_bg_check_path %>
+  <%else%>
+    <h3>You shouldn't be here</h3>
+    <%= link_to 'View your own status', bg_check_path(current_user.individual.bg_check) %>
+  <%end%>
 
 <%end%>
 

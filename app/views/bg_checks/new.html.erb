@@ -4,17 +4,14 @@
     <%= render 'form' %>
     <%= link_to 'Back', bg_checks_path %>
 <%else%>
-    <% @bg_check.status = 0 %>
-    <% @bg_check.individual_id = current_user.individual_id %>
-    <% @bg_check.date_requested = Date.today %>
-    <% @bg_check.save! %>
-
     <p>You have successfully started the Background Check Process</p>
 
     <p>Click 'Continue' to view the status of your background check</p>
-
-    <% @bg_check = BgCheck.find(@bg_check.id)%>
-    <%= link_to 'Continue', bg_check_path(@bg_check)%>
+    <form action="/bg_checks" method="post">
+     <div class="actions">
+        <input type="submit" value="Continue">
+      </div>
+    </form>
 <%end%> 
 
 

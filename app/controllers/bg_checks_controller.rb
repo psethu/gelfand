@@ -11,10 +11,16 @@ class BgChecksController < ApplicationController
   # POST /bg_checks
   # POST /bg_checks.json
   def create
+    puts "-----------Went to Create------------"
+    
     @bg_check = BgCheck.new(bg_check_params)
 
     respond_to do |format|
       if @bg_check.save
+
+        @bg_check.individual_id = current_user.individual_id 
+        @bg_check.save! 
+
         format.html { redirect_to @bg_check, notice: 'Bg check was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bg_check }
       else

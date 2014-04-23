@@ -41,9 +41,11 @@ can accepts 2 arguments
             b.id == user.get_bg_check_id
           end
 
+          can :read, BgCheck
+
 
           can :read, Organization
-          can :show, Organization
+          can :show, Organization 
 
           unless user.get_org_ids.nil?
             user.get_org_ids.each do |i|

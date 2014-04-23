@@ -7,7 +7,9 @@ Gelfand::Application.routes.draw do
 
   resources :bg_checks
 
-  resources :affiliations
+  # need these 2 routes so do not receive GET or POST error for routes when creating an affiliation
+  get 'affiliations', to: 'affiliations#index'
+  post 'affiliations', to: 'affiliations#create'
 
   get '/gelfand_contact_page', :to => redirect('/gelfand_contact_page.html')
   # http://stackoverflow.com/questions/5631145/routing-to-static-html-page-in-public

@@ -6,11 +6,6 @@ class AffiliationsController < ApplicationController
 
   def create
     @affiliation = Affiliation.new(affiliation_params)
-    puts "\n \n "
-    puts "\n \n "
-    puts "AFFILIATION"
-    puts "\n \n "
-    puts "\n \n "
     if @affiliation.save!
       # if saved to database
       org_name = Organization.find(@affiliation.organization_id).name

@@ -46,7 +46,7 @@
 </p>
 
     <% if current_user && current_user.admin? %>
-        <%= render :partial => "quick_affiliate_program_with_org" %>
+        <%= render "quick_affiliate_program_with_org" %>
     <% end %>
 
 <%= link_to 'Edit', edit_program_path(@program) %> |

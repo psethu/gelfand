@@ -87,6 +87,7 @@ class ActiveSupport::TestCase
 
     def create_programs_context
         @standard = FactoryGirl.create(:program)
+        @past = FactoryGirl.create(:program)
     end
 
     def remove_programs_context

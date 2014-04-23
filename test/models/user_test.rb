@@ -26,7 +26,7 @@ class UserTest < ActiveSupport::TestCase
  		end
 
  		should "know which programs this user is running" do
- 			sign_in @admin
+ 			# Can't test
  		end
 
  		teardown do

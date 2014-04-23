@@ -32,6 +32,18 @@ class ProgramTest < ActiveSupport::TestCase
 
 		end
 
+		should "list upcoming programs" do
+
+		end
+
+		should "list completed programs" do
+
+		end
+
+		teardown do
+			remove_programs_context
+		end
+
 	end
 
 end

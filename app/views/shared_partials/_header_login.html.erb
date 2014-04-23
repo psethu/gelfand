@@ -77,7 +77,11 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	      		</fieldset>
 		      		<div id="inputs">
 		      			<br>
-		      			<%= link_to 'My Account', individual_path(current_user.individual), :id => "my_account"%>
+		      			<% if current_user.has_individual? %>
+		      				<%= link_to 'My Account', individual_path(current_user.individual), :id => "my_account"%>
+	      				<% else %>
+	      					NO INDIVIDUAL ASSOCIATED
+	      				<% end %>
 		      			<hr id="logout_myaccount_divider">
 							Not <%= current_user.get_first_name %>? 
 							<br>

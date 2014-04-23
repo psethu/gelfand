@@ -7,6 +7,8 @@ Gelfand::Application.routes.draw do
 
   resources :bg_checks
 
+  resources :affiliations
+
   get '/gelfand_contact_page', :to => redirect('/gelfand_contact_page.html')
   # http://stackoverflow.com/questions/5631145/routing-to-static-html-page-in-public
   # I put 'gelfand_contact_page.html' file inside the public folder

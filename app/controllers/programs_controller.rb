@@ -1,11 +1,27 @@
 class ProgramsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_program, only: [:show, :edit, :update, :destroy]
+  before_action :set_program, only: [:edit, :update, :destroy]
 
   # GET /programs
   # GET /programs.json
   def index
     @programs = Program.all
+  end
+
+  def show
+    @program = Program.find(params[:id])
+    # app is coming here when Program show page entered
+    @affiliation = Affiliation.new
+=begin
+    @affiliation.organization_id = Organization.find(6).id
+    @affiliation.program_id = @program.id
+    @affiliation.save
+    puts "\n \n "
+    puts "\n \n "
+    puts "Program_____________"
+    puts "\n \n "
+    puts "\n \n "
+=end
   end
 
   # POST /programs

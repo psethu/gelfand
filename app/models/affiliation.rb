@@ -11,6 +11,8 @@ class Affiliation < ActiveRecord::Base
     validates_numericality_of :organization_id, :only_integer => true, :greater_than => 0
     validates_numericality_of :program_id, :only_integer => true, :greater_than => 0
 
+=begin
+Commenting this stuff out for now because otherwise cant save Affiliation in database (currently done in program controller show action)
     validate :organization_is_active_in_system, :on => :create
     validate :program_is_active_in_system, :on => :create
     validate :affiliation_is_not_alread_in_system, :on => :create
@@ -37,5 +39,6 @@ class Affiliation < ActiveRecord::Base
             errors.add(:program_id, "is already a part of this organization")
         end
     end
+=end
 
 end

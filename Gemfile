@@ -65,3 +65,6 @@ end
 
 # Use Foundation for clean CSS/JS
 gem 'foundation-rails'
+
+
+gem 'simple_form'

@@ -1,0 +1,33 @@
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+
+          <%= f.label :start_date %>
+          <%= f.date_select :start_date %>
+
+
+    <%= f.input :end_date, :label => "End date", :order => [:month, :day, :year], :as => :date, :start_year => Date.today.year, :end_year => Date.today.year + 25 %>
+
+          <%= f.label :num_minors %>
+          <%= f.number_field :num_minors %>
+
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+
+    <%= f.label :cmu_facilities %>
+    <%= f.text_area :cmu_facilities %>
+
+    <%= f.label :off_campus_facilities %>
+    <%= f.text_area :off_campus_facilities %>
+
+    <%= f.label :num_adults_supervising %>
+    <%= f.number_field :num_adults_supervising %>
+
+    <%= f.label :irb_approval %>
+    <%= f.number_field :irb_approval %>
+
+          <%= f.label :contact_id %>
+          <%= f.number_field :contact_id %>
+
+</div>

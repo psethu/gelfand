@@ -82,16 +82,19 @@ h1{
 
 .side-nav li:hover,
 .side-nav li a:hover{
-	background-color: #060;
+	background-color: #040;
 }
 
-.side-nav #active{
+.side-nav #activeHeading{
 	background-color: #040;	
+	color: #D0D0D0 ;	
+	padding: 5px;
+	border-radius: 5px;
+	height:30px;
+	font-size: 20px;
+	letter-spacing: 1px;
 }
 
-.side-nav #active {
-	color: #D0D0D0 ;	
-}
 
 #underManage a{
 	padding-left:50px;

@@ -45,5 +45,16 @@
   <%= @program.irb_approval %>
 </p>
 
+<strong><h3>Currently associated orgs:</h3></strong>
+    <% @program.affiliations.each do |affil| %>
+      <%= Organization.find(affil.organization.id).name %> <br>
+    <% end %>
+
+<br><br>
+
+    <% if current_user && current_user.admin? %>
+        <%= render "quick_affiliate_program_with_org" %>
+    <% end %>
+
 <%= link_to 'Edit', edit_program_path(@program) %> |
 <%= link_to 'Back', programs_path %>

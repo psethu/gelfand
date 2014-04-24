@@ -2,6 +2,11 @@ class ProgramsController < ApplicationController
   load_and_authorize_resource
   before_action :set_program, only: [:edit, :update, :destroy]
 
+def new
+    @program = Program.new
+    @program.affiliations.build
+end
+
   # GET /programs
   # GET /programs.json
   def index
@@ -61,6 +66,6 @@ class ProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
-      params.require(:program).permit(:name, :description, :start_date, :end_date, :cmu_facilities, :off_campus_facilities, :num_minors, :num_adults_supervising, :irb_approval, :contact_id)
+      params.require(:program).permit(:name, :description, :start_date, :end_date, :cmu_facilities, :off_campus_facilities, :num_minors, :num_adults_supervising, :irb_approval, :contact_id, affiliations_attributes: [:id, :organization_id, :program_id, :description, :followed_process, :_destroy])
     end
 end

@@ -8,6 +8,7 @@ class Affiliation < ActiveRecord::Base
     scope :for_organization, lambda {|organization_id| where("organization_id = ?", organization_id)}
     scope :for_program, lambda {|program_id| where("program_id = ?", program_id)}
 
+
     validates_numericality_of :organization_id, :only_integer => true, :greater_than => 0
     validates_numericality_of :program_id, :only_integer => true, :greater_than => 0
 

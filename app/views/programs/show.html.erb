@@ -47,7 +47,7 @@
 
 <strong><h3>Currently associated orgs:</h3></strong>
     <% @program.affiliations.each do |affil| %>
-      <%= Organization.find(affil.organization.id).name %>
+      <%= Organization.find(affil.organization.id).name %> <br>
     <% end %>
 
 <br><br>

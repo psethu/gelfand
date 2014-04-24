@@ -1,4 +1,4 @@
-<%= simple_nested_form_for @program, :html => { :class => 'form-horizontal' } do |program_form| %>
+<%= simple_nested_form_for @program, :html => { :class => 'form-horizontal', :method => 'post' } do |program_form| %>
 <div class="row">
 <div class="small-6 columns leftNavPrograms">
 
@@ -13,10 +13,10 @@
 
     <!-- Form for Affiliation-->
     <legend>Make an affiliation to this Program</legend>      
-        <%= program_form.simple_fields_for :affiliation do |affiliation_form| %>
+        <%= program_form.simple_fields_for :affiliation, :html => { :class => 'form-horizontal', :method => 'post' } do |affiliation_form| %>
           <%= render :partial => "affiliation_fields", :locals => { :f => affiliation_form } %>
         <% end %> 
-    
+
     </div>
 </div>
 

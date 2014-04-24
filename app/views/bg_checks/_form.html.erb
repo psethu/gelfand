@@ -14,20 +14,24 @@
   <% if current_user.admin? %>
     <div class="field">
       <%= f.label :status %><br>
-      <%= f.number_field :status %>
+        <%= f.select :status, [['Requested', 0], ['Criminal Passed', 1], ['Child Abuse Passed', 2], ['Under Review', 3], ['Not Cleared', 4]], {:include_blank => true, :default => nil}  %>
     </div>
     <div class="field">
       <%= f.label :criminal_date %><br>
-      <%= f.date_select :criminal_date %>
+      <%= f.date_select :criminal_date, {:include_blank => true, :default => nil} %>
     </div>
     <div class="field">
       <%= f.label :child_abuse_date %><br>
-      <%= f.date_select :child_abuse_date %>
+      <%= f.date_select :child_abuse_date, {:include_blank => true, :default => nil} %>
     </div>
   <% elsif current_user.member?%>
     <%= f.hidden_field :status, :value => 0, :readonly => true %>
   <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <% if current_user.admin? %>
+      <%= f.submit :class => 'button'%>
+    <% else %>
+      <%= f.submit "Continue", :class => "button" %>
+    <% end %>
   </div>
 <% end %>

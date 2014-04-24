@@ -1,16 +1,22 @@
+<div class="row">
+    <div class="small-2 columns leftNav">
+    </div>
+    <div class="small-10 columns rightContent">
+    <%if current_user.admin?%>
+        <h1>New bg_check</h1>
+        <%= render 'form' %>
+        <%= link_to 'Back', bg_checks_path %>
+    <%else%>
+        <p>You have successfully started the Background Check Process</p>
 
-<%if current_user.admin?%>
-    <h1>New bg_check</h1>
-    <%= render 'form' %>
-    <%= link_to 'Back', bg_checks_path %>
-<%else%>
-    <p>You have successfully started the Background Check Process</p>
+        <p>Click 'Continue' to view the status of your background check</p>
 
-    <p>Click 'Continue' to view the status of your background check</p>
+        <%= render 'form' %>
 
-    <%= render 'form' %>
+    <% end %>
+    </div>
 
-<% end %>
+</div>
 
 
 

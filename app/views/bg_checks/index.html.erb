@@ -1,48 +1,83 @@
-<%if current_user.admin?%>
-  <h1>Listing bg_checks</h1>
+<div class="row">
+  <div class="small-2 columns leftNav">
+    <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+     <ul class="side-nav">
+      <%if current_user.admin?%>
+        <li><%= link_to 'New Check', new_bg_check_path %> </li>
+      <%else%>
+        <li><a href="#">Overview</a></li>
+        <li><a href="#">Status</a></li>
+        <li><a href="#">FAQ</a></li>
+      <%end%>
+    </ul> 
+    <br />
+  </div>
+  <div class="small-10 columns rightContent">
+    <%if current_user.admin?%>
+      <h1>Listing Background Checks</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Status</th>
-        <th>Criminal date</th>
-        <th>Child abuse date</th>
+      <table>
+        <thead>
+          <tr> 
+            <th>For</th>
+            <th>Status</th>
+            <th>Criminal date</th>
+            <th>Child abuse date</th>
 
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <% @bg_checks.each do |bg_check| %>
-        <tr>
-          <td><%= bg_check.status %></td>
-          <td><%= bg_check.criminal_date %></td>
-          <td><%= bg_check.child_abuse_date %></td>
+        <tbody>
+          <% @bg_checks.each do |bg_check| %>
+            <tr>
+              <td><%= bg_check.individual.name %>
+              <td><%= bg_check.format_status %></td>
+              <td><%= bg_check.criminal_date %></td>
+              <td><%= bg_check.child_abuse_date %></td>
 
-          <td><%= link_to 'Show', bg_check %></td>
-          <td><%= link_to 'Edit', edit_bg_check_path(bg_check) %></td>
-          <td><%= link_to 'Destroy', bg_check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+              <td><%= link_to 'Show', bg_check %></td>
+              <td><%= link_to 'Edit', edit_bg_check_path(bg_check) %></td>
+              <td><%= link_to 'Destroy', bg_check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <br>
-  <%= link_to 'New Bg check', new_bg_check_path %>
+      <br>
 
-<%else%>
-  <% if current_user.individual.bg_check.nil?%>
-    <h1>Start a Background Check?</h1>
+    <%else%>
+      <% if current_user.individual.bg_check.nil?%>
+        <h1>Start a Background Check?</h1>
+        <div class="bg-wrapper">
+          <div class="bg-status-bar">
+            <table>
+              <tr>
+                <td>Initiate Process</td>
+                <td> > </td>
+                <td>In Progress</td>
+                <td> > </td>
+                <td>Complete</td>
+              </tr>
+            </table>
+          </div>
 
-    <%= link_to 'Begin Process', new_bg_check_path %>
-  <%else%>
-    <h3>You shouldn't be here</h3>
-    <%= link_to 'View your own status', bg_check_path(current_user.individual.bg_check) %>
-  <%end%>
+          <p class="bg-text">
+          To begin the background check process, clike the 'Begin Process' button below.
+          </p>
 
-<%end%>
+          <%= link_to 'Begin Process', new_bg_check_path, class: "button", id: "BeginProcess" %>
+        </div>
+      <%else%>
+        <h3>You shouldn't be here</h3>
+        <%= link_to 'View your own status', bg_check_path(current_user.individual.bg_check) %>
+      <%end%>
+
+    <%end%>
+  </div>
+</div>
 
 
 

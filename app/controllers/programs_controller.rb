@@ -4,7 +4,7 @@ class ProgramsController < ApplicationController
 
 def new
     @program = Program.new
-    @program.affiliations.build
+
 end
 
   # GET /programs

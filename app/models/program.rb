@@ -10,7 +10,7 @@ class Program < ActiveRecord::Base
     has_many :organizations, through: :affiliations
     belongs_to :contact
 
-    accepts_nested_attributes_for :affiliations, :allow_destroy => true
+
 
     validates :name, :presence => true
     validates :num_minors, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}

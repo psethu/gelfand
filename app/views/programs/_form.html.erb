@@ -9,16 +9,6 @@
       </fieldset>
 
 </div>
-<div class="small-5 columns rightContentPrograms">
-
-    <!-- Form for Affiliation-->
-    <legend>Make an affiliation to this Program</legend>      
-        <%= program_form.simple_fields_for :affiliation, :html => { :class => 'form-horizontal', :method => 'post' } do |affiliation_form| %>
-          <%= render :partial => "affiliation_fields", :locals => { :f => affiliation_form } %>
-        <% end %> 
-
-    </div>
-</div>
 
 <div class="form-actions"> <!-- if there is no css made, change this to 'actions' -->
     <%= program_form.submit nil, :class => 'btn btn-primary' %>

@@ -30,13 +30,28 @@ class Program < ActiveRecord::Base
     # Class Methods
     # -------------
 
+    def individuals_without_bg_check
+        self.individuals.select{ |i| i.bg_check.nil? }
+    end
+
+    def num_individuals_without_bg_check
+        self.individuals_without_bg_check.count
+    end
+
+    def num_cleared_participations
+        self.individuals.count - self.individuals_without_bg_check
+    end
+
+    def cleared_participations
+        
+    end
+
     def individuals_in_org(org_id)
         org = self.organizations.find_by id: org_id
-        org.individuals
+        self.individuals.select{ |i| org.is_member?(i.id) }
     end
 
-    def individuals_without_bg_check
-        self.individuals.where('bg_check_id')
+    def individuals_in_org_without_bg_check(org_id)
+        self.individuals_in_org(org_id).select{ |i| i.bg_check.nil? }
     end
-
 end

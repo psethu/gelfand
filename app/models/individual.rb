@@ -57,7 +57,10 @@ class Individual < ActiveRecord::Base
 	end
 
     def bg_check_complete?
-        self.bg_check.complete?
+        unless self.bg_check.nil?
+            return self.bg_check.complete?
+        end
+        return false
     end
 
     # Private Methods

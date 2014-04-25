@@ -143,10 +143,6 @@ fieldset {
   right: 2px;
 }
 
-/***********************
-******************/
-
-
 #forgotPass {
 	float: right;
 	color: #1975FF;
@@ -157,18 +153,28 @@ fieldset {
 	font-weight:bold;
 }
 
+/***********************
+******************/
+
+
+
 nav #title_link{
-  top:10px;  
+  top:25%;  
   position: relative;
   color: white;
   margin: 0 10px 0 10px;
-  font-size: 30px; 
+  font-size: 20px;
 }
 
-nav .name a:hover{
-  background-color: #505050 ; // foundation (or Rails) makes default bg color for 'a' selectors black
 
+nav #title_link:hover{
+  color: gray; /*foundation (or Rails) makes default bg color for 'a' selectors black*/
+  background-color: inherit;
 }
+
+/*
+
+Commented this out because I think it's kind of silly to have box shadow on a fixed navbar
 
 nav .name{
 box-shadow: -10px 10px 5px #888888;  
@@ -178,6 +184,8 @@ nav .name:hover{
   background-color: #505050  ;
   box-shadow: -10px 10px 2px #500000  ;
 }
+
+*/
 
 #logout-button-text {
   color: white;

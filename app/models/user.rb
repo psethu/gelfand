@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   	member # this is a boolean that holds a true or false value
   end
 
+  def has_individual?
+    return !self.individual.nil?
+  end
+
   # have to do "== []" check because self.org_users returns empty array not 'nil' if empty
   def get_org_ids
     if self.org_users == []
@@ -101,15 +105,21 @@ class User < ActiveRecord::Base
   end
 
   def get_first_name
-    self.individual.f_name
+    if self.has_individual?
+        return self.individual.f_name
+    end
+    return "User"
   end  
 
   def get_bgCheck
+    unless self.individual.nil?
       bgObject = self.individual.bg_check
       if bgObject.nil?
         return nil
       end
         return bgObject
+    end
+    return nil
   end
 
 

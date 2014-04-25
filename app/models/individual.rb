@@ -31,7 +31,6 @@ class Individual < ActiveRecord::Base
     scope :faculty, -> { where(role: 1) }
     scope :off_campus, -> { where(role: 2) }
     scope :inactive, -> { where(active: false) }
-    scope :no_bg_check, -> { where(bg_check_id: nil) }
 
     # Class Methods
     # -------------
@@ -56,6 +55,13 @@ class Individual < ActiveRecord::Base
 	def proper_name
 		"#{f_name} #{l_name}"
 	end
+
+    def bg_check_complete?
+        unless self.bg_check.nil?
+            return self.bg_check.complete?
+        end
+        return false
+    end
 
     # Private Methods
     # ---------------

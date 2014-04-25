@@ -35,5 +35,9 @@ class Organization < ActiveRecord::Base
     self.memberships.length
   end
 
+  def is_member?(ind)
+    self.individuals.map(&:id).member?(ind)
+  end
+
 
 end

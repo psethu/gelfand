@@ -10,7 +10,7 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	- looks like might be very useful
 -->
 
-<div class="contain-to-grid">
+<div class="fixed">
    <nav class="top-bar" data-topbar>
 	  <ul class="title-area">
 	    <li class="name">
@@ -77,7 +77,11 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	      		</fieldset>
 		      		<div id="inputs">
 		      			<br>
-		      			<%= link_to 'My Account', individual_path(current_user.individual), :id => "my_account"%>
+		      			<% if current_user.has_individual? %>
+		      				<%= link_to 'My Account', individual_path(current_user.individual), :id => "my_account"%>
+	      				<% else %>
+	      					NO INDIVIDUAL ASSOCIATED
+	      				<% end %>
 		      			<hr id="logout_myaccount_divider">
 							Not <%= current_user.get_first_name %>? 
 							<br>

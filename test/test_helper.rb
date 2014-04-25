@@ -5,6 +5,7 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
     ActiveRecord::Migration.check_pending!
 
+
     # Prof. H's deny method to improve readability of tests
     def deny(condition, msg="")
         # a simple transformation to increase readability IMO
@@ -84,4 +85,26 @@ class ActiveSupport::TestCase
         @passed_child_abuse.delete
     end
 
+    def create_programs_context
+        @standard = FactoryGirl.create(:program)
+        @past = FactoryGirl.create(:program)
+    end
+
+    def remove_programs_context
+        @standard.delete
+    end
+
+    def create_users_context
+        @default = FactoryGirl.create(:user)
+        @second = FactoryGirl.create(:user, email: "otheremail@yahoo.com", password: "password1", password_confirmation: "password1")
+        @admin = FactoryGirl.create(:user, email: "adminemail@gmail.com", password: "mydamncroissants1", password_confirmation: "mydamncroissants1", admin: true)
+    end
+
+    def remove_users_context
+        @default.delete
+        @second.delete
+        @admin.delete
+    end
+
 end
+

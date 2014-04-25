@@ -11,10 +11,14 @@ class BgChecksController < ApplicationController
   # POST /bg_checks
   # POST /bg_checks.json
   def create
+    puts "-----------Went to Create------------"
+    
     @bg_check = BgCheck.new(bg_check_params)
+    @bg_check.individual_id = current_user.individual_id 
 
     respond_to do |format|
       if @bg_check.save
+
         format.html { redirect_to @bg_check, notice: 'Bg check was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bg_check }
       else
@@ -56,6 +60,6 @@ class BgChecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bg_check_params
-      params.require(:bg_check).permit(:date_approved, :status, :criminal_date, :child_abuse_date, :verification_date)
+      params.require(:bg_check).permit(:date_requested, :status, :criminal_date, :child_abuse_date) 
     end
 end

@@ -33,7 +33,7 @@ class Program < ActiveRecord::Base
     # -------------
 
     def individuals_without_bg_check
-        self.individuals.select{ |i| i.bg_check.nil? }
+        self.individuals.select{ |i| i.bg_check_complete? }
     end
 
     def num_individuals_without_bg_check
@@ -45,7 +45,7 @@ class Program < ActiveRecord::Base
     end
 
     def cleared_participations
-        
+        self.individuals.select{ |i| !i.bg_check_complete? }
     end
 
     def individuals_in_org(org_id)
@@ -54,6 +54,6 @@ class Program < ActiveRecord::Base
     end
 
     def individuals_in_org_without_bg_check(org_id)
-        self.individuals_in_org(org_id).select{ |i| i.bg_check.nil? }
+        self.individuals_in_org(org_id).select{ |i| i.bg_check_complete? }
     end
 end

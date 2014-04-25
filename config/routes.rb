@@ -15,8 +15,8 @@ Gelfand::Application.routes.draw do
   # http://stackoverflow.com/questions/5631145/routing-to-static-html-page-in-public
   # I put 'gelfand_contact_page.html' file inside the public folder
 
-  #match 'home' => 'home#index', :as => :home
-  get '/contact', to: 'home#contact'
+  match '/mailers',     to: 'mailers#new',             via: 'get'
+  resources "mailers", only: [:new, :create]
 
 
   devise_for :users

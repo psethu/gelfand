@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="small-3 columns leftNav">
+  <div class="small-2 columns leftNav">
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
       <ul class="side-nav">
           <li><%= link_to 'View Information', organizations_path, :id => "active" %> </li>
@@ -22,7 +22,7 @@
   </div>
 
 
-  <div class="small-9 columns rightContent">
+  <div class="small-10 columns rightContent">
       <h1>Organizations</h1>
 
     <% if current_user.get_all_memberships.empty? %>

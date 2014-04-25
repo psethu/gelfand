@@ -4,8 +4,11 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  padding-left: 20px;
-  padding-right: 20px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 p, ol, ul, td {

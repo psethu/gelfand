@@ -161,14 +161,14 @@ fieldset {
 nav #title_link{
   top:25%;  
   position: relative;
-  color: gray;
+  color: white;
   margin: 0 10px 0 10px;
   font-size: 20px;
 }
 
 
 nav #title_link:hover{
-  color: white; /*foundation (or Rails) makes default bg color for 'a' selectors black*/
+  color: gray; /*foundation (or Rails) makes default bg color for 'a' selectors black*/
   background-color: inherit;
 }
 

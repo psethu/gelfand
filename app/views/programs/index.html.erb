@@ -1,28 +1,24 @@
-<h1>Listing programs</h1>
+<div class="row">
+    <div class="small-2 columns leftNav">
+        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+        
+        <ul class="side-nav">
+            <li><%= link_to 'Add a Program', new_program_path %> </li>
+            <li><%= link_to 'View Completed Programs', programs_path %> </li>
+            <li><%= link_to 'People Pending Background Checks', programs_path %></li>
+        </ul> 
+    
+        <br />
+    
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start date</th>
-      <th>End date</th>
-    </tr>
-  </thead>
+    <div class="small-5 columns rightContent">
 
-  <tbody>
-    <% @programs.each do |program| %>
-      <tr>
-        <td><%= program.name %></td>
-        <td><%= program.start_date %></td>
-        <td><%= program.end_date %></td>
-        <td><%= link_to 'Show', program %></td>
-        <td><%= link_to 'Edit', edit_program_path(program) %></td>
-        <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    </div>
+
+    <div class="small-5 columns rightContent">
+
+    </div>
+</div>
 
 <br>
-
-<%= link_to 'New Program', new_program_path %>

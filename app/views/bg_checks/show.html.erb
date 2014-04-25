@@ -1,20 +1,83 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="small-2 columns leftNav">
+    <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+     <ul class="side-nav">
+      <%if current_user.admin? %>
+        <li><%= link_to 'Edit', edit_bg_check_path(@bg_check) %></li>
+        <li><%= link_to 'Back', bg_checks_path %></li>
+      <%else%>
+        <li><a href="#">Overview</a></li>
+        <li><a href="#">Status</a></li>
+        <li><a href="#">FAQ</a></li>
+      <%end%>
+    </ul> 
+    <br />
+  </div>
+  <div class="small-10 columns rightContent">
+    <p id="notice"><%= notice %></p>
+    <% if current_user.admin? %>
+    <h1>Background Check for <%=@bg_check.individual.proper_name%></h1>
 
-<p>
-  <strong>Status:</strong>
-  <%= @bg_check.status %>
-</p>
+    <p>
+      <strong>Status:</strong>
+      <%= @bg_check.status %>
+    </p>
 
-<p>
-  <strong>Criminal date:</strong>
-  <%= @bg_check.criminal_date %>
-</p>
+    <p>
+      <strong>Criminal date:</strong>
+      <%= @bg_check.criminal_date %>
+    </p>
 
-<p>
-  <strong>Child abuse date:</strong>
-  <%= @bg_check.child_abuse_date %>
-</p>
+    <p>
+      <strong>Child abuse date:</strong>
+      <%= @bg_check.child_abuse_date %>
+    </p>
+      <%= link_to 'Edit', edit_bg_check_path(@bg_check) %> |
+      <%= link_to 'Back', bg_checks_path %>
 
+    <% else %>
+      <h1>Start a Background Check?</h1>
+        <div class="bg-wrapper">
+          <div class="bg-status-bar">
+            <table>
+              <tr>
+                <% if @bg_check.status == 0 %>
+                  <td><strong>Initiate Process</strong></td>
+                  <td> > </td>
+                  <td>In Progress</td>
+                  <td> > </td>
+                  <td>Complete</td>
+                <% elsif @bg_check.status == 1 || @bg_check.status == 3%>
+                  <td>Initiate Process</td>
+                  <td> > </td>
+                  <td><strong>In Progress</strong></td>
+                  <td> > </td>
+                  <td>Complete</td>
+                <% elsif @bg_check.status == 2 || @bg_check.status == 4%>
+                  <td>Initiate Process</td>
+                  <td> > </td>
+                  <td>In Progress</td>
+                  <td> > </td>
+                  <td><strong>Complete</strong></td>
+                <% end %>
+              </tr>
+            </table>
+          </div>
 
-  <%= link_to 'Edit', edit_bg_check_path(@bg_check) %> |
- <%= link_to 'Back', bg_checks_path %>
+          <p class="bg-text">
+            <% if @bg_check.status == 0 %>
+              <%= render 'requested' %>
+            <% elsif @bg_check.status == 1 %>
+              <%= render 'crim_passed' %>
+            <% elsif @bg_check.status == 2 %>
+              <%= render 'all_passed'%>
+            <% elsif @bg_check.status == 3 %>
+              <%= render 'under_review' %>
+            <% elsif @bg_check.status == 4 %>
+              <%= render 'excluded'%>
+            <% end %>
+          </p>
+    <% end %>
+  </div>
+
+</div>

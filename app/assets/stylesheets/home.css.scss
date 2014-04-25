@@ -7,13 +7,13 @@ $height_Main_content: 500px;
 	// color: white; <- currently not working, find out why
 }
 
-.indexLeftHalf{
+.leftNav{
 	background-color:#580000; 
 	border: 2px solid purple;
 	height: $height_Main_content;
 }
 
-.indexRightHalf{
+.rightContent{
 	height: $height_Main_content;
 	background-color:#E8E8E8 ;
 }

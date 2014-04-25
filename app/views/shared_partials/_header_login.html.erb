@@ -39,7 +39,7 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 			<% end %>	
 
 	  	  <li class="divider"></li>
-	      		<% if current_user.get_bgCheck.nil? %>
+	      		<% if current_user.get_bgCheck.nil? || current_user.admin? %>
 	      			<li><%= link_to 'Background Check', bg_checks_path %></li>
 	      		<% else %>
 	      			<li><%= link_to 'Background Check', bg_check_path(current_user.get_bgCheck)%></li>

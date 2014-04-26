@@ -22,6 +22,14 @@ table {
 	margin-bottom: 10px;
 }
 
+table tbody tr td a:hover {
+	background-color: transparent;
+	color: black;
+}
+
+#removeOptionOrgMembers:hover{
+	background-color: #F0F0F0 ;
+}
 
 img{
 	margin:8px;

@@ -41,6 +41,9 @@
               <%= render 'indivs_for_an_org' %>
       <% end %>
 
+      <% if current_user.is_orgUser_for_specific_org(@organization) %>
+          <%= render "quick_add_member_to_org" %>
+      <% end %>
 
 <br>
 <br>

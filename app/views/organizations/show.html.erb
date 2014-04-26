@@ -49,14 +49,14 @@
 </div>
 
 <div class="small-3 columns addMemberPartOfOrgShowPage">
-
-      <% unless @organization.indivs_not_already_part_of_org.empty? %>
-          <% if current_user.is_orgUser_for_specific_org(@organization) %>
-              <%= render "quick_add_member_to_org" %>
+      <div class = "quickAddFormTitle"> Add an individual: </div>
+          <% unless @organization.indivs_not_already_part_of_org.empty? %>
+              <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                  <%= render "quick_add_member_to_org" %>
+              <% end %>
+          <% else %>
+              <h5> No more available individuals to add. </h5>
           <% end %>
-      <% else %>
-          <div class="quickAddFormTitle"> No more available individuals to add. </div>
-      <% end %>
 
 
 </div>

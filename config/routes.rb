@@ -11,9 +11,13 @@ Gelfand::Application.routes.draw do
   get 'affiliations', to: 'affiliations#index'
   post 'affiliations', to: 'affiliations#create'
 
-  get '/gelfand_contact_page', :to => redirect('/gelfand_contact_page.html')
+  
   # http://stackoverflow.com/questions/5631145/routing-to-static-html-page-in-public
   # I put 'gelfand_contact_page.html' file inside the public folder
+
+  #match 'home' => 'home#index', :as => :home
+  get '/contact', to: 'home#contact'
+
 
   devise_for :users
   root :to => "home#index"

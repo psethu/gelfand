@@ -22,7 +22,7 @@
           <th>Last name</th>
           <th>Role</th>
           <th>Active</th>
-          <th>Bg check</th>
+          <th>Bg check link</th>
           <th>Contact</th>
           <th>Actions</th>
           <th></th>
@@ -31,13 +31,18 @@
       </thead>
 
       <tbody>
+        <!-- Sethu note: @individuals gets only active individuals, not sure why -->
         <% @individuals.each do |individual| %>
           <tr>
             <td><%= individual.f_name %></td>
             <td><%= individual.l_name %></td>
             <td><%= individual.format_role %></td>
             <td><%= individual.active %></td>
-            <td><%= link_to 'Bg Check', bg_check_path(individual.bg_check)%></td>
+                <% unless individual.bg_check.nil? %>
+                    <td><%= link_to 'Bg Check', bg_check_path(individual.bg_check) %></td>
+                <% else %>
+                    <td> </td>
+                <% end %>
             <td></td>
             <td class="row_actions"><%= link_to 'Show', individual %></td>
             <td class="row_actions"><%= link_to 'Edit', edit_individual_path(individual) %></td>

@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="small-3 columns leftNav">
+  <div class="small-2 columns leftNav">
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
 
   </div>
 <p id="notice"><%= notice %></p>
 
-  <div class="small-9 columns rightContent">
+  <div class="small-10 columns rightContent">
 
   <h1>  <%= @organization.name %></h1>
 
@@ -46,5 +46,7 @@
 <br>
 <%= link_to 'Edit Org', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
+
+</div>
 
 </div>

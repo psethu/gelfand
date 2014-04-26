@@ -130,3 +130,23 @@ ul.my_memberships_list li a
 .org_form{
 	padding-left: 12px;
 }
+
+.addingFormButton {
+	border-radius: 8px;
+	color: white;
+	background-color: #060;
+}
+
+.addingFormButton:hover {
+	background-color: #040;
+}
+
+.addMemberPartOfOrgShowPage {
+	margin-top: 15%;
+}
+
+.quickAddFormTitle {
+	font-size: 22px;
+	margin: 0px 20px 10px -20px;
+
+}

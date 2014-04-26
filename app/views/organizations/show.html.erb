@@ -5,7 +5,7 @@
   </div>
 <p id="notice"><%= notice %></p>
 
-  <div class="small-10 columns rightContent">
+  <div class="small-7 columns rightContent">
 
   <h1>  <%= @organization.name %></h1>
 
@@ -35,25 +35,29 @@
 
 
       <% if @organization.memberships.empty? %>
-               <h3> <%= @organization.name %> currently has no members.</h3>
+               <h3> Currently there are no members.</h3>
       <% else %>
-              <h3><%= @organization.name %> members</h3>
+              <h3>Members</h3>
               <%= render 'indivs_for_an_org' %>
       <% end %>
+<br>
+<br>
+
+<%= link_to 'Edit Org', edit_organization_path(@organization) %> |
+<%= link_to 'Back', organizations_path %>
+
+</div>
+
+<div class="small-3 columns addMemberPartOfOrgShowPage">
 
       <% unless @organization.indivs_not_already_part_of_org.empty? %>
           <% if current_user.is_orgUser_for_specific_org(@organization) %>
               <%= render "quick_add_member_to_org" %>
           <% end %>
       <% else %>
-          <h5> No more available individuals to add. </h5>
+          <div class="quickAddFormTitle"> No more available individuals to add. </div>
       <% end %>
 
-
-<br>
-<br>
-<%= link_to 'Edit Org', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
 
 </div>
 

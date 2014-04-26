@@ -24,6 +24,22 @@ class MembershipsController < ApplicationController
     end
   end
 
+  def delete_multiple
+      @memberships = Membership.find(params[:membership_ids])
+      # Below used 'first' but can get any of the memObjects. Just need 1 org_Id since all these 
+        # memberships belong to the same org
+      org_id = @memberships.first.organization_id
+      @memberships.each do |mem| 
+          mem.delete
+      end
+      # gets the rest of the memberships of the Org that were not checked to be deleted
+      @memberships = Membership.for_organization(org_id)
+      respond_to do |format|
+        format.html { redirect_to organization_path(Organization.find(org_id)) }
+        format.json { head :no_content }
+      end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_membership

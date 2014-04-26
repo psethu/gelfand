@@ -5,8 +5,8 @@
       <th>Last name</th>
       <th>Active</th>
       <th>Role</th>
-      <th></th>
-      <th></th>
+      <th>Details</th>
+      <th>Remove</th>
 
     </tr>
   </thead>
@@ -19,13 +19,13 @@
           <td><%= mem.individual.active %></td>
           <td><%= mem.individual.role %></td>
 
-          <td><%= link_to 'Show', individual_path(mem.individual) %></td>
+          <td class ="OrgMembers"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(mem.individual) %></td>
             <% if current_user.is_orgUser_for_specific_org(@organization) %>
             <!-- For below "#{image_tag('remove.gif')} Remove"
                 helpful link: http://stackoverflow.com/questions/5387122/link-to-image-tag-with-text-in-rails
                  - searched this in Google "image appear link_to next to rails"
              -->
-               <td id ="removeOptionOrgMembers"><%= link_to "#{image_tag('remove.gif')}".html_safe, mem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+               <td class ="OrgMembers"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove this member?")}".html_safe, mem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
         </tr>
       <% end %>

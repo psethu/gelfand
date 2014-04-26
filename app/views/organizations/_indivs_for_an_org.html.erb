@@ -6,22 +6,26 @@
       <th>Active</th>
       <th>Role</th>
       <th></th>
+      <th></th>
 
     </tr>
   </thead>
 
   <tbody>
-      <% @organization.get_all_individuals.each do |indiv| %>
+      <% @organization.memberships.each do |mem| %>
         <tr>
-          <td><%= indiv.f_name %></td>
-          <td><%= indiv.l_name %></td>
-          <td><%= indiv.active %></td>
-          <td><%= indiv.role %></td>
+          <td><%= mem.individual.f_name %></td>
+          <td><%= mem.individual.l_name %></td>
+          <td><%= mem.individual.active %></td>
+          <td><%= mem.individual.role %></td>
 
-          <td><%= link_to 'Show', individual_path(indiv) %></td>
+          <td><%= link_to 'Show', individual_path(mem.individual) %></td>
+            <% if current_user.is_orgUser_for_specific_org(@organization) %>
+               <td><%= link_to 'Remove', mem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
         </tr>
       <% end %>
   </tbody>
 </table>
 
-
+    

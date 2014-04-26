@@ -7,6 +7,9 @@ Gelfand::Application.routes.draw do
 
   resources :bg_checks
 
+  # below is so I can delete/add memberships between Org and Indiv
+  resources :memberships
+
   # need these 2 routes so do not receive GET or POST error for routes when creating an affiliation
   get 'affiliations', to: 'affiliations#index'
   post 'affiliations', to: 'affiliations#create'

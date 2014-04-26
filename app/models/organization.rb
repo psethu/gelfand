@@ -40,4 +40,8 @@ class Organization < ActiveRecord::Base
   end
 
 
+    def indivs_not_already_part_of_org
+      Individual.all - self.get_all_individuals   
+    end
+
 end

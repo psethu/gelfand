@@ -32,15 +32,15 @@
 <br>
 <br>
 
-  <% unless current_user.org_users.nil? %>
-    <!-- there is at least 1 org_user for the Current user -->
+
+
       <% if @organization.memberships.empty? %>
-        <%= @organization.name %> currently has no members.
+               <h3> <%= @organization.name %> currently has no members.</h3>
       <% else %>
-        <h3> <%= @organization.name %> members </h3>
-         <%= render 'indivs_for_an_org' %>
+              <h3><%= @organization.name %> members</h3>
+              <%= render 'indivs_for_an_org' %>
       <% end %>
-  <% end %>
+
 
 <br>
 <br>

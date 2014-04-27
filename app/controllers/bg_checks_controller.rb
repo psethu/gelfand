@@ -11,10 +11,11 @@ class BgChecksController < ApplicationController
   # POST /bg_checks
   # POST /bg_checks.json
   def create
-    puts "-----------Went to Create------------"
     
     @bg_check = BgCheck.new(bg_check_params)
-    @bg_check.individual_id = current_user.individual_id 
+    if current_user.member?
+      @bg_check.individual_id = current_user.individual_id 
+    end
 
     respond_to do |format|
       if @bg_check.save

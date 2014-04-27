@@ -18,15 +18,12 @@
     <table>
       <thead>
         <tr>
-          <th>First name</th>
-          <th>Last name</th>
+          <th>Name</th>
           <th>Role</th>
           <th>Active</th>
           <th>Bg check link</th>
           <th>Contact</th>
-          <th>Actions</th>
-          <th></th>
-          <th></th>
+
         </tr>
       </thead>
 
@@ -34,19 +31,17 @@
         <!-- Sethu note: @individuals gets only active individuals, not sure why -->
         <% @individuals.each do |individual| %>
           <tr>
-            <td><%= individual.f_name %></td>
-            <td><%= individual.l_name %></td>
+            <td><%=link_to individual.name, individual_path(individual)%></td>
             <td><%= individual.format_role %></td>
-            <td><%= individual.active %></td>
+            <td><%= individual.active ? "Yes" : "No" %></td>
                 <% unless individual.bg_check.nil? %>
                     <td><%= link_to 'Bg Check', bg_check_path(individual.bg_check) %></td>
                 <% else %>
                     <td> </td>
                 <% end %>
             <td></td>
-            <td class="row_actions"><%= link_to 'Show', individual %></td>
-            <td class="row_actions"><%= link_to 'Edit', edit_individual_path(individual) %></td>
-            <td class="row_actions"><%= link_to 'Destroy', individual, method: :delete, data: { confirm:        'Are you sure?' } %></td>   
+            <td class="row_actions"><%= link_to "#{image_tag('edit.png', size: "22x22")}".html_safe, edit_individual_path(individual) %></td>
+            <td class="row_actions"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove?")}".html_safe, individual, method: :delete, data: { confirm:        'Are you sure?' } %></td>   
           </tr>     
         <% end %>
       </tbody>      

@@ -67,7 +67,7 @@ can accepts 2 arguments
 
 
        else
-         can :read, :all # this is a guest
+         can :read, :home # this is a guest
        end
 #=end
 

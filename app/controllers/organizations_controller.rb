@@ -8,6 +8,11 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.alphabetical
   end
 
+  def show
+    @organizatoin = Organization.find(params[:id])
+    @affiliation = Affiliation.new
+  end
+
   # POST /organizations
   # POST /organizations.json
   def create

@@ -3,49 +3,54 @@
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
 
   </div>
-<p id="notice"><%= notice %></p>
-
-  <div class="small-10 columns rightContent">
+  <div class="small-6 columns rightContent">
 
   <h1>  <%= @organization.name %></h1>
 
   <strong>Is partner:</strong>
   <%= @organization.is_partner %>
 
-<br>
-
   <strong>Description:</strong>
   <%= @organization.description %>
-
-<br>
 
   <strong>Active:</strong>
   <%= @organization.active %>
 
-<br>
-
   <strong>Department:</strong>
   <%= @organization.department %>
-<br>
 
           <strong>    Members: </strong> <%=  @organization.memberships.size %> 
-<br>
-<br>
 
-  <% unless current_user.org_users.nil? %>
-    <!-- there is at least 1 org_user for the Current user -->
+  <br>
+  <br>
+  <div class="Org_Show_Content">
       <% if @organization.memberships.empty? %>
-        <%= @organization.name %> currently has no members.
+               <h3> Currently there are no members.</h3>
       <% else %>
-        <h3> <%= @organization.name %> members </h3>
-         <%= render 'indivs_for_an_org' %>
+              <!-- <div class="OrgShow_title">Manage</div> -->
+              <%= render 'indivs_for_an_org' %>
       <% end %>
-  <% end %>
+  </div>
+<br>
+<br>
 
-<br>
-<br>
 <%= link_to 'Edit Org', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
+
+</div>
+
+<div class="small-4 columns addMemberPartOfOrgShowPage">
+          <% unless @organization.indivs_not_already_part_of_org.empty? %>
+              <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                <div class="Org_Show_Content">
+                        <h3>Programs</h3>
+                        <%= render 'programs_for_an_org' %>
+                </div>
+              <% end %>
+          <% else %>
+              <h5> No more available individuals to add. </h5>
+          <% end %>
+
 
 </div>
 

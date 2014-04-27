@@ -7,7 +7,9 @@
         <li><%= link_to 'Back', bg_checks_path %></li>
       <%else%>
         <li><a href="#">Overview</a></li>
-        <li><%= link_to 'Status', bg_check_path(current_user.individual.bg_check) %></li>
+                <% unless current_user.individual.bg_check.nil? %>
+                    <li><%= link_to 'Status', bg_check_path(current_user.individual.bg_check) %></li>
+                <% end %>
         <li><a href="#">FAQ</a></li>
       <%end%>
     </ul> 

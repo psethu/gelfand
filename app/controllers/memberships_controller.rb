@@ -26,8 +26,9 @@ class MembershipsController < ApplicationController
 
   def delete_multiple
       mem_ids = params[:membership_ids]
+      org_id = params.key("Delete selected")
       if mem_ids.nil?
-          redirect_to organizations_path
+          redirect_to organization_path(org_id)
           flash[:notice] = "\n \n No members were checked!"
       else
           @memberships = Membership.find(params[:membership_ids])          
@@ -51,13 +52,13 @@ class MembershipsController < ApplicationController
 
   def multiple_new
       indiv_ids = params[:indiv_ids]
+      # There is a key value pair in the params hash "#{@organization_id} => 'Add selected' "
+        # the below params.key gets the key when given a value
+      org_id = params.key("Add selected")
       if indiv_ids.nil?
-          redirect_to organizations_path
+          redirect_to organization_path(org_id)
           flash[:notice] = "\n \n No members were checked!"
       else
-          # There is a key value pair in the params hash "#{@organization_id} => 'Add selected' "
-            # the below params.key gets the key when given a value
-          org_id = params.key("Add selected")
             # Below used 'first' but can get any of the memObjects. Just need 1 org_Id since all these 
               # memberships belong to the same org
 

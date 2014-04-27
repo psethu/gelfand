@@ -5,41 +5,34 @@
   </div>
 <p id="notice"><%= notice %></p>
 
-  <div class="small-7 columns rightContent">
+  <div class="small-6 columns rightContent">
 
   <h1>  <%= @organization.name %></h1>
 
   <strong>Is partner:</strong>
   <%= @organization.is_partner %>
 
-<br>
-
   <strong>Description:</strong>
   <%= @organization.description %>
-
-<br>
 
   <strong>Active:</strong>
   <%= @organization.active %>
 
-<br>
-
   <strong>Department:</strong>
   <%= @organization.department %>
-<br>
 
           <strong>    Members: </strong> <%=  @organization.memberships.size %> 
-<br>
-<br>
 
-
-
+  <br>
+  <br>
+  <div class="Org_Show_LeftContent">
       <% if @organization.memberships.empty? %>
                <h3> Currently there are no members.</h3>
       <% else %>
               <h3>Members</h3>
               <%= render 'indivs_for_an_org' %>
       <% end %>
+  </div>
 <br>
 <br>
 
@@ -48,7 +41,7 @@
 
 </div>
 
-<div class="small-3 columns addMemberPartOfOrgShowPage">
+<div class="small-4 columns addMemberPartOfOrgShowPage">
       <div class = "quickAddFormTitle"> Add an individual: </div>
           <% unless @organization.indivs_not_already_part_of_org.empty? %>
               <% if current_user.is_orgUser_for_specific_org(@organization) %>

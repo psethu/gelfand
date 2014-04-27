@@ -1,5 +1,5 @@
 <h2>Sign up</h2>
-
+<% resource.build_individual %>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -11,6 +11,14 @@
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
+
+  <%= f.fields_for :individual do |individual_form| %>
+    <h2><%= individual_form.label :f_name %></h2>
+    <p><%= individual_form.text_field :f_name %></p>
+
+    <h2><%= individual_form.label :l_name %></h2>
+    <p><%= individual_form.text_field :l_name %></p>
+  <% end %>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

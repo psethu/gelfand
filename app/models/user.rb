@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     has_many :org_users
     has_many :organizations, through: :org_users
     has_one :individual
+    accepts_nested_attributes_for :individual
 
     # The below scope probably unecessary but could be useful in future
     # scope :for_individual, lambda {|individual_id| where("individiual_id = ?", individual_id) }

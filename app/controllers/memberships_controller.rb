@@ -46,9 +46,6 @@ class MembershipsController < ApplicationController
   end
 
   private
-    def getOrgId
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_membership
       @membership = Membership.find(params[:id])

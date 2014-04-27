@@ -26,10 +26,13 @@
                 <td></td>
                 <td></td>
                 <td></td>
+          <% if current_user.is_orgUser_for_specific_org(@organization) %>
               <td>
                   <%= submit_tag "Delete all", :name => "#{@organization.id}", :class => "formDeleteButton" %>
-<% end %>
               </td>
+          <% end %>
+<% end %>
+
             </tr>
         </tbody>
 
@@ -66,7 +69,10 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>    <%= submit_tag "Add all", :name => "#{@organization.id}", :id => "addingFormButton", :class => "button" %></td>
+            <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                    <td>    <%= submit_tag "Add all", :name => "#{@organization.id}", :id => "addingFormButton", :class => "button" %>
+                    </td>
+            <% end %>
               </tr>
         </tbody>
 <% end %>

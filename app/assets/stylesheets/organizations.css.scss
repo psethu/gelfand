@@ -133,13 +133,15 @@ ul.my_memberships_list li a
 	padding-left: 12px;
 }
 
-.addingFormButton {
-	border-radius: 8px;
+#addingFormButton {
+	border-radius: 5px;
 	color: white;
 	background-color: #060;
+	height: 30px;
+	padding: 5px 10px 5px 10px;
 }
 
-.addingFormButton:hover {
+#addingFormButton:hover {
 	background-color: #040;
 }
 
@@ -154,7 +156,7 @@ ul.my_memberships_list li a
 }
 
 #formDeleteButton {
-	border-radius: 2px;
+	border-radius: 5px;
 	color: white;
 	background-color: #ccc;
 }

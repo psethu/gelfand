@@ -26,7 +26,7 @@ class MembershipsController < ApplicationController
 
   def delete_multiple
       mem_ids = params[:membership_ids]
-      org_id = params.key("Delete selected")
+      org_id = params.key("Delete all")
       if mem_ids.nil?
           redirect_to organization_path(org_id)
           flash[:notice] = "\n \n No members were checked!"
@@ -54,7 +54,7 @@ class MembershipsController < ApplicationController
       indiv_ids = params[:indiv_ids]
       # There is a key value pair in the params hash "#{@organization_id} => 'Add selected' "
         # the below params.key gets the key when given a value
-      org_id = params.key("Add selected")
+      org_id = params.key("Add all")
       if indiv_ids.nil?
           redirect_to organization_path(org_id)
           flash[:notice] = "\n \n No members were checked!"

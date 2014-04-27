@@ -26,7 +26,7 @@
               </tr>
             <% end %>
         </tbody>
-    <%= submit_tag "Delete selected", :name => "#{@organization.id}", :class => "formDeleteButton" %>
+    <%= submit_tag "Delete all", :name => "#{@organization.id}", :class => "formDeleteButton" %>
 <% end %>
 
 <!-- Indivs NOT part of Org -->
@@ -42,7 +42,7 @@
               </tr>
               <% end %>
         </tbody>
-    <%= submit_tag "Add selected", :name => "#{@organization.id}", :class => "addingFormButton" %>
+    <%= submit_tag "Add all", :name => "#{@organization.id}", :id => "addingFormButton", :class => "button" %>
 <% end %>
       
       </table>

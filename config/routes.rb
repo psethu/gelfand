@@ -7,7 +7,8 @@ Gelfand::Application.routes.draw do
 
   resources :bg_checks 
 
-  # below is so I can delete/add memberships between Org and Indiv
+  # below is so I can add the 'delete_multiple' action and url along with the regular 7 we get from 
+    # "resources :memberships"
   resources :memberships do
     collection do
       delete 'delete_multiple'

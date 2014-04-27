@@ -1,8 +1,16 @@
-<div>
-  <% flash.each do |key, value| %>
-    <div>
-      <a href="#" data-dismiss="alert">×</a>
-        <%= value %>
+<div class="row">
+    <div class="small-2 columns leftNav">
+        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+        <ul class="side-nav">
     </div>
-  <% end %>
+    <div class="small-10 columns rightContent">
+        <div>
+          <% flash.each do |key, value| %>
+            <div>
+              <a href="#" data-dismiss="alert">×</a>
+                <%= value %>
+            </div>
+          <% end %>
+        </div>
+    </div>
 </div>

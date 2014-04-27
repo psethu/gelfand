@@ -47,7 +47,9 @@ group :test do
 	gem 'shoulda'
 end
 
-
+group :production do
+    gem 'mysql2'
+end
 
 
 

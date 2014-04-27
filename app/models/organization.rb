@@ -41,7 +41,15 @@ class Organization < ActiveRecord::Base
 
 
     def indivs_not_already_part_of_org
-      Individual.all - self.get_all_individuals   
+        Individual.all - self.get_all_individuals   
     end
+
+  def affiliated_progs
+      self.affiliations.map {|affil| Program.find(affil.program_id)}
+  end
+
+  def programs_not_already_part_of_org
+      Program.all - self.affiliated_progs
+  end
 
 end

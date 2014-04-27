@@ -43,7 +43,8 @@
           <% unless @organization.indivs_not_already_part_of_org.empty? %>
               <% if current_user.is_orgUser_for_specific_org(@organization) %>
                 <div class="Org_Show_Content">
-                                <h3>Programs</h3>
+                        <h3>Programs</h3>
+                        <%= render 'programs_for_an_org' %>
                 </div>
               <% end %>
           <% else %>

@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @organizatoin = Organization.find(params[:id])
-    @membership = Membership.new
+    @affiliation = Affiliation.new
   end
 
   # POST /organizations

@@ -2,7 +2,10 @@ class MembershipsController < ApplicationController
 	before_action :set_membership, only: [:destroy]
 
   def create
+
     @membership = Membership.new(membership_params)
+    @membership.organization_id = params[:organization_id]
+    @membership.individual_id = params[:individual_id]
     if @membership.save!
       # if saved to database
       org = Organization.find(@membership.organization_id)
@@ -85,7 +88,7 @@ class MembershipsController < ApplicationController
     end
 
     def membership_params
-    	params.require(:membership).permit(:organization_id, :individual_id)
+    	params.fetch(:membership, {}).permit(:organization_id, :individual_id)
   	end
 
 end

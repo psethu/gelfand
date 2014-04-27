@@ -17,7 +17,7 @@
                        - searched this in Google "image appear link_to next to rails"
                    -->
                      <td class ="OrgMembers"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove this member?")}".html_safe, mem, method: :delete %></td>
-                <td><%= check_box_tag "membership_ids[]", mem.id %> </td>
+                     <td><%= check_box_tag "membership_ids[]", mem.id %> </td>
                   <% end %>
               </tr>
             <% end %>
@@ -28,11 +28,11 @@
                 <td></td>
               <td>
                   <%= submit_tag "Delete all", :name => "#{@organization.id}", :class => "formDeleteButton" %>
-
+<% end %>
               </td>
             </tr>
         </tbody>
-<% end %>
+
 
 <!-- Indivs NOT part of Org -->
     <!-- no need to define method here because forms always default to POST -->
@@ -49,8 +49,15 @@
                 <td><%= indiv.l_name %>, <%= indiv.f_name %></td>
                 <td><%= indiv.role %></td>
                 <td class ="OrgMembers"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(indiv) %></td>
-                <td></td>
-                <td><%= check_box_tag "indiv_ids[]", indiv.id %> </td>
+
+                  <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                       <td class ="OrgMembers">
+                        <%= link_to "#{image_tag('add_icon.jpg', size: "20x20", alt: "Add this individual?")}".html_safe, 
+                           {:controller => "memberships", :action => "create", 
+                            :organization_id => @organization.id, :individual_id => indiv.id }, method: :post %>
+                      </td>
+                      <td><%= check_box_tag "indiv_ids[]", indiv.id %> </td>
+                  <% end %>
               </tr>
               <% end %>
               

@@ -5,12 +5,23 @@ Gelfand::Application.routes.draw do
 
   resources :organizations
 
-  resources :bg_checks
+  resources :bg_checks 
 
-  # need these 2 routes so do not receive GET or POST error for routes when creating an affiliation
+  # below is so I can add the 'delete_multiple' action and url along with the regular 7 we get from 
+    # "resources :memberships"
+  resources :memberships do
+    collection do
+      delete 'delete_multiple'
+      post 'multiple_new'
+    end
+  end
+
+    # need these 2 routes so do not receive GET or POST error for routes when creating an affiliation
   get 'affiliations', to: 'affiliations#index'
   post 'affiliations', to: 'affiliations#create'
 
+  # need this route so can delete an affiliation
+  delete 'affiliations/:id' => 'affiliations#destroy'
   
   # http://stackoverflow.com/questions/5631145/routing-to-static-html-page-in-public
   # I put 'gelfand_contact_page.html' file inside the public folder

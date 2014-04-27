@@ -13,7 +13,7 @@ class BgChecksController < ApplicationController
   def create
     
     @bg_check = BgCheck.new(bg_check_params)
-    if current_user.member?
+    if !current_user.admin?
       @bg_check.individual_id = current_user.individual_id 
     end
 
@@ -61,6 +61,6 @@ class BgChecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bg_check_params
-      params.require(:bg_check).permit(:date_requested, :status, :criminal_date, :child_abuse_date) 
+      params.require(:bg_check).permit(:date_requested, :status, :criminal_date, :child_abuse_date, :individual_id) 
     end
 end

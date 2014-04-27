@@ -1,25 +1,82 @@
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Active</th>
-      <th>Role</th>
-      <th></th>
 
-    </tr>
-  </thead>
+      <table>
+        <tbody>
+              <tr>
+                <td><h3>Members</h3></td>
+              </tr>
+<%= form_tag delete_multiple_memberships_path, method: :delete do %>
+            <% @organization.memberships.each do |mem| %>
+              <tr>
+                <td class ="tableData"><%= mem.individual.l_name %>, <%= mem.individual.f_name %></td>
+                <td class ="tableData"><%= mem.individual.role %></td>
 
-  <tbody>
-      <% @organization.get_all_individuals.each do |indiv| %>
-        <tr>
-          <td><%= indiv.f_name %></td>
-          <td><%= indiv.l_name %></td>
-          <td><%= indiv.active %></td>
-          <td><%= indiv.role %></td>
+                <td class ="tableData"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(mem.individual) %></td>
+                  <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                  <!-- For below "#{image_tag('remove.gif')} Remove"
+                      helpful link: http://stackoverflow.com/questions/5387122/link-to-image-tag-with-text-in-rails
+                       - searched this in Google "image appear link_to next to rails"
+                   -->
+                     <td class ="tableData"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove this member?")}".html_safe, mem, method: :delete %></td>
+                     <td ><%= check_box_tag "membership_ids[]", mem.id %> </td>
+                  <% end %>
+              </tr>
+            <% end %>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+          <% if current_user.is_orgUser_for_specific_org(@organization) %>
+              <td>
+                  <%= submit_tag "Delete all", :name => "#{@organization.id}", :class => "formDeleteButton" %>
+              </td>
+          <% end %>
+<% end %>
 
-          <td><%= link_to 'Show', individual_path(indiv) %></td>
-        </tr>
-      <% end %>
-  </tbody>
-</table>
+            </tr>
+        </tbody>
+
+
+<!-- Indivs NOT part of Org -->
+    <!-- no need to define method here because forms always default to POST -->
+
+        <tbody>
+              <tr>
+                <td>
+                <h3>Non-Members</h3>
+                </td>
+              </tr>
+<%= form_tag multiple_new_memberships_path do %>
+            <% @organization.indivs_not_already_part_of_org.each do |indiv| %>
+              <tr>
+                <td class ="tableData"><%= indiv.l_name %>, <%= indiv.f_name %></td>
+                <td class ="tableData"><%= indiv.role %></td>
+                <td class ="tableData"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(indiv) %></td>
+
+                  <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                       <td class ="tableData">
+                        <%= link_to "#{image_tag('add_icon.jpg', size: "20x20", alt: "Add this individual?")}".html_safe, 
+                           {:controller => "memberships", :action => "create", 
+                            :organization_id => @organization.id, :individual_id => indiv.id }, method: :post %>
+                      </td>
+                      <td><%= check_box_tag "indiv_ids[]", indiv.id %> </td>
+                  <% end %>
+              </tr>
+              <% end %>
+              
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                    <td>    <%= submit_tag "Add all", :name => "#{@organization.id}", :id => "addingFormButton", :class => "button" %>
+                    </td>
+            <% end %>
+              </tr>
+        </tbody>
+<% end %>
+      
+      </table>
+      <br>
+

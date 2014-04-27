@@ -16,6 +16,7 @@ table thead tr th{
 
 
 table {
+	margin:10px 0 0 0;
 	position:relative; 
 	border: 1px solid gray;
 }
@@ -25,7 +26,13 @@ table tbody tr td a:hover {
 	color: black;
 }
 
-.Org_Show_LeftContent {
+.OrgShow_title {
+	margin: 5px;
+	font-size: 26px;
+	font-weight: bold;
+}
+
+.Org_Show_Content {
 	padding: 5px 5px 10px 20px;
 	border: 3px solid gray;
 }
@@ -149,12 +156,6 @@ ul.my_memberships_list li a
 	margin-top: 15%;
 }
 
-.quickAddFormTitle {
-	font-size: 22px;
-	margin: 0px 20px 10px -20px;
-
-}
-
 #formDeleteButton {
 	border-radius: 5px;
 	color: white;
@@ -167,9 +168,9 @@ To get a cool button:
 http://www.usabilitypost.com/2012/01/10/pressed-button-state-with-css3/#
 */
 .formDeleteButton {
+	z-index: 1;
 	position: relative;
-	left: 150px;
-	bottom: 40px;
+
 
     padding: 10px 15px;
     margin: 0px;
@@ -208,3 +209,4 @@ http://www.usabilitypost.com/2012/01/10/pressed-button-state-with-css3/#
     background: #B8B8B8 ;
     border: solid 2px #330000;
 }
+

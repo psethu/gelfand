@@ -23,11 +23,11 @@
 
   <br>
   <br>
-  <div class="Org_Show_LeftContent">
+  <div class="Org_Show_Content">
       <% if @organization.memberships.empty? %>
                <h3> Currently there are no members.</h3>
       <% else %>
-              <h3>Members</h3>
+              <div class="OrgShow_title">Manage</div>
               <%= render 'indivs_for_an_org' %>
       <% end %>
   </div>
@@ -40,10 +40,11 @@
 </div>
 
 <div class="small-4 columns addMemberPartOfOrgShowPage">
-      <div class = "quickAddFormTitle"> Add an individual: </div>
           <% unless @organization.indivs_not_already_part_of_org.empty? %>
               <% if current_user.is_orgUser_for_specific_org(@organization) %>
-                  <!-- do something-->
+                <div class="Org_Show_Content">
+                                <h3>Programs</h3>
+                </div>
               <% end %>
           <% else %>
               <h5> No more available individuals to add. </h5>

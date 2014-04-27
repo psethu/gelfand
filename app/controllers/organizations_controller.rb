@@ -28,7 +28,7 @@ class OrganizationsController < ApplicationController
 
                 # On default create a membership to the OrgUser/Admin/person_that_created_the_org
                 @membership = Membership.new
-                @membership.individual_id = current_user.individual_id
+                @membership.individual_id = current_user.individual.id
                 @membership.organization_id = @organization.id
                 @membership.save
 

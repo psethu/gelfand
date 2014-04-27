@@ -14,7 +14,7 @@ class Individual < ActiveRecord::Base
     validates :f_name, :presence => true
     validates :l_name, :presence => true
 
-    #TBD by future ERD
+    # TBD by future ERD
     validates :role, :presence => true, :numericality => {:only_integer => true, :less_than_or_equal_to => 2, :greater_than_or_equal_to => 0}
 
 
@@ -31,6 +31,10 @@ class Individual < ActiveRecord::Base
     scope :faculty, -> { where(role: 1) }
     scope :off_campus, -> { where(role: 2) }
     scope :inactive, -> { where(active: false) }
+
+    # Select Lists
+    # -------
+    ROLES_LIST = [["Student", 0],["Staff",1],["Faculty",2]]
 
     # Class Methods
     # -------------

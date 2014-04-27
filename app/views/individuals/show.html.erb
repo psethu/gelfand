@@ -5,8 +5,8 @@
         <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
         <ul class="side-nav">
             <% if can? :update, @individual %>
-                <li><%= link_to 'Edit', edit_individual_path(@individual) %></li>
-                <li><a href="/users/password/new">Change Password</a></li>
+                <li><%= link_to 'Edit Information', edit_individual_path(@individual) %></li>
+                <li><%= link_to 'Change password', edit_user_registration_path %></li>
             <% end %>
         </ul>
     </div>
@@ -14,25 +14,46 @@
         
         <p id="notice"><%= notice %></p>
         <h1>Account Information</h1>
-        <p>
-          <strong>Name: </strong>
-          <%= @individual.proper_name %>
-        </p>
+    
+        <div class="indiv_show_OuterDiv">
+            <h4>General</h4>
+        
+            <div class="indiv_show_SpecificCell">
+              <strong>First Name: </strong>
+              <%= @individual.f_name %>
+            </div>
 
-        <p>
-          <strong>Active:</strong>
-          <%= @individual.active ? "Yes" : "No"%>
-        </p>
+            <div class="indiv_show_SpecificCell">
+              <strong>Last Name: </strong>
+              <%= @individual.l_name %>
+            </div>
 
+            <div class="indiv_show_SpecificCell">
+              <strong>Preferred Name: </strong>
+              ?
+            </div>
+
+
+
+            <div class="indiv_show_Contact">
+                <h4>Contact</h4>
+                    5000 Forbes Avenue <br> Pittsburgh, PA 15289<br>
+                    -- This is a test address --
+
+            </div>
+
+        </div>
 
     
-    <% if !@individual.bg_check.nil?%>
-        <%= link_to 'My Background Check', bg_check_path(@individual.bg_check.id), :class => "button" %>
-    <%else%>
-        <%= link_to 'Start Background Check', new_bg_check_path, :class => "button" %>
-    <%end%>
 
+        <% if current_user && current_user.member%>
+            <% unless @individual.bg_check.nil? %>
+                <%= link_to 'My Background Check', bg_check_path(@individual.bg_check.id), :class => "button" %>
+            <%else%>
+                <%= link_to 'Start Background Check', new_bg_check_path, :class => "button" %>
+            <%end%>
 
+        <% end %>
     </div>
 
 </div>

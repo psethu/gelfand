@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$height_Main_content: 500px;
+$height_Main_content: auto;
 
 th{
 	background-color: sienna;
@@ -29,7 +29,7 @@ table thead tr th{
 
 table {
 	position:relative; 
-	border: 3px solid gray;
+
 	margin-right: 15px;
 	margin-left:30px;
 	margin-bottom: 10px;
@@ -68,4 +68,32 @@ table {
 .side-nav li:hover,
 .side-nav li a:hover{
 	background-color: #060;
+}
+
+.indiv_show_OuterDiv {
+	margin: 10px;
+	padding: 0px;
+	height: 250px;
+
+
+}
+
+.indiv_show_SpecificCell {
+	margin: 5px 100px 0px 0px;
+	padding: 0px;
+	height:50px;
+	width:20%;
+	float: left;
+	font-size: 16px;
+	font-family:Tahoma;
+}
+
+.indiv_show_Contact {
+	margin: 5px 100px 0px 0px;
+	padding: 0px;
+	height:100px;
+	font-size: 16px;
+	font-family:Tahoma;
+	float:left;
+
 }

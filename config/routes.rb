@@ -16,10 +16,12 @@ Gelfand::Application.routes.draw do
     end
   end
 
-  # need these 2 routes so do not receive GET or POST error for routes when creating an affiliation
+    # need these 2 routes so do not receive GET or POST error for routes when creating an affiliation
   get 'affiliations', to: 'affiliations#index'
   post 'affiliations', to: 'affiliations#create'
 
+  # need this route so can delete an affiliation
+  delete 'affiliations/:id' => 'affiliations#destroy'
   
   # http://stackoverflow.com/questions/5631145/routing-to-static-html-page-in-public
   # I put 'gelfand_contact_page.html' file inside the public folder

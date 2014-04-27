@@ -24,6 +24,20 @@ class AffiliationsController < ApplicationController
     end
   end
 
+  # DELETE
+  # DELETE
+  def destroy
+    org_id = params[:organization_id]
+    @affiliation = Affiliation.find(:first, 
+                          :conditions => [ "organization_id = ? AND program_id = ?", org_id, params[:program_id]]) 
+
+    @affiliation.destroy
+    respond_to do |format|
+      format.html { redirect_to organization_path(org_id) }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
   def affiliation_params

@@ -13,11 +13,14 @@
   <%= f.password_field :password_confirmation %></div>
 
   <%= f.fields_for :individual do |individual_form| %>
-    <h2><%= individual_form.label :f_name %></h2>
+    <h2><%= individual_form.label :first_name %></h2>
     <p><%= individual_form.text_field :f_name %></p>
 
-    <h2><%= individual_form.label :l_name %></h2>
+    <h2><%= individual_form.label :last_name %></h2>
     <p><%= individual_form.text_field :l_name %></p>
+
+    <h2><%= individual_form.label :role %></h2>
+    <p><%= individual_form.select(:role, Individual::ROLES_LIST) %></p>
   <% end %>
 
   <div><%= f.submit "Sign up" %></div>

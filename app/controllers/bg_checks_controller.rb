@@ -14,7 +14,7 @@ class BgChecksController < ApplicationController
     
     @bg_check = BgCheck.new(bg_check_params)
     if !current_user.admin?
-      @bg_check.individual_id = current_user.individual_id 
+      @bg_check.individual_id = current_user.individual.id 
     end
 
     respond_to do |format|

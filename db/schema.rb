@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(version: 20140427194158) do
     t.string   "f_name"
     t.string   "l_name"
     t.boolean  "active"
-    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "role"
+    t.integer  "contact_id"
     t.integer  "user_id"
   end
 
@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 20140427194158) do
     t.text     "description"
     t.boolean  "active"
     t.string   "department"
-    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contact_id"
   end
 
   create_table "participants", force: true do |t|
@@ -100,9 +100,9 @@ ActiveRecord::Schema.define(version: 20140427194158) do
     t.integer  "num_minors"
     t.integer  "num_adults_supervising"
     t.integer  "irb_approval"
-    t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contact_id"
   end
 
   create_table "users", force: true do |t|

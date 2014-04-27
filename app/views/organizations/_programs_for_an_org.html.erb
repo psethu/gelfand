@@ -2,7 +2,7 @@
 <tbody>
 	<tr><td>  <%= render 'quick_affiliate_program_on_Org_Show_page' %> </td></tr>
 	    <% @organization.affiliated_progs.each do |prog| %>
-	    		<tr> <td> <%= link_to prog.name, program_path(prog) %> </td> </tr>
+	    		<tr > <td> <%= link_to prog.name, program_path(prog) %> </td> </tr>
 	    <% end %>
 </tbody>
 </table>

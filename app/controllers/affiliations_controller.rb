@@ -10,7 +10,14 @@ class AffiliationsController < ApplicationController
       # if saved to database
       org_name = Organization.find(@affiliation.organization_id).name
       flash[:notice] = "Successfully created affiliation with #{org_name}."
-      redirect_to program_path(@affiliation.program_id) # go to show program page
+      
+      # if there is a key 'fromOrgShowPage' in the params, then redirect to org_show page
+        # else show program page
+          if !params["fromOrgShowPage"].nil?  
+            redirect_to organization_path(@affiliation.organization_id)
+          else
+            redirect_to program_path(@affiliation.program_id)
+        end
     else
       # return to the 'new' form
       render :action => 'new'

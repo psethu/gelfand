@@ -1,6 +1,0 @@
-<%= simple_form_for @membership, :html => { :class => 'form', :method => 'post'} do |f| %>	
-		
-		<%= f.input :individual_id,  :label => false, :collection => @organization.indivs_not_already_part_of_org %>
-		<%= f.input :organization_id, :as => :hidden, :input_html => { :value => @organization.id } %>
-		 <%= f.button :submit, :value => "Add member", :class => "addingFormButton" %>
-<% end %>

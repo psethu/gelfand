@@ -12,6 +12,7 @@ Gelfand::Application.routes.draw do
   resources :memberships do
     collection do
       delete 'delete_multiple'
+      post 'multiple_new'
     end
   end
 

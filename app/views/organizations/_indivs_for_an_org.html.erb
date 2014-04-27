@@ -1,4 +1,4 @@
-<%= form_tag delete_multiple_memberships_path, method: :delete do %>
+
       <table>
         <thead>
           <tr>
@@ -7,7 +7,7 @@
             <th>Role</th>
           </tr>
         </thead>
-
+<%= form_tag delete_multiple_memberships_path, method: :delete do %>
         <tbody>
             <% @organization.memberships.each do |mem| %>
               <tr>
@@ -26,8 +26,25 @@
               </tr>
             <% end %>
         </tbody>
-      </table>
-      <br>
     <%= submit_tag "Delete selected", :class => "formDeleteButton" %>
 <% end %>
-    
+
+<!-- Indivs NOT part of Org -->
+    <!-- no need to define method here because forms always default to POST -->
+<%= form_tag multiple_new_memberships_path do %>
+        <tbody>
+            <% @organization.indivs_not_already_part_of_org.each do |indiv| %>
+              <tr>
+                <td><%= indiv.l_name %>, <%= indiv.f_name %></td>
+                <td><%= indiv.role %></td>
+                <td class ="OrgMembers"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(indiv) %></td>
+                <td><%= check_box_tag "indiv_ids[]", indiv.id %> </td>
+              </tr>
+              <% end %>
+        </tbody>
+    <%= submit_tag "Add selected", :name => "#{@organization.id}", :class => "addingFormButton" %>
+<% end %>
+      
+      </table>
+      <br>
+

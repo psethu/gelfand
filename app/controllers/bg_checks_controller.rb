@@ -20,7 +20,7 @@ class BgChecksController < ApplicationController
     respond_to do |format|
       if @bg_check.save
 
-        format.html { redirect_to @bg_checks, notice: 'Bg check was successfully created.' }
+        format.html { redirect_to bg_checks_path, notice: 'Bg check was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bg_check }
       else
         format.html { render action: 'new' }

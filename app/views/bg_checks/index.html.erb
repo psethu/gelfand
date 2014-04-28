@@ -13,7 +13,7 @@
     <br />
   </div>
   <div class="small-10 columns rightContent">
-    
+    <p id="notice"><%= notice %></p>
     <%if current_user.admin?%>
       <h1>Listing Background Checks</h1>
 
@@ -27,7 +27,6 @@
 
             <th></th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
 
@@ -38,8 +37,6 @@
               <td><%= bg_check.format_status %></td>
               <td><%= bg_check.criminal_date %></td>
               <td><%= bg_check.child_abuse_date %></td>
-
-              <td><%= link_to 'Show', bg_check %></td>
               <td><%= link_to 'Edit', edit_bg_check_path(bg_check) %></td>
               <td><%= link_to 'Destroy', bg_check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>

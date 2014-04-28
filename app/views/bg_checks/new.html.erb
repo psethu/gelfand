@@ -3,7 +3,7 @@
         <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
      <ul class="side-nav">
       <%if current_user.admin?%>
-        <li><%= link_to 'New Check', new_bg_check_path %> </li>
+        <li><%= link_to 'New Background Check', new_bg_check_path %> </li>
         <li><%= link_to 'Back', bg_checks_path %></li>
       <%else%>
         <li><a href="#">Overview</a></li>

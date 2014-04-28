@@ -1,6 +1,15 @@
-<h1>Editing bg_check</h1>
+<div class="row">
+    <div class="small-2 columns leftNav">
+        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+        <ul class="side-nav">
+            <li><%= link_to 'Back', bg_checks_path %></li>
+        </ul>
+    </div>
+    <div class="small-10 columns rightContent">
+    <h1>Editing Background Check for <%=@bg_check.individual.proper_name%></h1>
 
-<%= render 'form' %>
+    <%= render 'form' %>
 
-<%= link_to 'Show', @bg_check %> |
-<%= link_to 'Back', bg_checks_path %>
+    
+    </div>
+</div>

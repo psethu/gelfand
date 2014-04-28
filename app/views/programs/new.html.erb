@@ -1,10 +1,22 @@
 
+
+	
 <div class="row">
-	<h1>New program</h1>
-</div>		
-	<%= render 'form' %>
-<div class ="row">
+	<div class="small-2 columns leftNav">
+		<img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
 
-		<%= link_to 'Back', programs_path %>
+		<ul class="side-nav">
+			<!-- want to start calling Individuals "People" in the views from now on -->
+			<li><%= link_to 'People', individuals_path %></li>
+			<li><%= link_to 'Organizations', organizations_path %></li>
+			<li><%= link_to 'Back', programs_path %></li>
+		</ul>
 
+	</div>
+
+	<div class="small-10 columns rightContent">
+		<h1>New Program</h1>
+		<%= render 'form' %>
+	</div>
+	
 </div>

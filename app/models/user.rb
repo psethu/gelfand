@@ -4,10 +4,9 @@ class User < ActiveRecord::Base
     # ------------- 
     has_many :org_users
     has_many :organizations, through: :org_users
-    belongs_to :individual
+    has_one :individual
+    accepts_nested_attributes_for :individual
 
-    # The below scope probably unecessary but could be useful in future
-    # scope :for_individual, lambda {|individual_id| where("individiual_id = ?", individual_id) }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -47,7 +46,7 @@ class User < ActiveRecord::Base
 
   # get all memberships for a user (Whether the user is a regular User or OrgUser)
   def get_all_memberships
-      Membership.for_individual(self.individual_id)
+      Membership.for_individual(self.individual.id)
   end
 
 

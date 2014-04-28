@@ -30,11 +30,11 @@ can accepts 2 arguments
           end
 
           can :update, Individual do |i|
-            i.id == user.individual_id
+            i.id == user.individual.id
           end
           
           can :show, Individual do |i|
-            i.id == user.individual_id
+            i.id == user.individual.id
           end
 
           can :show, BgCheck do |b|

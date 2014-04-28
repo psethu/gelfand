@@ -4,8 +4,8 @@
         
         <ul class="side-nav">
             <li><%= link_to 'Add a Program', new_program_path %> </li>
-            <li><%= link_to 'View Completed Programs', programs_path %> </li>
-            <li><%= link_to 'People Pending Background Checks', programs_path %></li>
+            <li><%= link_to 'Completed Programs', programs_path %></li>
+            <li><%= link_to 'All Programs', programs_path %></li>
         </ul> 
     
         <br />
@@ -14,14 +14,54 @@
 
     <div id="leftProgramContainer" class="small-4 columns rightContent">
         <div class="row text-center progListHead">Upcoming Programs</div>
+        <br />
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>People Pending Clearance</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @upcoming_progs.order('start_date ASC').each do |prog| %>
+                    <tr>
+                        <td><%= link_to prog.name, prog %></td>
+                        <td><%= prog.start_date.strftime("%m/%d/%y") %></td>
+                        <td><%= prog.num_individuals_without_bg_check %></td>
+                        <td><%= "Contact Email" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
     </div>
 
-    <div id="divider" class="small-2 columns">
-
-    </div>
-
-    <div id="rightProgramContainer" class="small-4 columns rightContent">
+    <div id="rightProgramContainer" class="small-4 small-offset-2 columns rightContent">
         <div class="row text-center progListHead">Ongoing Programs</div>
+        <br />
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>End Date</th>
+                    <th>Cleared Workers</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @in_progress.order('end_date ASC').each do |prog| %>
+                    <tr>
+                        <td><%= link_to prog.name, prog %></td>
+                        <td><%= prog.end_date.strftime("%m/%d/%y") %></td>
+                        <td><%= prog.num_cleared_participations %></td>
+                        <td><%= "Contact Email" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
     </div>
 </div>
 

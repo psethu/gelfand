@@ -11,6 +11,8 @@ end
   # GET /programs.json
   def index
     @programs = Program.all
+    @upcoming_progs = Program.upcoming
+    @in_progress = Program.current
   end
 
   def show

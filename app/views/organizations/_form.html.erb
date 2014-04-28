@@ -16,17 +16,14 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :is_partner %>
-    <%= f.check_box :is_partner %>
+    <%= f.label :is_partner, "Are you a Carnegie Mellon University organization? (This includes faculty projects and student organizations)." %>
+    <%= f.select :is_partner, [['Yes', false],['No',true]] %>
   </div>
   <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :active %>
-    <%= f.check_box :active %>
-  </div>
+    <%= f.hidden_field :active, :value => true %>
   <div class="field">
     <%= f.label :department %>
     <%= f.text_field :department %>

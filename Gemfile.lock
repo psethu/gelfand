@@ -72,7 +72,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
-    mysql2 (0.3.15)
+    mysql2 (0.3.11-x86-mingw32)
     nested_form (0.3.2)
     orm_adapter (0.5.0)
     polyglot (0.3.4)

@@ -16,7 +16,7 @@
                       helpful link: http://stackoverflow.com/questions/5387122/link-to-image-tag-with-text-in-rails
                        - searched this in Google "image appear link_to next to rails"
                    -->
-                     <td class ="tableData"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove this member?")}".html_safe, mem, method: :delete %></td>
+                     <td class ="tableData"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove this member?")}".html_safe, mem, method: :delete,  :data => { :confirm => "Are you sure?" } %></td>
                      <td ><%= check_box_tag "membership_ids[]", mem.id %> </td>
                   <% end %>
               </tr>
@@ -28,7 +28,7 @@
                 <td></td>
           <% if current_user.is_orgUser_for_specific_org(@organization) %>
               <td>
-                  <%= submit_tag "Delete all", :name => "#{@organization.id}", :class => "formDeleteButton" %>
+                  <%= submit_tag "Delete all",  :name => "#{@organization.id}", :class => "formDeleteButton" %>
               </td>
           <% end %>
 <% end %>

@@ -28,6 +28,19 @@
             <div class="row text-center">
                 <i><%= @program.description %></i>
             </div>
+
+            <div class="row">
+                <h3>Participating Members</h3>
+                <% if @program.cleared_participants.empty? %>
+                    There is no one assigned to this program.
+                <% else %>
+                    <% @program.cleared_participants.each do |ind| %>
+                        <%= link_to ind.name, ind %> <br>
+                    <% end %>
+                <% end %>
+                <br />
+                <%= link_to "See all members...", "#{@program.id}/individuals_list" %>
+            </div>
             
             <div class="row">
                 <h3>Affiliated Organizations</h3>
@@ -41,17 +54,6 @@
                     <% end %>
                 <% end %>
                 <br />
-            </div>
-
-            <div class="row">
-                <h3>Participating People</h3>
-                <% if @program.participants.empty? %>
-                    There is no one assigned to this program.
-                <% else %>
-                    <% @program.individuals.each do |ind| %>
-                        <%= link_to ind.name, ind %> <br>
-                    <% end %>
-                <% end %>
             </div>
             <p>
               <strong>Cmu facilities:</strong>

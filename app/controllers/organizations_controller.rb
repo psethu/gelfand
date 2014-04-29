@@ -65,6 +65,32 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def send_sign_up_notice
+    @orgMailer = OrganizationMailer.new(params[:organization_mailer])
+
+    # making the temporary membership when an Admin user enters in an email
+    #---------------------------------------------------------------------
+        org_id = params[:organization_id]
+        @membership = Membership.new
+        @membership.organization_id = org_id
+            # making the indiv for the temp membership
+            @indiv = Individual.new
+            @indiv.f_name = @orgMailer.email
+            @indiv.l_name = " s" 
+            @indiv.role = 0
+            @indiv.save
+        @membership.individual_id = @indiv.id
+        @membership.save
+    #---------------------------------------------------------------------
+
+    if @orgMailer.deliver
+      redirect_to organizations_path org_id, notice: 'Message sent'
+    else
+      redirect_to organizations_path org_id
+      flash.now[:error] = 'Cannot send message.'
+    end
+  end  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_organization

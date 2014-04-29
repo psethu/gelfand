@@ -23,8 +23,8 @@ Gelfand::Application.routes.draw do
   # need this route so can delete an affiliation
   delete 'affiliations/:id' => 'affiliations#destroy'
   
-  # http://stackoverflow.com/questions/5631145/routing-to-static-html-page-in-public
-  # I put 'gelfand_contact_page.html' file inside the public folder
+  # this route is for the form in Org show page
+  match '/organization_mailers',     to: 'organizations#send_sign_up_notice',  via: 'post'
 
   match '/mailers',     to: 'mailers#new',             via: 'get'
   resources "mailers", only: [:new, :create]

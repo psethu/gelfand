@@ -6,7 +6,6 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     @organizations = Organization.alphabetical
-    render 'index', :layout => "application2"
   end
 
   def show

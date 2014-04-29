@@ -1,6 +1,9 @@
-<h1>Editing bg_check</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @bg_check %> |
-<%= link_to 'Back', bg_checks_path %>
+<div class="row" data-equalizer>
+    <div class="small-2 columns leftNav" data-equalizer-watch>
+        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+    </div>
+    <div class="small-10 columns rightContent" data-equalizer-watch>
+        <h1>Updating <%= @bg_check.humanize_name %>'s Background Check</h1>
+        <%= render 'form' %>
+    </div>
+</div>

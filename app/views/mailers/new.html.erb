@@ -4,15 +4,26 @@
         <ul class="side-nav">
   </div>
   <div class="small-10 columns rightContent">
-    <div align="center">
-      <h3>Send A message to Us</h3>
+    <h3>Send us a message</h3>
+    <div align="left">
+      
 
       <%= simple_form_for @mailer, :html => {:class => 'form-horizontal' } do |f| %>
-        <%= f.input :name, :required => true %>
-        <%= f.input :email, :required => true %>
-        <%= f.input :message, :as => :text, :required => true %>
-        <div class="hidden">
-          <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+        <div class="row">
+          <div class="small-6 columns">
+            <%= f.input :name, :required => true, :input_html => {:value => current_user.individual.proper_name }%>
+          </div>
+          <div class="small-6 columns" id="email">
+            <%= f.input :email, :required => true, :input_html => {:value => current_user.email } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= f.input :message, :as => :text, :required => true, :input_html => {class: 'message', :rows => 10} %>
+            <div class="hidden">
+              <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+            </div>
+          </div>
         </div>
         <div>
           </br>

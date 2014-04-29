@@ -53,6 +53,11 @@ $(document).ready(function(){
         });
     }
   });
+
+  //code to fade out alert boxes
+  $('.alert-box').fadeIn('normal', function() {
+      $(this).delay(1500).fadeOut();
+   });
   
 });
 

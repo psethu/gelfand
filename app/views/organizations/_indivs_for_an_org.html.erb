@@ -39,28 +39,28 @@
 
 <!-- Indivs NOT part of Org -->
     <!-- no need to define method here because forms always default to POST -->
+    <% if (current_user.admin || current_user.is_orgUser_for_specific_org(@organization)) %>
+            <tbody>
+                <tr><td class="OrgShowAddMemForm">
+                    <%= simple_form_for OrganizationMailer.new, :html => {:class => 'form-horizontal' } do |f| %>
 
-        <tbody>
-            <tr><td class="OrgShowAddMemForm">
-                <%= simple_form_for OrganizationMailer.new, :html => {:class => 'form-horizontal' } do |f| %>
-
-                  <%= f.input :email, :required => true %>
-                  <div class="hidden">
-                    <%= f.input :nickname, :hint => 'Leave this field blank!' %>
-                  </div>
-                  <div class="hidden">
-                    <%= f.input :org_name, :input_html => { :value => @organization.name } %>
-                  </div>
-                  
-                  <%= hidden_field_tag :organization_id, @organization.id %>
-                  <div>
-                    </br>
-                    <%= f.button :submit, 'Add Temp', :class => "button", :id=> "addingFormButton" %>
-                  </div>
-                <% end %>
-          </td></tr>
-      </tbody>
-
+                      <%= f.input :email, :required => true %>
+                      <div class="hidden">
+                        <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+                      </div>
+                      <div class="hidden">
+                        <%= f.input :org_name, :input_html => { :value => @organization.name } %>
+                      </div>
+                      
+                      <%= hidden_field_tag :organization_id, @organization.id %>
+                      <div>
+                        </br>
+                        <%= f.button :submit, 'Add Temp', :class => "button", :id=> "addingFormButton" %>
+                      </div>
+                    <% end %>
+              </td></tr>
+          </tbody>
+    <% end %>
 </table>
       <br>
 

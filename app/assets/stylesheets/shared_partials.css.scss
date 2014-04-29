@@ -176,18 +176,13 @@ nav .name:hover{
   font-weight: bold;
 }
 
-.footer { 
-  background-color: #00824a;
+.footer, .footer a { 
+  //background-color: #00824a;
+  background-color: #464646;
+  line-height:22px;
   font-size: 14px;
   text-align:center;
   height:50px;
   padding: 5px;
-}
-
-.footer a {
-  color: white
-}
-
-.footer p {
-  color: white
+  color: #D8D9DA;
 }

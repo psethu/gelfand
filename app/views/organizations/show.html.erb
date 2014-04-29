@@ -1,25 +1,34 @@
 <div class="row" data-equalizer>
   <div class="small-2 columns leftNav" data-equalizer-watch>
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-
+      <ul class="side-nav">
+        <li><%= link_to 'Create a Program', new_program_path %></li>
+        <li><%= link_to 'Edit Org', edit_organization_path(@organization) %></li>
+        <li><%= link_to 'Back', organizations_path %></li>
+      </ul>
   </div>
   <div class="small-6 columns rightContent" data-equalizer-watch>
 
   <h1>  <%= @organization.name %></h1>
 
   <strong>Is partner:</strong>
-  <%= @organization.is_partner %>
+  <%= @organization.is_partner ? "Yes" : "No" %>,
+
+  <strong>Active:</strong>
+  <%= @organization.active ? "Yes" : "No"%>,
+
+  <strong>Department:</strong>
+  <%= @organization.department %>,
+
+  <strong>Number of Members:</strong> 
+  <%=  @organization.memberships.size %>
+
+  <br><br>
 
   <strong>Description:</strong>
   <%= @organization.description %>
 
-  <strong>Active:</strong>
-  <%= @organization.active %>
-
-  <strong>Department:</strong>
-  <%= @organization.department %>
-
-          <strong>    Members: </strong> <%=  @organization.memberships.size %> 
+           
 
   <br>
   <br>
@@ -34,22 +43,21 @@
 <br>
 <br>
 
-<%= link_to 'Edit Org', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
 
 </div>
 
+<<<<<<< HEAD
+<div class="small-4 columns addProgramPartOfOrgShowPage">
+=======
 <div class="small-4 columns addMemberPartOfOrgShowPage" data-equalizer-watch>
           <% unless @organization.indivs_not_already_part_of_org.empty? %>
+>>>>>>> upstream/master
               <% if current_user.is_orgUser_for_specific_org(@organization) %>
                 <div class="Org_Show_Content">
                         <h3>Programs</h3>
                         <%= render 'programs_for_an_org' %>
                 </div>
               <% end %>
-          <% else %>
-              <h5> No more available individuals to add. </h5>
-          <% end %>
 
 
 </div>

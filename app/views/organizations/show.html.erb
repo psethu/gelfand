@@ -1,9 +1,9 @@
-<div class="row">
-  <div class="small-2 columns leftNav">
+<div class="row" data-equalizer>
+  <div class="small-2 columns leftNav" data-equalizer-watch>
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
 
   </div>
-  <div class="small-6 columns rightContent">
+  <div class="small-6 columns rightContent" data-equalizer-watch>
 
   <h1>  <%= @organization.name %></h1>
 
@@ -39,7 +39,7 @@
 
 </div>
 
-<div class="small-4 columns addMemberPartOfOrgShowPage">
+<div class="small-4 columns addMemberPartOfOrgShowPage" data-equalizer-watch>
           <% unless @organization.indivs_not_already_part_of_org.empty? %>
               <% if current_user.is_orgUser_for_specific_org(@organization) %>
                 <div class="Org_Show_Content">

@@ -38,27 +38,12 @@
         </div>  
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="dates">
       <div class="small-6 columns">
-        <div class="field">
-          <%= f.label :criminal_date %><br>
-          <!--<input type="text" class="datepicker">-->
-
           <%= f.input :criminal_date, :label => "Criminal Date", :as => :string, :input_html => {:class => "datepicker"} %>   
-          <%#= f.date_select :criminal_date, {:include_blank => true, :default => nil} %>
-        </div>
       </div>
       <div class="small-6 columns">
-        <div class="field">
-          <%= f.label :child_abuse_date %><br>
-          <%= f.date_select :child_abuse_date, {:include_blank => true, :default => nil} %>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="field">
-        <%= f.label :individual %><br>
-        <%= f.collection_select :individual_id, Individual.alphabetical,:id, :name %>
+          <%= f.input :child_abuse_date, :label => "Child Abuse Date", :as => :string, :input_html => {:class => "datepicker"} %>   
       </div>
     </div>
   <% elsif current_user.member?%>
@@ -66,11 +51,13 @@
   <% end %>
   <div class="row">
     <div class="actions">
-      <% if current_user.admin? %>
-        <%= f.submit :class => 'button'%>
-      <% else %>
-        <%= f.submit "Continue", :class => "button" %>
-      <% end %>
+      <div class="small-12 columns">
+        <% if current_user.admin? %>
+          <%= f.submit :class => 'button'%>
+        <% else %>
+          <%= f.submit "Continue", :class => "button" %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>

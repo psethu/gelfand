@@ -51,7 +51,11 @@
                       <div class="hidden">
                         <%= f.input :org_name, :input_html => { :value => @organization.name } %>
                       </div>
-                      
+                      <div class="hidden">
+                        <%= f.input :message, :input_html => { :value => 
+                          "You have been temporarily given a Membership to \"#{@organization.name}\". To officially be in the system, sign up at: http://gelfand-gelfand.rhcloud.com/users/sign_up"
+                         } %>
+                      </div>
                       <%= hidden_field_tag :organization_id, @organization.id %>
                       <div>
                         </br>

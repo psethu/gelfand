@@ -72,13 +72,14 @@ class OrganizationsController < ApplicationController
       # this is so dont have to add org_id to @mem in the if AND else clauses
       org_id = params[:organization_id]
       @membership.organization_id = org_id
+      # this is so can get the User from the passed in email from params hash
+      @user = User.find_by email: @orgMailer.email      
 
-          # get the indiv if exists so can do appropriate action below
-          @user = User.find_by email: @orgMailer.email
+      # send notice if no User exists, 
+      # if User exists make the Membership with existing Individual since if User exists, the
+          # connected Individual must also exist because this happens when signing up
+      if (!@user.nil?)
           @indiv = Individual.find_by user_id: @user.id
-      
-      # send notice if no indiv exists else just make the Membership with existing Individual
-      if (!@indiv.nil?)
            @membership.individual_id = @indiv.id
            if @membership.save
               redirect_to organization_path(org_id), notice: "Added member: #{@indiv.f_name}"

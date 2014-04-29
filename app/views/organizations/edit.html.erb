@@ -5,15 +5,17 @@
   </div>
 
   <div class="small-10 columns rightContent">
-		<h1>Editing organization</h1>
+		<h1>Editing: <%= @organization.name %> </h1>
 
 		<div class="org_form">
 			<%= render 'form' %>
 		</div>
 
+		<br>
+
 		<div class="orgs_actions">
-			<%= link_to 'Show', @organization %> |
-			<%= link_to 'Back', organizations_path %>
+			<%= link_to 'Back', @organization %> |
+			<%= link_to 'My orgs', organizations_path %>
 		</div>
 	</div>
 </div>

@@ -27,10 +27,10 @@
   </div>
 <br>
 <br>
-
-<%= link_to 'Edit Org', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
-
+    <div class="orgs_actions">  
+      <%= link_to 'Edit', edit_organization_path(@organization) %> |
+      <%= link_to 'My orgs', organizations_path %>
+    </div>
 </div>
 
 <div class="small-4 columns addMemberPartOfOrgShowPage">

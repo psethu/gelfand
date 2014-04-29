@@ -65,30 +65,48 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def send_sign_up_notice
-    @orgMailer = OrganizationMailer.new(params[:organization_mailer])
+  def send_sign_up_notice_if_no_indiv_exists
+      # doing stuff here so take care of redundant code
+      @orgMailer = OrganizationMailer.new(params[:organization_mailer])
+      @membership = Membership.new
+      # this is so dont have to add org_id to @mem in the if AND else clauses
+      org_id = params[:organization_id]
+      @membership.organization_id = org_id
 
-    # making the temporary membership when an Admin user enters in an email
-    #---------------------------------------------------------------------
-        org_id = params[:organization_id]
-        @membership = Membership.new
-        @membership.organization_id = org_id
-            # making the indiv for the temp membership
-            @indiv = Individual.new
-            @indiv.f_name = @orgMailer.email
-            @indiv.l_name = " s" 
-            @indiv.role = 0
-            @indiv.save
-        @membership.individual_id = @indiv.id
-        @membership.save
-    #---------------------------------------------------------------------
+          # get the indiv if exists so can do appropriate action below
+          @user = User.find_by email: @orgMailer.email
+          @indiv = Individual.find_by user_id: @user.id
+      
+      # send notice if no indiv exists else just make the Membership with existing Individual
+      if (!@indiv.nil?)
+           @membership.individual_id = @indiv.id
+           if @membership.save
+              redirect_to organization_path(org_id), notice: "Added member: #{@indiv.f_name}"
+           else
+              redirect_to organization_path(org_id)
+              flash.now[:error] = "Cannot add member: #{@indiv.f_name}."
+            end
+     
+      else
+            # making the temporary membership when an Admin user enters in an email
+            #---------------------------------------------------------------------
+                    # making the indiv for the temp membership
+                    @indiv = Individual.new
+                    @indiv.f_name = @orgMailer.email
+                    @indiv.l_name = " s" 
+                    @indiv.role = 0
+                    @indiv.save
+                @membership.individual_id = @indiv.id
+                @membership.save
+            #---------------------------------------------------------------------
 
-    if @orgMailer.deliver
-      redirect_to organization_path(org_id), notice: 'Message sent'
-    else
-      redirect_to organization_path(org_id)
-      flash.now[:error] = 'Cannot send message.'
-    end
+            if @orgMailer.deliver
+              redirect_to organization_path(org_id), notice: 'Message sent'
+            else
+              redirect_to organization_path(org_id)
+              flash.now[:error] = 'Cannot send message.'
+            end
+      end 
   end  
 
   private

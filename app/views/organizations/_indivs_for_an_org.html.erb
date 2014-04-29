@@ -41,42 +41,24 @@
     <!-- no need to define method here because forms always default to POST -->
 
         <tbody>
-              <tr>
-                <td>
-                <h3>Non-Members</h3>
-                </td>
-              </tr>
-<%= form_tag multiple_new_memberships_path do %>
-            <% @organization.indivs_not_already_part_of_org.each do |indiv| %>
-              <tr>
-                <td class ="tableData"><%= indiv.l_name %>, <%= indiv.f_name %></td>
-                <td class ="tableData"><%= indiv.role %></td>
-                <td class ="tableData"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(indiv) %></td>
+            <tr><td>
+      <%= simple_form_for OrganizationMailer.new, :html => {:class => 'form-horizontal' } do |f| %>
 
-                  <% if current_user.is_orgUser_for_specific_org(@organization) %>
-                       <td class ="tableData">
-                        <%= link_to "#{image_tag('add_icon.jpg', size: "20x20", alt: "Add this individual?")}".html_safe, 
-                           {:controller => "memberships", :action => "create", 
-                            :organization_id => @organization.id, :individual_id => indiv.id }, method: :post %>
-                      </td>
-                      <td><%= check_box_tag "indiv_ids[]", indiv.id %> </td>
-                  <% end %>
-              </tr>
-              <% end %>
-              
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            <% if current_user.is_orgUser_for_specific_org(@organization) %>
-                    <td>    <%= submit_tag "Add all", :name => "#{@organization.id}", :id => "addingFormButton", :class => "button" %>
-                    </td>
-            <% end %>
-              </tr>
-        </tbody>
-<% end %>
-      
-      </table>
+        <%= f.input :email, :required => true %>
+        <div class="hidden">
+          <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+        </div>
+        <div class="hidden">
+          <%= f.input :org_name, :input_html => { :value => @organization.name } %>
+        </div>
+        
+        <%= hidden_field_tag :organization_id, @organization.id %>
+        <div>
+          </br>
+          <%= f.button :submit, 'Send message', :class=> "button" %>
+        </div>
+      <% end %>
+          </td></tr>
+</table>
       <br>
 

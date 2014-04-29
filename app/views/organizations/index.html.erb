@@ -6,6 +6,7 @@
       <h1>Organization home</h1>
   <br>
     
+        
     <% if current_user.get_all_memberships.empty? %>
       Hi <%= current_user.get_first_name %>. <br>
       Currently you are not part of any Organizations and consequently programs. <br>

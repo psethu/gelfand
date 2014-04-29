@@ -84,8 +84,7 @@ class OrganizationsController < ApplicationController
            if @membership.save
               redirect_to organization_path(org_id), notice: "Added member: #{@indiv.f_name}"
            else
-              redirect_to organization_path(org_id)
-              flash.now[:error] = "Cannot add member: #{@indiv.f_name}."
+              redirect_to organization_path(org_id),  notice: "Cannot send notice."
             end
      
       else
@@ -102,10 +101,10 @@ class OrganizationsController < ApplicationController
             #---------------------------------------------------------------------
 
             if @orgMailer.deliver
-              redirect_to organization_path(org_id), notice: 'Message sent'
+              redirect_to organization_path(org_id), notice: "Notice sent to \"#{@orgMailer.email}\""
             else
               redirect_to organization_path(org_id)
-              flash.now[:error] = 'Cannot send message.'
+              flash.now[:error] = 'Cannot send notice.'
             end
       end 
   end  

@@ -42,7 +42,9 @@ gem 'hirb'
 #Validates_timeliness for date and time validations
 gem 'validates_timeliness'
 
-gem 'mysql2'
+group :production do
+	gem 'mysql2'
+end
 
 group :test do
 	gem 'factory_girl_rails', '4.2.1'

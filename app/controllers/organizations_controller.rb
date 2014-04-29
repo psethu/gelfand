@@ -84,9 +84,9 @@ class OrganizationsController < ApplicationController
     #---------------------------------------------------------------------
 
     if @orgMailer.deliver
-      redirect_to organizations_path org_id, notice: 'Message sent'
+      redirect_to organization_path(org_id), notice: 'Message sent'
     else
-      redirect_to organizations_path org_id
+      redirect_to organization_path(org_id)
       flash.now[:error] = 'Cannot send message.'
     end
   end  

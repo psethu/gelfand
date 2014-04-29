@@ -11,7 +11,6 @@ class BgCheck < ActiveRecord::Base
     validates_date :date_requested, :allow_blank => true, :on_or_before => :today
     validates_date :criminal_date, :after => :date_requested, :allow_blank => true
     validates_date :child_abuse_date, :after => :criminal_date, :allow_blank => true
-
     # Callbacks
     # ---------
 

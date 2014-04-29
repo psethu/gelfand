@@ -1,9 +1,8 @@
-<div class="row">
-  <div class="small-2 columns leftNav">
+<div class="row" data-equalizer>
+  <div class="small-2 columns leftNav"  data-equalizer-watch>
     <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
      <ul class="side-nav">
       <%if current_user.admin?%>
-        <li><%= link_to 'New Check', new_bg_check_path %> </li>
       <%else%>
         <li><a href="#">Overview</a></li>
         <li><a href="#">Status</a></li>
@@ -12,7 +11,7 @@
     </ul> 
     <br />
   </div>
-  <div class="small-10 columns rightContent">
+  <div class="small-10 columns rightContent" data-equalizer-watch>
     <%if current_user.admin?%>
       <h1>Listing Background Checks</h1>
 

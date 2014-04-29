@@ -1,16 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<div class="row">
-    <div class="small-2 columns leftNav">
-        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-        <ul class="side-nav">
-            <% if can? :update, @individual %>
-                <li><%= link_to 'Edit Information', edit_individual_path(@individual) %></li>
-                <li><%= link_to 'Change password', edit_user_registration_path %></li>
-            <% end %>
-        </ul>
+<div class="row" data-equalizer>
+    <div class="small-2 columns leftNav" data-equalizer-watch>
+        <%= render "sidebar" %>
     </div>
-    <div class="small-10 columns rightContent">
+    <div class="small-10 columns rightContent" data-equalizer-watch>
         
         <p id="notice"><%= notice %></p>
         <h1>Account Information</h1>

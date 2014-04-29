@@ -1,7 +1,5 @@
-<div class="row">
-  <p><h3><strong><%= flash[:error] %></strong></h3></p>
-
-  <div class="small-2 columns leftNav">
+<div class="row" data-equalizer>
+  <div class="small-2 columns leftNav" data-equalizer-watch>
     <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
      <ul class="side-nav">
       <li><%= link_to 'New Individual', new_individual_path %> </li>
@@ -12,7 +10,7 @@
   </div>
 
  
-  <div class="small-10 columns rightContent">
+  <div class="small-10 columns rightContent" data-equalizer-watch>
     <h1>All Registered Individuals</h1>
 
     <table>

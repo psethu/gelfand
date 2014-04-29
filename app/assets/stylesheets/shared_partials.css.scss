@@ -1,23 +1,5 @@
-
-.test1{
-	font-size: 36px;
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: relative;
-  float: right;
-  border-bottom: 1px solid #fff;
-  border-radius: 3px;    
-}
-
-nav li {
-  float: left;          
-}
-
-
+/*----NAVBAR---------*/
+/*-------------------*/
 
 nav #login-trigger,
 nav #signup a {
@@ -30,20 +12,6 @@ nav #signup a {
   text-decoration: none;
   color: white;
 
-}
-
-nav #signup a {
-  border-radius: 0 3px 3px 0;
-}
-
-nav #login-trigger {
-  border-radius: 3px 0 0 3px;
-}
-
-nav #login-trigger:hover,
-nav #login .active,
-nav #signup a:hover {
-  background: #202020 ;
 }
 
 nav #login-content {
@@ -65,12 +33,10 @@ nav li #login-content {
   width: 250px;  
 }
 
-/* Uncomment this to get rid of border
-	- looks like Foundation places a border on a fieldset
-fieldset {
-	border-style:none;
+.contain-to-grid .top-bar {
+  margin: 0px 14px;
+  max-width: 100%;
 }
-*/
 
 
 /*--------------------*/
@@ -185,6 +151,7 @@ nav .name:hover{
   box-shadow: -10px 10px 2px #500000  ;
 }
 
+
 */
 
 #logout-button-text {
@@ -209,18 +176,13 @@ nav .name:hover{
   font-weight: bold;
 }
 
-.footer { 
-  background-color: #00824a;
+.footer, .footer a { 
+  //background-color: #00824a;
+  background-color: #464646;
+  line-height:22px;
   font-size: 14px;
   text-align:center;
   height:50px;
   padding: 5px;
-}
-
-.footer a {
-  color: white
-}
-
-.footer p {
-  color: white
+  color: #D8D9DA;
 }

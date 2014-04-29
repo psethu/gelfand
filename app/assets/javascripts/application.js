@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require turbolinks
+//= require foundation
+//= require foundation.equalizer.js
+//= require foundation-datepicker.js
 //= require_tree .
 
 // MENTION this: if user doesnt include the @ in the email, then a cool notification pops up
@@ -39,8 +41,35 @@ $(document).ready(function(){
   $('.name').click(function() {
   		window.location = ('/');
   });
+
+
+  $(window).bind("load", function () {
+    var footer = $("#footer");
+    var pos = footer.position();
+    var height = $(window).height();
+    height = height - pos.top;
+    height = height - footer.height();
+    if (height > 0) {
+        footer.css({
+            'margin-top': height + 'px'
+        });
+    }
+  });
+
+  //code to fade out alert boxes
+  $('.alert-box').fadeIn('normal', function() {
+      $(this).delay(2000).fadeOut();
+   });
+
+  //datepicker code
+  $('.datepicker').fdatepicker({
+    format: 'yyyy-mm-dd'
+  });
+
   
 });
 
 $(function(){ $(document).foundation(); });
+
+
 

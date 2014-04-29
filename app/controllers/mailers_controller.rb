@@ -4,7 +4,7 @@ class MailersController < ApplicationController
   end
 
   def create
-    @mailer = Mailer.new(params[:mailer])
+    @mailer = Mailer.new(mailer_params)
     @mailer.request = request
     if @mailer.deliver
       flash.now[:notice] = 'Thank you for your message. We will contact you soon!'
@@ -13,4 +13,9 @@ class MailersController < ApplicationController
       render :new
     end
   end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+    def mailer_params
+      params.require(:mailer).permit(:name, :email, :message, :nickname) 
+    end
 end

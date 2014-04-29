@@ -13,6 +13,7 @@
     <br />
   </div>
   <div class="small-10 columns rightContent">
+    <p id="notice"><%= notice %></p>
     <%if current_user.admin?%>
       <h1>Listing Background Checks</h1>
 
@@ -26,7 +27,6 @@
 
             <th></th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
 
@@ -37,8 +37,6 @@
               <td><%= bg_check.format_status %></td>
               <td><%= bg_check.criminal_date %></td>
               <td><%= bg_check.child_abuse_date %></td>
-
-              <td><%= link_to 'Show', bg_check %></td>
               <td><%= link_to 'Edit', edit_bg_check_path(bg_check) %></td>
               <td><%= link_to 'Destroy', bg_check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
@@ -55,7 +53,7 @@
           <div class="bg-status-bar">
             <table>
               <tr>
-                <td>Initiate Process</td>
+                <td>Process Initiated</td>
                 <td> > </td>
                 <td>In Progress</td>
                 <td> > </td>
@@ -65,7 +63,14 @@
           </div>
 
           <p class="bg-text">
-          To begin the background check process, clike the 'Begin Process' button below.
+            In order to work with minors, Pennsylvania state law states that one must complete 
+            a Criminal Clearance Form, a Child Abuse Clearance Form, and a Child Abuse Release Form. 
+
+            <br><br>
+            More information about this process can be found <a href="http://www.cmu.edu/gelfand/clearance-forms/index.html" target="_blank">Here</a>.
+
+            <br><br>
+            To signal your intent to complete the background check process, click the 'Begin Process' button below.
           </p>
 
           <%= link_to 'Begin Process', new_bg_check_path, class: "button", id: "BeginProcess" %>

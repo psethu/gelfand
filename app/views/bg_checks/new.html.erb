@@ -3,7 +3,7 @@
         <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
      <ul class="side-nav">
       <%if current_user.admin?%>
-        <li><%= link_to 'New Check', new_bg_check_path %> </li>
+        <li><%= link_to 'New Background Check', new_bg_check_path %> </li>
         <li><%= link_to 'Back', bg_checks_path %></li>
       <%else%>
         <li><a href="#">Overview</a></li>
@@ -20,9 +20,9 @@
         <h1>New Background Check</h1>
         <%= render 'form' %>
     <%elsif current_user.individual.bg_check.nil?%>
-        <p>You have successfully started the Background Check Process</p>
+        <h3>You have successfully started the Background Check Process</h3>
 
-        <p>Click 'Continue' to view the status of your background check</p>
+        <p>Click 'Continue' to see what steps you need to complete next.</p>
 
         <%= render 'form' %>
 

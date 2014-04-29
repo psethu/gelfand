@@ -8,7 +8,7 @@ class Mailer < MailForm::Base
     # in ActionMailer accepts.
     def headers
       {
-        :subject => "Sign up at: http://gelfand-gelfand.rhcloud.com/users/sign_up",
+        :subject => "Submission of Contact Form from 373 Gelfand app",
         :to => "sethw272@gmail.com",
         :from => %("#{name}" <#{email}>)
       }

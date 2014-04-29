@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require turbolinks
 //= require foundation
 //= require foundation.equalizer.js
 //= require_tree .

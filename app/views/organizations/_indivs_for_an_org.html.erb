@@ -8,7 +8,7 @@
             <% @organization.memberships.each do |mem| %>
               <tr>
                 <td class ="tableData"><%= mem.individual.l_name %>, <%= mem.individual.f_name %></td>
-                <td class ="tableData"><%= mem.individual.role %></td>
+                <td class ="tableData"><%= mem.individual.format_role %></td>
 
                 <td class ="tableData"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(mem.individual) %></td>
                   <% if current_user.is_orgUser_for_specific_org(@organization) %>

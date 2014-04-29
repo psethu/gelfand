@@ -17,7 +17,7 @@
     </div>
     <div class="small-10 columns rightContent">
     <%if current_user.admin?%>
-        <h1>New bg_check</h1>
+        <h1>New Background Check</h1>
         <%= render 'form' %>
     <%elsif current_user.individual.bg_check.nil?%>
         <p>You have successfully started the Background Check Process</p>

@@ -40,17 +40,13 @@
 
 </div>
 
-<div class="small-4 columns addMemberPartOfOrgShowPage">
-          <% unless @organization.indivs_not_already_part_of_org.empty? %>
+<div class="small-4 columns addProgramPartOfOrgShowPage">
               <% if current_user.is_orgUser_for_specific_org(@organization) %>
                 <div class="Org_Show_Content">
                         <h3>Programs</h3>
                         <%= render 'programs_for_an_org' %>
                 </div>
               <% end %>
-          <% else %>
-              <h5> No more available individuals to add. </h5>
-          <% end %>
 
 
 </div>

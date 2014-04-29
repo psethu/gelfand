@@ -5,7 +5,6 @@ class MailersController < ApplicationController
 
   def create
     @mailer = Mailer.new(params[:mailer])
-    @mailer.request = request
     if @mailer.deliver
       flash.now[:notice] = 'Thank you for your message. We will contact you soon!'
     else

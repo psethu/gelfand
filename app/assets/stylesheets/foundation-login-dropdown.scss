@@ -1,0 +1,27 @@
+$borderColor: #333333;
+$inputWidth: 270px;
+
+.dropdown li {
+  input[type="text"],
+  input[type="password"] {
+    border: {
+      top: 0;
+      bottom: 12px solid $borderColor ;
+      left: 15px solid $borderColor;
+      right: 15px solid $borderColor;
+    }
+    top: 0;
+    width: $inputWidth;
+    &:focus {
+      border-color: $borderColor;
+      box-shadow: none;
+    }
+  }
+  a.button {
+    top: 0;
+  }
+  &:nth-child(2) input[type="text"],
+  &:nth-child(2) input[type="password"] {
+    border-top: 8px solid $borderColor;
+  }
+}

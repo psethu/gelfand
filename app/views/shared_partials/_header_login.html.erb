@@ -95,40 +95,37 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 			  	</div>                     
 			</li>
 		<% else %>
-				<!-- show login tab -->
-				 <li id="login">
-				       <a id="login-trigger">
-				         Log in <span>▼</span>
-				       </a>
-				       	<!-- form stuff for 'Login' tab-->
-						      <div id="login-content">
+			<!-- show login tab -->
+			 <li id="login">
+		       <a id="login-trigger">
+		         Log in <span>▼</span>
+		       </a>
+		       	<!-- form stuff for 'Login' tab-->
+				      <div id="login-content">
 
-						      <%= form_for(User.new, :url => user_session_path) do |f| %>
-							      	<fieldset>
-							      		<div id="inputs">
+				      <%= form_for(User.new, :url => user_session_path) do |f| %>
+					      	<fieldset>
+					      		<div id="inputs">
 
-										  <%= f.email_field :email, :autofocus => true, :id => 'email' , :placeholder => "Email address", :required => true %>
+								  <%= f.email_field :email, :autofocus => true, :id => 'email' , :placeholder => "Email address", :required => true %>
 
-										  <%= f.password_field :password, :id => 'password', :placeholder=>"Password", :required => true %>
-										  <br>
-										  <%= f.submit "Submit" , id: 'submit' %>
-										</div>
-									</fieldset>
+								  <%= f.password_field :password, :id => 'password', :placeholder=>"Password", :required => true %>
+								  <br>
+								  <%= f.submit "Submit" , id: 'submit' %>
+								</div>
+							</fieldset>
 
-							  <% end %>
-								<a id="forgotPass" href="/users/password/new">Forgot password? </a>
-							  </div>                     
+					  <% end %>
+						<a id="forgotPass" href="/users/password/new">Forgot password? </a>
+					  </div>                     
 				</li>
-		<% end %>
-	          
-	         
+			<!-- login end tab -->
+		<% end %>  
 	    </ul>
-
-
-
 	  </section>
 	  </nav>
 	</div>
+
 <!-- Only run below code IF there is an Error or Notice or Alert -->
 <% if !flash[:error].nil? || !flash[:notice].nil? || !flash[:alert].nil? %>
 	<br>

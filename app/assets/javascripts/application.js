@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require turbolinks
+//= require foundation
+//= require foundation.equalizer.js
 //= require_tree .
 
 // MENTION this: if user doesnt include the @ in the email, then a cool notification pops up

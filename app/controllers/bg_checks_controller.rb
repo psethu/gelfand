@@ -13,6 +13,7 @@ class BgChecksController < ApplicationController
   def create
     
     @bg_check = BgCheck.new(bg_check_params)
+
     if !current_user.admin?
       @bg_check.individual_id = current_user.individual.id 
     end

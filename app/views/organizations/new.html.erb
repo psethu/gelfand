@@ -1,17 +1,14 @@
-<div class="row">
-  <div class="small-2 columns leftNav">
-      <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-  </div>
 
+<div class="row" data-equalizer>
 
-  <div class="small-10 columns rightContent">
-        <p id="notice"><%= notice %></p>
-		<h1>New organization</h1>
-
+  <%= render 'sidebar' %>
+  <div class="small-4 columns" data-equalizer-watch>
+		<h1>Create An Organization</h1>
+        <p>TODO paragraph explaining organization creation</p>
 	<div class="org_form">
 		<%= render 'form' %>
 	</div>
-
-		<div class="orgs_actions"><%= link_to 'Back', organizations_path %></div>
+  </div>
+  <div class="small-4 columns" data-equalizer-watch>
   </div>
 </div>

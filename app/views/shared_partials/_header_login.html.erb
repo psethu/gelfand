@@ -9,7 +9,6 @@ NOTES:
 See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 	- looks like might be very useful
 -->
-<div class="row">
 	<div class="contain-to-grid">
 	   <nav class="top-bar" data-topbar>
 		  <ul class="title-area">
@@ -17,17 +16,17 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 		      <a id="title_link" href="/">Gelfand Center</a>
 			</li>
 
-		    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+		    <li class="toggle-topbar menu-icon"><a href="#"></a></li>
 		  </ul>
 
 		
 		
 	  <section class="top-bar-section"> <!-- changing this to <section class="top-bar-section"> hides dropdowns, but does not re-					appear -->
-		  <ul class="left">
+		  <!--<ul class="left">
 		  	<li class="divider"></li>
 		  	<li class="divider"></li>
 
-		  </ul>
+		  </ul>-->
 
 	  	    <!-- Right Nav Section -->
 		<ul class="right">
@@ -96,38 +95,49 @@ See: http://red-team-design.com/simple-and-effective-dropdown-login-box/
 			  	</div>                     
 			</li>
 		<% else %>
-				<!-- show login tab -->
-				 <li id="login">
-				       <a id="login-trigger">
-				         Log in <span>▼</span>
-				       </a>
-				       	<!-- form stuff for 'Login' tab-->
-						      <div id="login-content">
+			<!-- show login tab -->
+			 <li id="login">
+		       <a id="login-trigger">
+		         Log in <span>▼</span>
+		       </a>
+		       	<!-- form stuff for 'Login' tab-->
+				      <div id="login-content">
 
-						      <%= form_for(User.new, :url => user_session_path) do |f| %>
-							      	<fieldset>
-							      		<div id="inputs">
+				      <%= form_for(User.new, :url => user_session_path) do |f| %>
+					      	<fieldset>
+					      		<div id="inputs">
 
-										  <%= f.email_field :email, :autofocus => true, :id => 'email' , :placeholder => "Email address", :required => true %>
+								  <%= f.email_field :email, :autofocus => true, :id => 'email' , :placeholder => "Email address", :required => true %>
 
-										  <%= f.password_field :password, :id => 'password', :placeholder=>"Password", :required => true %>
-										  <br>
-										  <%= f.submit "Submit" , id: 'submit' %>
-										</div>
-									</fieldset>
+								  <%= f.password_field :password, :id => 'password', :placeholder=>"Password", :required => true %>
+								  <br>
+								  <%= f.submit "Submit" , id: 'submit' %>
+								</div>
+							</fieldset>
 
-							  <% end %>
-								<a id="forgotPass" href="/users/password/new">Forgot password? </a>
-							  </div>                     
+					  <% end %>
+						<a id="forgotPass" href="/users/password/new">Forgot password? </a>
+					  </div>                     
 				</li>
-		<% end %>
-	          
-	         
+			<!-- login end tab -->
+		<% end %>  
 	    </ul>
-
-
-
 	  </section>
 	  </nav>
 	</div>
 </div>
+
+<!-- Only run below code IF there is an Error or Notice or Alert -->
+<% if !flash[:error].nil? || !flash[:notice].nil? || !flash[:alert].nil? %>
+	<!-- messages for Error, Success, Alrt -->
+	<div data-alert class="alert-box">
+	  <!-- Your content goes here -->
+	  	<%= flash[:notice] %>
+	  	<a href="#" class="close">&times;</a>
+	</div>
+	<!--
+	<p id="error"><h3><strong><%= flash[:error] %></strong></h3></p>
+	<p id="alert"><h3><strong><%= flash[:alert] %></strong></h3></p>
+	-->
+
+<% end %>

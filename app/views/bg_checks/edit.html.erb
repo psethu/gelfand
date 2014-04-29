@@ -1,15 +1,10 @@
-<div class="row">
-    <div class="small-2 columns leftNav">
+
+<div class="row" data-equalizer>
+    <div class="small-2 columns leftNav" data-equalizer-watch>
         <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-        <ul class="side-nav">
-            <li><%= link_to 'Back', bg_checks_path %></li>
-        </ul>
     </div>
-    <div class="small-10 columns rightContent">
-    <h1>Editing Background Check for <%=@bg_check.individual.proper_name%></h1>
-
-    <%= render 'form' %>
-
-    
+    <div class="small-10 columns rightContent" data-equalizer-watch>
+        <h1>Updating <%= @bg_check.humanize_name %>'s Background Check</h1>
+        <%= render 'form' %>
     </div>
 </div>

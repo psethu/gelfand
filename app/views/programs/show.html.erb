@@ -1,6 +1,6 @@
 
-<div class="row">
-    <div class="small-2 columns leftNav">
+<div class="row" data-equalizer>
+    <div class="small-2 columns leftNav" data-equalizer-watch>
         <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
     
         <ul class="side-nav">
@@ -12,7 +12,7 @@
     
         <br />    
     </div>
-    <div class="small-10 columns rightContent">
+    <div class="small-10 columns rightContent" data-equalizer-watch>
         <p id="notice"><%= notice %></p>
         <h1><%= @program.name %></h1>
         <div class="cushionWrapper">

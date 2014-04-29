@@ -23,11 +23,10 @@
     <div class="field">
       <%= f.label :child_abuse_date %><br>
       <%= f.date_select :child_abuse_date, {:include_blank => true, :default => nil} %>
-    </div class="field">
-      <%= f.label :individual_associated %><br>
-      <%= f.collection_select :individual_id, Individual.alphabetical.all, :id, :name %>
-    <div>
-
+    </div>
+    <div class="field">
+      <%= f.label :individual %><br>
+      <%= f.collection_select :individual_id, Individual.alphabetical,:id, :name %>
     </div>
   <% elsif current_user.member?%>
     <%= f.hidden_field :status, :value => 0, :readonly => true %>

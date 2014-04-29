@@ -32,21 +32,34 @@ class Program < ActiveRecord::Base
     # Class Methods
     # -------------
 
-    def individuals_without_bg_check
+    def status
+        today = Date.today
+        if self.start_date > today
+            return "Upcoming"
+        elsif self.start_date < today && self.end_date > today
+            return "In Progress"
+        elsif self.end_date < today
+            return "Completed"
+        else
+            return "Data Error"
+        end 
+    end
+
+    def uncleared_participants
         self.individuals.select{ |i| i.bg_check_complete? }
     end
 
-    def num_individuals_without_bg_check
-        self.individuals_without_bg_check.count
+    def num_uncleared_participants
+        self.uncleared_participants.count
     end
 
-    def num_cleared_participations
-        self.individuals.count - self.individuals_without_bg_check
-    end
-
-    def cleared_participations
+    def cleared_participants
         self.individuals.select{ |i| !i.bg_check_complete? }
     end
+
+    def num_cleared_participants
+        self.cleared_participants.count
+    end    
 
     def individuals_in_org(org_id)
         org = self.organizations.find_by id: org_id

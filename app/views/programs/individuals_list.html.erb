@@ -1,0 +1,61 @@
+<div class="row">	
+	<div class="small-2 columns leftNav">
+        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+        
+        <ul class="side-nav">
+            <li><%= link_to 'Add a Program', new_program_path %></li>
+            <li><%= link_to 'Ongoing Programs', programs_path %></li>
+            <li><%= link_to 'Completed Programs', programs_path %></li>
+            <li><%= link_to 'All Programs', programs_path %></li>
+        </ul> 
+    
+        <br />    
+    </div>
+    <div class="small-10 columns rightContent">
+    	<div class="row">
+    		<!-- FLASH NOTICES GO HERE -->
+    	</div>
+
+    	<div class="row">
+
+		    <div class="small-6 columns rightContent">
+		    	<h3>Cleared Participants</h3>
+		    	<table>
+		    		<thead>
+		    			<th>Name</th>
+		    			<th>Background Check Status</th>
+		    			<th>Remove From Program</th>
+		    		</thead>
+		    		<tbody>
+		    			<% @cleared.each do |i| %>
+		    			<td><%= link_to i.name, i %></td>
+		    			<td><%= link_to i.bg_check.format_status, i.bg_check %></td>
+		    			<!-- TODO -->
+		    			<td><%= "Destroy Link" %></td>
+		    			<% end %>
+		    		</tbody>
+		    	</table>
+		    </div>
+
+		    <div class="small-6 columns rightContent">
+		    	<h3>Participants Not Cleared</h3>
+		    	<table>
+		    		<thead>
+		    			<th>Name</th>
+		    			<th>Background Check Status</th>
+		    			<th>Remove From Program</th>
+		    		</thead>
+		    		<tbody>
+		    			<% @not_cleared.each do |i| %>
+		    			<td><%= link_to i.name, i %></td>
+		    			<td><%= link_to i.bg_check.format_status, i.bg_check %></td>
+		    			<!-- TODO -->
+		    			<td><%= "Destroy Link" %></td>
+		    			<% end %>
+		    		</tbody>
+		    	</table>
+		    </div>
+		</div>
+	</div>
+</div>
+

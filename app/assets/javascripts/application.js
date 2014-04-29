@@ -62,8 +62,8 @@ $(document).ready(function(){
    });
 
   //datepicker code
-  $('#datepicker').fdatepicker({
-    format: 'mm-dd-yyyy'
+  $('.datepicker').fdatepicker({
+    format: 'yyyy-mm-dd'
   });
 
   

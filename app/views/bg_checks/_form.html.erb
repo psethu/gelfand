@@ -1,4 +1,4 @@
-<%= form_for(@bg_check) do |f| %>
+<%= simple_form_for(@bg_check) do |f| %>
   <div class="row">
     <div class="small-12 columns">
       <% if @bg_check.errors.any? %>
@@ -42,7 +42,9 @@
       <div class="small-6 columns">
         <div class="field">
           <%= f.label :criminal_date %><br>
-          <input type="text" id="datepicker">
+          <!--<input type="text" class="datepicker">-->
+
+          <%= f.input :criminal_date, :label => "Criminal Date", :as => :string, :input_html => {:class => "datepicker"} %>   
           <%#= f.date_select :criminal_date, {:include_blank => true, :default => nil} %>
         </div>
       </div>

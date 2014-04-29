@@ -28,6 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'font-awesome-rails'
+gem 'chronic'
 
 
 group :doc do

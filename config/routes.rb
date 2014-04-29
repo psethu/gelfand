@@ -7,6 +7,8 @@ Gelfand::Application.routes.draw do
 
   resources :bg_checks 
 
+
+
   # below is so I can add the 'delete_multiple' action and url along with the regular 7 we get from 
     # "resources :memberships"
   resources :memberships do
@@ -30,7 +32,9 @@ Gelfand::Application.routes.draw do
   resources "mailers", only: [:new, :create]
 
 
-  devise_for :users
+  # Below ':controllers => ..." is so points to our custom 'registrations' controller
+    # under my_devise folder which is in controllers folder
+  devise_for :users, :controllers => {:registrations => "my_devise/registrations"} 
   root :to => "home#index"
 
 

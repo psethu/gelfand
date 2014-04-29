@@ -21,6 +21,40 @@
 			<i>A short description of the program</i>
 			<%= f.text_field :description %>
 		</div>
+
+		<div class="field">
+			<%= f.label :start_date %>
+			<%= f.date_select :start_date %>
+		</div>
+
+		<div class="field">
+			<%= f.label :end_date %>
+			<%= f.date_select :end_date %>
+		</div>
+
+		<div class="field">
+			<%= f.label :cmu_facilities %>
+			<%= f.text_field :cmu_facilities %>
+		</div>
+
+		<div class="field">
+			<%= f.label :off_campus_facilities %>
+			<%= f.text_field :off_campus_facilities %>
+		</div>
+
+		<div class="field">
+			<%= f.label :number_of_minors %>
+			<%= f.number_field :num_minors %>
+		</div>
+
+		<div class="field">
+			<%= f.label :number_of_adults_supervising %>
+			<%= f.number_field :num_adults_supervising %>
+		</div>
+
+		<div class="row">
+			<%= f.submit "Create Program", :class => "button" %>
+		</div>
 	</div>
 
 <% end %>

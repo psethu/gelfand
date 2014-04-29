@@ -7,10 +7,19 @@ def new
 
 end
 
+def individuals_list
+  @program = Program.find(params[:id])
+  @cleared = @program.cleared_participants
+  @not_cleared = @program.uncleared_participants
+
+end
+
   # GET /programs
   # GET /programs.json
   def index
     @programs = Program.all
+    @upcoming_progs = Program.upcoming
+    @in_progress = Program.current
   end
 
   def show

@@ -1,60 +1,79 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @program.name %>
-</p>
+<div class="row">
+    <div class="small-2 columns leftNav">
+        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+    
+        <ul class="side-nav">
+            <li><%= link_to 'Add a Program', new_program_path %></li>
+            <li><%= link_to 'Ongoing Programs', programs_path %></li>
+            <li><%= link_to 'Completed Programs', programs_path %></li>
+            <li><%= link_to 'All Programs', programs_path %></li>
+        </ul> 
+    
+        <br />    
+    </div>
+    <div class="small-10 columns rightContent">
+        <p id="notice"><%= notice %></p>
+        <h1><%= @program.name %></h1>
+        <div class="cushionWrapper">
+            <div class="row">
+                <div class="small-2 columns">
+                    <strong>Start Date: </strong><%= @program.start_date.strftime("%m/%d/%y") %>
+                </div>
+                <div class="small-2 offset-8 columns">
+                    <strong>End Date: </strong><%= @program.end_date.strftime("%m/%d/%y") %>
+                </div>
+            </div>
+            <br />
+            <div class="row text-center">
+                <i><%= @program.description %></i>
+            </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @program.description %>
-</p>
+            <div class="row">
+                <h3>Participating Members</h3>
+                <% if @program.cleared_participants.empty? %>
+                    There is no one assigned to this program.
+                <% else %>
+                    <% @program.cleared_participants.each do |ind| %>
+                        <%= link_to ind.name, ind %> <br>
+                    <% end %>
+                <% end %>
+                <br />
+                <%= link_to "See all members...", "#{@program.id}/individuals_list" %>
+            </div>
+            
+            <div class="row">
+                <h3>Affiliated Organizations</h3>
+                <% if @program.affiliations.empty? %>
+                    There are no Organizations affiliated with this program.
+                    <br />
+                    <%= link_to "Check Organizations?", organizations_path %>
+                <% else %>
+                    <% @program.organizations.each do |org| %>
+                        <% link_to org.name, org %> <br>
+                    <% end %>
+                <% end %>
+                <br />
+            </div>
+            <p>
+              <strong>Cmu facilities:</strong>
+              <%= @program.cmu_facilities %>
+            </p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @program.start_date %>
-</p>
+            <p>
+              <strong>Off campus facilities:</strong>
+              <%= @program.off_campus_facilities %>
+            </p>
 
-<p>
-  <strong>End date:</strong>
-  <%= @program.end_date %>
-</p>
+            <p>
+              <strong>Num minors:</strong>
+              <%= @program.num_minors %>
+            </p>
 
-<p>
-  <strong>Cmu facilities:</strong>
-  <%= @program.cmu_facilities %>
-</p>
-
-<p>
-  <strong>Off campus facilities:</strong>
-  <%= @program.off_campus_facilities %>
-</p>
-
-<p>
-  <strong>Num minors:</strong>
-  <%= @program.num_minors %>
-</p>
-
-<p>
-  <strong>Num adults supervising:</strong>
-  <%= @program.num_adults_supervising %>
-</p>
-
-<p>
-  <strong>Irb approval:</strong>
-  <%= @program.irb_approval %>
-</p>
-
-<strong><h3>Currently associated orgs:</h3></strong>
-    <% @program.affiliations.each do |affil| %>
-      <%= Organization.find(affil.organization.id).name %> <br>
-    <% end %>
-
-<br><br>
-
-    <% if current_user && current_user.admin? %>
-        <%= render "quick_affiliate_program_with_org" %>
-    <% end %>
-
-<%= link_to 'Edit', edit_program_path(@program) %> |
-<%= link_to 'Back', programs_path %>
+            <p>
+              <strong>Num adults supervising:</strong>
+              <%= @program.num_adults_supervising %>
+            </p>
+        </div>
+    </div>
+</div>

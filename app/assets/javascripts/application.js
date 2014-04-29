@@ -15,6 +15,7 @@
 //= require jquery_nested_form
 //= require foundation
 //= require foundation.equalizer.js
+//= require foundation-datepicker.js
 //= require_tree .
 
 // MENTION this: if user doesnt include the @ in the email, then a cool notification pops up
@@ -59,6 +60,12 @@ $(document).ready(function(){
   $('.alert-box').fadeIn('normal', function() {
       $(this).delay(2000).fadeOut();
    });
+
+  //datepicker code
+  $('#datepicker').fdatepicker({
+    format: 'mm-dd-yyyy'
+  });
+
   
 });
 

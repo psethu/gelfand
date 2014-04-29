@@ -42,7 +42,8 @@
       <div class="small-6 columns">
         <div class="field">
           <%= f.label :criminal_date %><br>
-          <%= f.date_select :criminal_date, {:include_blank => true, :default => nil} %>
+          <input type="text" id="datepicker">
+          <%#= f.date_select :criminal_date, {:include_blank => true, :default => nil} %>
         </div>
       </div>
       <div class="small-6 columns">

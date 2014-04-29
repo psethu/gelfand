@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require foundation_and_overrides
-
+ *= require foundation-datepicker.css
  *= require_tree 
  */
 
@@ -25,4 +25,8 @@ body, html {
   max-width: 100%;
   min-width: 100% !important;
   position: relative;
+}
+
+.date-switch, .dow, .datepicker .next, .datepicker .prev {
+    color:black;
 }

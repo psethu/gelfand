@@ -1,8 +1,8 @@
 class OrganizationMailer < MailForm::Base
-  attribute :email,     :validate => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
+  attribute :currently_registered_email,     :validate => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
   attribute :nickname,  :captcha  => true
   attribute :org_name
-  attribute :message
+  attribute :NOTICE
 
   # Declare the e-mail headers. It accepts anything the mail method
   # in ActionMailer accepts.
@@ -11,7 +11,7 @@ class OrganizationMailer < MailForm::Base
     def headers
     {
       :subject => "Gelfand Center Sign Up notice",
-      :to => "#{email}",
+      :to => "#{currently_registered_email}",
       :from => %("Gelfand" <gelfand@gelfand.com>)
     }
 

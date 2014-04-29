@@ -44,7 +44,7 @@
                 <tr><td class="OrgShowAddMemForm">
                     <%= simple_form_for OrganizationMailer.new, :html => {:class => 'form-horizontal' } do |f| %>
 
-                      <%= f.input :email, :required => true %>
+                      <%= f.input :currently_registered_email, :label => "Email", :required => true %>
                       <div class="hidden">
                         <%= f.input :nickname, :hint => 'Leave this field blank!' %>
                       </div>
@@ -52,7 +52,7 @@
                         <%= f.input :org_name, :input_html => { :value => @organization.name } %>
                       </div>
                       <div class="hidden">
-                        <%= f.input :message, :input_html => { :value => 
+                        <%= f.input :NOTICE, :input_html => { :value => 
                           "You have been temporarily given a Membership to \"#{@organization.name}\". To officially be in the system, sign up at: http://gelfand-gelfand.rhcloud.com/users/sign_up"
                          } %>
                       </div>

@@ -73,7 +73,7 @@ class OrganizationsController < ApplicationController
       org_id = params[:organization_id]
       @membership.organization_id = org_id
       # this is so can get the User from the passed in email from params hash
-      @user = User.find_by email: @orgMailer.email      
+      @user = User.find_by email: @orgMailer.currently_registered_email      
 
       # send notice if no User exists, 
       # if User exists make the Membership with existing Individual since if User exists, the
@@ -92,7 +92,7 @@ class OrganizationsController < ApplicationController
             #---------------------------------------------------------------------
                     # making the indiv for the temp membership
                     @indiv = Individual.new
-                    @indiv.f_name = @orgMailer.email
+                    @indiv.f_name = @orgMailer.currently_registered_email
                     @indiv.l_name = " s" 
                     @indiv.role = 0
                     @indiv.save
@@ -101,7 +101,7 @@ class OrganizationsController < ApplicationController
             #---------------------------------------------------------------------
 
             if @orgMailer.deliver
-              redirect_to organization_path(org_id), notice: "Notice sent to \"#{@orgMailer.email}\""
+              redirect_to organization_path(org_id), notice: "Notice sent to \"#{@orgMailer.currently_registered_email}\""
             else
               redirect_to organization_path(org_id)
               flash.now[:error] = 'Cannot send notice.'

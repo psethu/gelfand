@@ -130,7 +130,7 @@ ul.my_memberships_list li a
 }
 
 .orgs_actions {
-	margin-top: 20px;
+	margin:0 0 10px 0;
 	font-weight:bold;
 	font-size: 24px;
 }
@@ -163,6 +163,10 @@ ul.my_memberships_list li a
 	background-color: #ccc;
 }
 
+td.OrgShowAddMemForm {
+	border: 1px solid #C0C0C0  ;
+	padding: 10px;	
+}
 
 /*
 To get a cool button:

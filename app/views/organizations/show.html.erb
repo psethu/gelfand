@@ -11,24 +11,14 @@
 
   <h1>  <%= @organization.name %></h1>
 
-  <strong>Is partner:</strong>
-  <%= @organization.is_partner ? "Yes" : "No" %>,
-
-  <strong>Active:</strong>
-  <%= @organization.active ? "Yes" : "No"%>,
-
-  <strong>Department:</strong>
-  <%= @organization.department %>,
-
-  <strong>Number of Members:</strong> 
-  <%=  @organization.memberships.size %>
-
-  <br><br>
 
   <strong>Description:</strong>
   <%= @organization.description %>
 
-           
+  <br>
+
+  <strong>Is partner:</strong>
+  <%= @organization.is_partner ? "Yes" : "No"%>
 
   <br>
   <br>
@@ -42,24 +32,26 @@
   </div>
 <br>
 <br>
-
-
-</div>
-
-<<<<<<< HEAD
-<div class="small-4 columns addProgramPartOfOrgShowPage">
-=======
-<div class="small-4 columns addMemberPartOfOrgShowPage" data-equalizer-watch>
-          <% unless @organization.indivs_not_already_part_of_org.empty? %>
->>>>>>> upstream/master
-              <% if current_user.is_orgUser_for_specific_org(@organization) %>
-                <div class="Org_Show_Content">
-                        <h3>Programs</h3>
-                        <%= render 'programs_for_an_org' %>
-                </div>
-              <% end %>
-
+    <div class="orgs_actions">  
+          <% if current_user.admin || current_user.is_orgUser_for_specific_org(@organization) %>
+              <%= link_to 'Edit', edit_organization_path(@organization) %> |
+          <% end %>
+      <%= link_to 'My orgs', organizations_path %>
+    </div>
 
 </div>
+
+
+      <div class="small-4 columns addMemberPartOfOrgShowPage" data-equalizer-watch>
+
+                    <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                        <div class="Org_Show_Content">
+                                <h3>Programs</h3>
+                                <%= render 'programs_for_an_org' %>
+                        </div>
+                    <% end %>
+
+
+      </div>
 
 </div>

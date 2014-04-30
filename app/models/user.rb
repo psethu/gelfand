@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   end
 
   # have to do "== []" check because self.org_users returns empty array not 'nil' if empty
-  def get_org_ids
+  def org_ids_that_user_is_orgUser_for
     if self.org_users == []
       return nil
     end
@@ -36,10 +36,10 @@ class User < ActiveRecord::Base
 
   def is_orgUser_for_specific_org(org)
     # if below if cond. nil then user isnt an OrgUser for any org
-      if self.get_org_ids == nil
+      if self.org_ids_that_user_is_orgUser_for == nil
         return false
       end
-    org_ids = self.get_org_ids
+    org_ids = self.org_ids_that_user_is_orgUser_for
     # Below: if there is a match, then User is an orgUser (admin for the Org) for given org
     org_ids.include?(org.id)
   end
@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
 
   def get_admin_prog_ids
     prog_ids = []
-    org_ids = self.get_org_ids
+    org_ids = self.org_ids_that_user_is_orgUser_for
     if org_ids.nil?
       return nil
     end

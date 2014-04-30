@@ -13,6 +13,10 @@ class OrganizationsController < ApplicationController
     @affiliation = Affiliation.new
   end
 
+  def org_overview
+    @organizations = Organization.all
+  end
+
   # POST /organizations
   # POST /organizations.json
   def create

@@ -5,6 +5,7 @@
     </div>
     <div class="small-10 columns rightContent" data-equalizer-watch>
         <h1>Updating <%= @bg_check.humanize_name %>'s Background Check</h1>
+        <p>This background check was started on <%= @bg_check.date_requested.strftime("%m/%d/%Y") %></p>
         <%= render 'form' %>
     </div>
 </div>

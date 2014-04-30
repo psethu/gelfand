@@ -2,7 +2,7 @@
   <div class="small-2 columns leftNav" data-equalizer-watch>
     <%= render 'sidebar' %>
   </div>
-  <div class="small-10 columns" data-equalizer-watch>
+  <div class="small-10 columns rightContent" data-equalizer-watch>
       <h1>Organization home</h1>
   <br>
     
@@ -20,12 +20,8 @@
             <% current_user.orgs_that_user_is_part_of.each do |org| %>
                     <ul class="my_memberships_list"><%= link_to org.name, organization_path(org) %>
             
-            <% if current_user.get_programs_for_an_org(org).nil? %>
+            <% if current_user.is_orgUser_for_specific_org(org) %>
                     <li id="prog_under_org"><%= link_to "-- No programs yet -- Click here", new_program_path %></li> 
-            <% else %>
-                <% current_user.get_programs_for_an_org(org).each do |program| %>
-                        <li id="prog_under_org"><%= link_to program.name, program_path(program) %></li>
-                <% end %>
             <% end %>
                     </ul>
 

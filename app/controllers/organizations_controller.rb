@@ -65,6 +65,50 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def send_sign_up_notice_if_no_indiv_exists
+      # doing stuff here so take care of redundant code
+      @orgMailer = OrganizationMailer.new(params[:organization_mailer])
+      @membership = Membership.new
+      # this is so dont have to add org_id to @mem in the if AND else clauses
+      org_id = params[:organization_id]
+      @membership.organization_id = org_id
+      # this is so can get the User from the passed in email from params hash
+      @user = User.find_by email: @orgMailer.currently_registered_email      
+
+      # send notice if no User exists, 
+      # if User exists make the Membership with existing Individual since if User exists, the
+          # connected Individual must also exist because this happens when signing up
+      if (!@user.nil?)
+          @indiv = Individual.find_by user_id: @user.id
+           @membership.individual_id = @indiv.id
+           if @membership.save
+              redirect_to organization_path(org_id), notice: "Added member: #{@indiv.f_name}"
+           else
+              redirect_to organization_path(org_id),  notice: "Cannot send notice."
+            end
+     
+      else
+            # making the temporary membership when an Admin user enters in an email
+            #---------------------------------------------------------------------
+                    # making the indiv for the temp membership
+                    @indiv = Individual.new
+                    @indiv.f_name = @orgMailer.currently_registered_email
+                    @indiv.l_name = "Temp: " 
+                    @indiv.role = 0
+                    @indiv.save
+                @membership.individual_id = @indiv.id
+                @membership.save
+            #---------------------------------------------------------------------
+
+            if @orgMailer.deliver
+              redirect_to organization_path(org_id), notice: "Notice sent to \"#{@orgMailer.currently_registered_email}\""
+            else
+              redirect_to organization_path(org_id)
+              flash.now[:error] = 'Cannot send notice.'
+            end
+      end 
+  end  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_organization

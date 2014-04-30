@@ -1,14 +1,19 @@
 
 <div class="row" data-equalizer>
+      <div class="small-2 columns leftNav" data-equalizer-watch>
+          <%= render 'sidebar' %>
+      </div>
 
-  <%= render 'sidebar' %>
-  <div class="small-4 columns" data-equalizer-watch>
-		<h1>Create An Organization</h1>
-        <p>TODO paragraph explaining organization creation</p>
-	<div class="org_form">
-		<%= render 'form' %>
-	</div>
-  </div>
-  <div class="small-4 columns" data-equalizer-watch>
-  </div>
+
+      <div class="small-6 columns rightContent" data-equalizer-watch>
+    		<h1>Create An Organization</h1>
+            <p>TODO paragraph explaining organization creation</p>
+
+          	<div class="org_form">
+          		<%= render 'form' %>
+          	</div>
+      </div>
+
+      <div class="small-4 columns" data-equalizer-watch>
+      </div>
 </div>

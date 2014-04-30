@@ -21,6 +21,8 @@ can accepts 2 arguments
        elsif user.member?
           can :create, :all
 
+
+
           can :update, User do |u|
             u.id == user.id
           end 
@@ -43,7 +45,6 @@ can accepts 2 arguments
 
           can :read, BgCheck
 
-
           can :read, Organization
           can :show, Organization 
 
@@ -63,7 +64,8 @@ can accepts 2 arguments
             end
           end
 
-
+          can :manage, Membership
+          can :manage, Organization
 
 
        else

@@ -93,7 +93,7 @@ class OrganizationsController < ApplicationController
                     # making the indiv for the temp membership
                     @indiv = Individual.new
                     @indiv.f_name = @orgMailer.currently_registered_email
-                    @indiv.l_name = " s" 
+                    @indiv.l_name = "Temp: " 
                     @indiv.role = 0
                     @indiv.save
                 @membership.individual_id = @indiv.id

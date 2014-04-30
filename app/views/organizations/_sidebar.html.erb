@@ -1,6 +1,9 @@
 <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
 <ul class="side-nav">
+
+
     <li><div id="activeHeading">Actions </li>
+	<li><%= link_to 'Overview', org_overview_organizations_path %> </li>
     <li><%= link_to 'Create a Organization', new_organization_path %> </li>
    <li><%= link_to 'Create a Program', new_program_path %></li>
 

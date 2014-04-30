@@ -1,30 +1,32 @@
 class MyDevise::RegistrationsController < Devise::RegistrationsController
 
-# want to override default Devise create method so can delete
-	# the temp Membership and associated temp Individual
-# POST /resource
-#------------------------------------------------------------------------------
 	  def create
 	    build_resource(sign_up_params)
+	    # this line is so can build the User using strong parameters in method user_params
+	    @user = User.new(user_params)
+
 	    resource_saved = resource.save
 	    yield resource if block_given?
 	    if resource_saved
-
-	    	#---------------- CURRENT PROBLEM
-=begin
-	
-below only replaces 1 indiv id but when Admin or OrgUser types in email
-	he/she creates multiple individuals so multipl indiv ids are created for the same email
-=end
-			# below is to get tempIndiv with email given during Sign Up
+#------------------------------------------------------------------------------
+# The  below code is how Memberships identified by a temp Individuals first_name
+# which is set as a future User's email and assigns all Memberships to the new Indiv_id after sign up
+#------------------------------------------------------------------------------
 			indiv_Objects = Individual.where(f_name: @user.email)
 			indiv_ids = []
 			membership_ids = []
 			indiv_Objects.each do |indiv|
 				indiv_ids << indiv.id
 			end
-			indiv_ids.each do |indiv_id|
-				membership_ids << Membership.find_by(individual_id: indiv_id).id
+			puts "\n \n "
+			puts "\n \n "
+			puts "\n \n "
+			puts "Indiv Objects size" + indiv_Objects.size.to_s
+			puts "indiv_ids size" + indiv_ids.size.to_s
+			puts "Individual_ids of temp Indivs: "
+			indiv_ids.each do |i_id|
+				puts "ID "+ i_id.to_s
+				membership_ids << Membership.find_by(individual_id: i_id).id
 			end
 			# By here should have populated indiv_ids and membership_ids
 			
@@ -32,8 +34,8 @@ below only replaces 1 indiv id but when Admin or OrgUser types in email
 				# show page that a new Membership and Indiv is created (thus a new Indiv id created for each new Indiv)
 			# Note 2: where returns Active Record relation (basically an array) even if there is only 1 object 
 				# that meets the criteria, BUT find_by always returns the single object itself
-			indiv_ids.each do |indiv_id|
-				Individual.delete(indiv_id)
+			indiv_ids.each do |i_id|
+				Individual.delete(i_id)
 			end
 			# now here I should have deleted all temp Indivs, so now there are Membership objects with
 				# their individual_id foreign keys pointing to a nil object
@@ -46,6 +48,7 @@ below only replaces 1 indiv id but when Admin or OrgUser types in email
 				@m.individual_id = indiv_of_new_user
 				@m.save
 			end
+#------------------------------------------------------------------------------
 
 	      if resource.active_for_authentication?
 	        set_flash_message :notice, :signed_up if is_flashing_format?

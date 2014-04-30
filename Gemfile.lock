@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+     ()
     actionmailer (4.0.2)
       actionpack (= 4.0.2)
       mail (~> 2.5.4)
@@ -160,6 +161,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mail_form
+  mysql2
   nested_form
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)

@@ -3,16 +3,19 @@
   <div class="small-2 columns leftNav" data-equalizer-watch>
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
   </div>
-  <div class="small-10 columns rightContent" data-equalizer-watch>
-		<h1>Editing organization</h1>
 
+  <div class="small-10 columns rightContent" data-equalizer-watch>
+		<h1>Editing: <%= @organization.name %> </h1>
+		
 		<div class="org_form">
 			<%= render 'form' %>
 		</div>
 
+		<br>
+
 		<div class="orgs_actions">
-			<%= link_to 'Show', @organization %> |
-			<%= link_to 'Back', organizations_path %>
+			<%= link_to 'Back', @organization %> |
+			<%= link_to 'My orgs', organizations_path %>
 		</div>
 	</div>
 </div>

@@ -5,7 +5,7 @@ class IndividualsController < ApplicationController
   # GET /individuals
   # GET /individuals.json
   def index
-    @individuals = Individual.all
+    @individuals = Individual.all.alphabetical
   end
 
   # POST /individuals

@@ -1,5 +1,6 @@
 Gelfand::Application.routes.draw do
   resources :programs
+  get 'programs/:id/individuals_list' => 'programs#individuals_list'
 
   resources :individuals
 

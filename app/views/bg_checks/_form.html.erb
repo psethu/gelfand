@@ -1,42 +1,63 @@
-<%= form_for(@bg_check) do |f| %>
-  <% if @bg_check.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bg_check.errors.count, "error") %> prohibited this bg_check from being saved:</h2>
+<%= simple_form_for(@bg_check) do |f| %>
+  <div class="row">
+    <div class="small-12 columns">
+      <% if @bg_check.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@bg_check.errors.count, "error") %> prohibited this bg_check from being saved:</h2>
 
-      <ul>
-      <% @bg_check.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @bg_check.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
     </div>
-  <% end %>
+  </div>
 
   <% if current_user.admin? %>
-    <div class="field">
-      <%= f.label :status %><br>
-        <%= f.select :status, [['Requested', 0], ['Criminal Passed', 1], ['Child Abuse Passed', 2], ['Under Review', 3], ['Not Cleared', 4]], {:include_blank => true, :default => nil}  %>
-    </div>
-    <div class="field">
-      <%= f.label :criminal_date %><br>
-      <%= f.date_select :criminal_date, {:include_blank => true, :default => nil} %>
-    </div>
-    <div class="field">
-      <%= f.label :child_abuse_date %><br>
-      <%= f.date_select :child_abuse_date, {:include_blank => true, :default => nil} %>
-    </div class="field">
-      <%= f.label :individual_associated %><br>
-      <%= f.collection_select :individual_id, Individual.alphabetical.all, :id, :name %>
-    <div>
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="field">
+          <%= f.label :status %><br>
 
+              <%= f.radio_button :status, 0, :checked => @bg_check.status==0 %>
+              <%= f.label :status, "Requested", :value => 0  %>
+
+              <%= f.radio_button :status, 1, :checked => @bg_check.status==1 %>
+              <%= f.label :status, "Criminal Passed", :value => 1 %>
+
+              <%= f.radio_button :status, 2 , :checked => @bg_check.status==2 %>
+              <%= f.label :status, "Child Abuse Passed", :value => 2 %>
+              
+              <%= f.radio_button :status, 3, :checked => @bg_check.status==3 %>
+              <%= f.label :status, "Under Review", :value => 3 %>
+
+              <%= f.radio_button :status, 4, :checked => @bg_check.status==4 %>
+              <%= f.label :status, "Not Cleared", :value => 4 %>
+        </div>  
+      </div>
+    </div>
+    <div class="row" id="dates">
+      <div class="small-6 columns">
+          <%= f.input :criminal_date, :label => "Criminal Date", :as => :string, :input_html => {:class => "datepicker"} %>   
+      </div>
+      <div class="small-6 columns">
+          <%= f.input :child_abuse_date, :label => "Child Abuse Date", :as => :string, :input_html => {:class => "datepicker"} %>   
+      </div>
     </div>
   <% elsif current_user.member?%>
     <%= f.hidden_field :status, :value => 0, :readonly => true %>
   <% end %>
-  <div class="actions">
-    <% if current_user.admin? %>
-      <%= f.submit :class => 'button'%>
-    <% else %>
-      <%= f.submit "Continue", :class => "button" %>
-    <% end %>
+  <div class="row">
+    <div class="actions">
+      <div class="small-12 columns">
+        <% if current_user.admin? %>
+          <%= f.submit :class => 'button'%>
+        <% else %>
+          <%= f.submit "Continue", :class => "button" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>

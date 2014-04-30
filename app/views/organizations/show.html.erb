@@ -1,11 +1,16 @@
-<div class="row">
-  <div class="small-2 columns leftNav">
+<div class="row" data-equalizer>
+  <div class="small-2 columns leftNav" data-equalizer-watch>
       <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-
+      <ul class="side-nav">
+        <li><%= link_to 'Create a Program', new_program_path %></li>
+        <li><%= link_to 'Edit Org', edit_organization_path(@organization) %></li>
+        <li><%= link_to 'Back', organizations_path %></li>
+      </ul>
   </div>
-  <div class="small-6 columns rightContent">
+  <div class="small-6 columns rightContent" data-equalizer-watch>
 
   <h1>  <%= @organization.name %></h1>
+
 
   <strong>Description:</strong>
   <%= @organization.description %>
@@ -31,21 +36,20 @@
       <%= link_to 'Edit', edit_organization_path(@organization) %> |
       <%= link_to 'My orgs', organizations_path %>
     </div>
-</div>
-
-<div class="small-4 columns addMemberPartOfOrgShowPage">
-          <% unless @organization.indivs_not_already_part_of_org.empty? %>
-              <% if current_user.is_orgUser_for_specific_org(@organization) %>
-                <div class="Org_Show_Content">
-                        <h3>Programs</h3>
-                        <%= render 'programs_for_an_org' %>
-                </div>
-              <% end %>
-          <% else %>
-              <h5> No more available individuals to add. </h5>
-          <% end %>
-
 
 </div>
+
+
+      <div class="small-4 columns addMemberPartOfOrgShowPage" data-equalizer-watch>
+
+                    <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                        <div class="Org_Show_Content">
+                                <h3>Programs</h3>
+                                <%= render 'programs_for_an_org' %>
+                        </div>
+                    <% end %>
+
+
+      </div>
 
 </div>

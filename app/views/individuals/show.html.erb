@@ -1,46 +1,52 @@
-<p id="notice"><%= notice %></p>
 
-<div class="row">
-    <div class="small-2 columns leftNav">
-        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-        <ul class="side-nav">
-            <% if can? :update, @individual %>
-                <li><%= link_to 'Edit Information', edit_individual_path(@individual) %></li>
-                <li><%= link_to 'Change password', edit_user_registration_path %></li>
-            <% end %>
-        </ul>
+<div class="row" data-equalizer>
+    <div class="small-2 columns leftNav" data-equalizer-watch>
+        <%= render "sidebar" %>
     </div>
-    <div class="small-10 columns rightContent">
+    <div class="small-10 columns rightContent" data-equalizer-watch>
         
         <p id="notice"><%= notice %></p>
         <h1>Account Information</h1>
     
         <div class="indiv_show_OuterDiv">
-            <h4>General</h4>
-        
-            <div class="indiv_show_SpecificCell">
-              <strong>First Name: </strong>
-              <%= @individual.f_name %>
+            <div class="row">
+                <div class="small-10 columns">
+                    <div class="indiv_show_SpecificCell">
+                      <strong>First Name: </strong>
+                      <%= @individual.f_name %>
+                    </div>
+
+                    <div class="indiv_show_SpecificCell">
+                      <strong>Last Name: </strong>
+                      <%= @individual.l_name %>
+                    </div>
+
+                    <div class="indiv_show_SpecificCell">
+                      <strong>Preferred Name: </strong>
+                      ?
+                    </div>
+                </div>
             </div>
 
-            <div class="indiv_show_SpecificCell">
-              <strong>Last Name: </strong>
-              <%= @individual.l_name %>
+            <div class="row">
+                <div class="small-10 columns">
+                    <div class="indiv_show_SpecificCell">
+                        <strong>Email: </strong>
+                        <%= current_user.email%>
+                    </div>
+
+                    <div class="indiv_show_Contact">
+                    <strong>Contact:</strong><br>
+                        5000 Forbes Avenue <br> Pittsburgh, PA 15289<br>
+                        -- This is a test address --
+
+                    </div>
+                </div>
             </div>
 
-            <div class="indiv_show_SpecificCell">
-              <strong>Preferred Name: </strong>
-              ?
-            </div>
 
 
-
-            <div class="indiv_show_Contact">
-                <h4>Contact</h4>
-                    5000 Forbes Avenue <br> Pittsburgh, PA 15289<br>
-                    -- This is a test address --
-
-            </div>
+            
 
         </div>
 

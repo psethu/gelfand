@@ -1,27 +1,43 @@
-<div class="row">
-    <div class="small-2 columns leftNav">
+<div class="row" data-equalizer>
+    <div class="small-2 columns leftNav" data-equalizer-watch>
         <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
         
         <ul class="side-nav">
-            <li><%= link_to 'Add a Program', new_program_path %> </li>
-            <li><%= link_to 'View Completed Programs', programs_path %> </li>
-            <li><%= link_to 'People Pending Background Checks', programs_path %></li>
+            <li><%= link_to 'Add a Program', new_program_path %></li>
+            <li><%= link_to 'Ongoing Programs', programs_path %></li>
+            <li><%= link_to 'Completed Programs', programs_path %></li>
+            <li><%= link_to 'All Programs', programs_path %></li>
         </ul> 
-    
-        <br />
-    
+
+        <br />    
     </div>
 
-    <div id="leftProgramContainer" class="small-4 columns rightContent">
-        <div class="row text-center progListHead">Upcoming Programs</div>
-    </div>
-
-    <div id="divider" class="small-2 columns">
-
-    </div>
-
-    <div id="rightProgramContainer" class="small-4 columns rightContent">
-        <div class="row text-center progListHead">Ongoing Programs</div>
+    <div id="leftProgramContainer" class="small-10 columns rightContent" data-equalizer-watch>
+        <div class="row progListHead"><h1>Upcoming Programs</h1></div>
+        <div class="cushionWrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>People Pending Clearance</th>
+                        <th>Contact</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @upcoming_progs.order('start_date ASC').each do |prog| %>
+                        <tr>
+                            <td><%= link_to prog.name, prog %></td>
+                            <td><%= prog.start_date.strftime("%m/%d/%y") %></td>
+                            <td class="text-center"><%= link_to prog.num_uncleared_participants, "programs/#{prog.id}/individuals_list" %></td>
+                            <td><%= "Contact Email" %></td>
+                            <td><%= link_to image_tag('tools.png'), edit_program_path(prog) %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

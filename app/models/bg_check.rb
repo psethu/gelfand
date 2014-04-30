@@ -49,6 +49,10 @@ class BgCheck < ActiveRecord::Base
                 return "attr_error"
         end
     end
+
+    def humanize_name
+        "#{self.individual.f_name} #{self.individual.l_name}"
+    end
    
     private
 

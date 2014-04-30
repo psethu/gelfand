@@ -1,0 +1,7 @@
+<img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
+<ul class="side-nav">
+    <% if can? :update, @individual %>
+        <li><%= link_to 'Edit Information', edit_individual_path(@individual) %></li>
+        <li><%= link_to 'Change password', edit_user_registration_path %></li>
+    <% end %>
+</ul>

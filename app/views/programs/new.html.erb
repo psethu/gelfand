@@ -1,10 +1,12 @@
 
-<div class="row">
-	<h1>New program</h1>
-</div>		
-	<%= render 'form' %>
-<div class ="row">
+<div class="row" data-equalizer>
+	<div class="small-2 columns leftNav" data-equalizer-watch>
+		<%= render "sidebar" %>
+	</div>
 
-		<%= link_to 'Back', programs_path %>
-
+	<div class="small-10 columns rightContent" data-equalizer-watch>
+		<h1>New Program</h1>
+		<%= render 'form' %>
+	</div>
+	
 </div>

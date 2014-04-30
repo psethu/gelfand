@@ -1,31 +1,12 @@
-<div class="row">
-  <div class="small-2 columns leftNav">
-      <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-      <ul class="side-nav">
-          <li><div id="activeHeading">Actions </li>
-          <li><%= link_to 'Create a Organization', new_organization_path %> </li>
-         <li><%= link_to 'Create a Program', new_program_path %></li>
-
-    <br>
-    <br>
-
-    <% unless current_user.orgs_that_user_is_Admin_for.empty? %>
-            <li><div id="activeHeading">Manage</a></li>
-            
-            <% current_user.orgs_that_user_is_Admin_for.each do |org| %>
-                <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
-            <% end %>
-        
-    <% end %>
-
-    </ul> 
+<div class="row" data-equalizer>
+  <div class="small-2 columns leftNav" data-equalizer-watch>
+    <%= render 'sidebar' %>
   </div>
-
-
-  <div class="small-10 columns rightContent">
+  <div class="small-10 columns" data-equalizer-watch>
       <h1>Organization home</h1>
-<br>
+  <br>
     
+        
     <% if current_user.get_all_memberships.empty? %>
       Hi <%= current_user.get_first_name %>. <br>
       Currently you are not part of any Organizations and consequently programs. <br>
@@ -50,6 +31,8 @@
 
     
    </div>
-</div>    
+ </div>
+
+
 
 

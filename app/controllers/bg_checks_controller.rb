@@ -13,6 +13,7 @@ class BgChecksController < ApplicationController
   def create
     
     @bg_check = BgCheck.new(bg_check_params)
+
     if !current_user.admin?
       @bg_check.individual_id = current_user.individual.id 
     end
@@ -20,7 +21,7 @@ class BgChecksController < ApplicationController
     respond_to do |format|
       if @bg_check.save
 
-        format.html { redirect_to @bg_check, notice: 'Bg check was successfully created.' }
+        format.html { redirect_to bg_checks_path, notice: 'Bg check was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bg_check }
       else
         format.html { render action: 'new' }
@@ -34,7 +35,7 @@ class BgChecksController < ApplicationController
   def update
     respond_to do |format|
       if @bg_check.update(bg_check_params)
-        format.html { redirect_to @bg_check, notice: 'Bg check was successfully updated.' }
+        format.html { redirect_to bg_checks_path, notice: 'Bg check was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

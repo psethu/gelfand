@@ -1,19 +1,17 @@
-<div class="row">
-  <div class="small-2 columns leftNav">
+<div class="row" data-equalizer>
+  <div class="small-2 columns leftNav" data-equalizer-watch>
     <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
      <ul class="side-nav">
       <%if current_user.admin? %>
         <li><%= link_to 'Edit', edit_bg_check_path(@bg_check) %></li>
         <li><%= link_to 'Back', bg_checks_path %></li>
       <%else%>
-        <li><a href="#">Overview</a></li>
-        <li><a href="#">Status</a></li>
-        <li><a href="#">FAQ</a></li>
+        <li><a href="http://www.cmu.edu/gelfand/clearance-forms/clearance-faq.html" target="_blank">FAQ</a></li>
       <%end%>
     </ul> 
     <br />
   </div>
-  <div class="small-10 columns rightContent">
+  <div class="small-10 columns rightContent" data-equalizer-watch>
     <p id="notice"><%= notice %></p>
     <% if current_user.admin? %>
     <h1>Background Check for <%=@bg_check.individual.proper_name%></h1>
@@ -36,7 +34,6 @@
       <%= link_to 'Back', bg_checks_path %>
 
     <% else %>
-      <h1>Start a Background Check?</h1>
         <div class="bg-wrapper">
           <div class="bg-status-bar">
             <table>
@@ -64,7 +61,7 @@
             </table>
           </div>
 
-          <p class="bg-text">
+          <div class="bg-body">
             <% if @bg_check.status == 0 %>
               <%= render 'requested' %>
             <% elsif @bg_check.status == 1 %>
@@ -76,7 +73,7 @@
             <% elsif @bg_check.status == 4 %>
               <%= render 'excluded'%>
             <% end %>
-          </p>
+          </div>
         </div>
     <% end %>
   </div>

@@ -45,6 +45,8 @@ gem 'hirb'
 #Validates_timeliness for date and time validations
 gem 'validates_timeliness'
 
+gem 'hirb'
+
 #gem 'mysql2'
 
 group :test do

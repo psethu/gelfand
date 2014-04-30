@@ -46,7 +46,10 @@ class User < ActiveRecord::Base
 
   # get all memberships for a user (Whether the user is a regular User or OrgUser)
   def get_all_memberships
-      Membership.for_individual(self.individual.id)
+    unless self.individual.nil?
+      return Membership.for_individual(self.individual.id)
+    end
+    return []
   end
 
 

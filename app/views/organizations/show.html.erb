@@ -33,7 +33,9 @@
 <br>
 <br>
     <div class="orgs_actions">  
-      <%= link_to 'Edit', edit_organization_path(@organization) %> |
+          <% if current_user.admin || current_user.is_orgUser_for_specific_org(@organization) %>
+              <%= link_to 'Edit', edit_organization_path(@organization) %> |
+          <% end %>
       <%= link_to 'My orgs', organizations_path %>
     </div>
 

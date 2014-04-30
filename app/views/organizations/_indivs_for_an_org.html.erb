@@ -1,4 +1,3 @@
-
       <table>
         <tbody>
               <tr>
@@ -11,13 +10,17 @@
                 <td class ="tableData"><%= mem.individual.format_role %></td>
 
                 <td class ="tableData"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(mem.individual) %></td>
-                  <% if current_user.is_orgUser_for_specific_org(@organization) %>
+                  <% if current_user.admin || current_user.is_orgUser_for_specific_org(@organization) %>
                   <!-- For below "#{image_tag('remove.gif')} Remove"
                       helpful link: http://stackoverflow.com/questions/5387122/link-to-image-tag-with-text-in-rails
                        - searched this in Google "image appear link_to next to rails"
                    -->
-                     <td class ="tableData"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove this member?")}".html_safe, mem, method: :delete %></td>
-                     <td ><%= check_box_tag "membership_ids[]", mem.id %> </td>
+
+                  <td class ="tableData"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove this member?")}".html_safe, mem, method: :delete,  :data => { :confirm => "Are you sure?" } %></td>
+                       <!-- if having no last name for Indiv then u r dealing with a Membership that has a temp Individual, because waiting for a person to sign up with Gelfand since this is not a 'regular Membership' yet dont allow delete all-->
+                      <% unless mem.individual.l_name == "Temp: " %>
+                             <td ><%= check_box_tag "membership_ids[]", mem.id %> </td>
+                      <% end %>
                   <% end %>
               </tr>
             <% end %>
@@ -28,7 +31,7 @@
                 <td></td>
           <% if current_user.is_orgUser_for_specific_org(@organization) %>
               <td>
-                  <%= submit_tag "Delete all", :name => "#{@organization.id}", :class => "formDeleteButton" %>
+                  <%= submit_tag "Delete all",  :name => "#{@organization.id}", :class => "formDeleteButton" %>
               </td>
           <% end %>
 <% end %>
@@ -39,44 +42,31 @@
 
 <!-- Indivs NOT part of Org -->
     <!-- no need to define method here because forms always default to POST -->
-
-        <tbody>
-              <tr>
-                <td>
-                <h3>Non-Members</h3>
-                </td>
-              </tr>
-<%= form_tag multiple_new_memberships_path do %>
-            <% @organization.indivs_not_already_part_of_org.each do |indiv| %>
-              <tr>
-                <td class ="tableData"><%= indiv.l_name %>, <%= indiv.f_name %></td>
-                <td class ="tableData"><%= indiv.role %></td>
-                <td class ="tableData"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(indiv) %></td>
-
-                  <% if current_user.is_orgUser_for_specific_org(@organization) %>
-                       <td class ="tableData">
-                        <%= link_to "#{image_tag('add_icon.jpg', size: "20x20", alt: "Add this individual?")}".html_safe, 
-                           {:controller => "memberships", :action => "create", 
-                            :organization_id => @organization.id, :individual_id => indiv.id }, method: :post %>
-                      </td>
-                      <td><%= check_box_tag "indiv_ids[]", indiv.id %> </td>
-                  <% end %>
-              </tr>
-              <% end %>
-              
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            <% if current_user.is_orgUser_for_specific_org(@organization) %>
-                    <td>    <%= submit_tag "Add all", :name => "#{@organization.id}", :id => "addingFormButton", :class => "button" %>
-                    </td>
-            <% end %>
-              </tr>
-        </tbody>
-<% end %>
-      
-      </table>
+    <% if (current_user.admin || current_user.is_orgUser_for_specific_org(@organization)) %>
+            <tbody>
+                <tr><td class="OrgShowAddMemForm">
+                    <%= simple_form_for OrganizationMailer.new, :html => {:class => 'form-horizontal' } do |f| %>
+                      <%= f.input :currently_registered_email, :label => "Email", :required => true %>
+                      <div class="hidden">
+                        <%= f.input :nickname, :hint => 'Leave this field blank!' %>
+                      </div>
+                      <div class="hidden">
+                        <%= f.input :org_name, :input_html => { :value => @organization.name } %>
+                      </div>
+                      <div class="hidden">
+                        <%= f.input :NOTICE, :input_html => { :value => 
+                          "You have been temporarily given a Membership to \"#{@organization.name}\". To officially be in the system, sign up at: http://gelfand-gelfand.rhcloud.com/users/sign_up"
+                         } %>
+                      </div>
+                      <%= hidden_field_tag :organization_id, @organization.id %>
+                      <div>
+                        </br>
+                        <%= f.button :submit, 'Add', :class => "button", :id=> "addingFormButton" %>
+                      </div>
+                    <% end %>
+              </td></tr>
+          </tbody>
+    <% end %>
+</table>
       <br>
 

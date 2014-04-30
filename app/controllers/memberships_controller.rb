@@ -1,4 +1,5 @@
 class MembershipsController < ApplicationController
+  load_and_authorize_resource
 	before_action :set_membership, only: [:destroy]
 
   def create
@@ -20,6 +21,12 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
+    # check if destroying a Membership having a temp Individual, if so delete associated temp Indiv
+    if @membership.individual.l_name == "Temp: "
+        @individual = @membership.individual
+        @individual.delete
+    end
+
     @membership.destroy
     respond_to do |format|
       format.html { redirect_to organization_path(Organization.find(@membership.organization_id)) }

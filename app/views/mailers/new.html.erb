@@ -10,10 +10,18 @@
       <%= simple_form_for @mailer, :html => {:class => 'form-horizontal' } do |f| %>
         <div class="row">
           <div class="small-6 columns">
-            <%= f.input :name, :required => true, :input_html => {:value => current_user.individual.proper_name }%>
+            <% if !current_user.nil? %>
+             <%= f.input :name, :required => true, :input_html => {:value => current_user.individual.proper_name }%>
+            <% else %>
+              <%= f.input :name, :required => true%>
+            <% end %>
           </div>
           <div class="small-6 columns" id="email">
-            <%= f.input :email, :required => true, :input_html => {:value => current_user.email } %>
+            <% if !current_user.nil? %>
+              <%= f.input :email, :required => true, :input_html => {:value => current_user.email } %>
+            <% else %>
+              <%= f.input :email, :required => true %>
+            <% end %>
           </div>
         </div>
         <div class="row">

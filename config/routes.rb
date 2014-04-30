@@ -12,6 +12,8 @@ Gelfand::Application.routes.draw do
 
   resources :bg_checks 
 
+
+
   # below is so I can add the 'delete_multiple' action and url along with the regular 7 we get from 
     # "resources :memberships"
   resources :memberships do
@@ -28,14 +30,16 @@ Gelfand::Application.routes.draw do
   # need this route so can delete an affiliation
   delete 'affiliations/:id' => 'affiliations#destroy'
   
-  # http://stackoverflow.com/questions/5631145/routing-to-static-html-page-in-public
-  # I put 'gelfand_contact_page.html' file inside the public folder
+  # this route is for the form in Org show page
+  match '/organization_mailers',     to: 'organizations#send_sign_up_notice_if_no_indiv_exists',  via: 'post'
 
   match '/mailers',     to: 'mailers#new',             via: 'get'
   resources "mailers", only: [:new, :create]
 
 
-  devise_for :users
+  # Below ':controllers => ..." is so points to our custom 'registrations' controller
+    # under my_devise folder which is in controllers folder
+  devise_for :users, :controllers => {:registrations => "my_devise/registrations"} 
   root :to => "home#index"
 
 

@@ -24,6 +24,7 @@ class BgCheck < ActiveRecord::Base
     scope :passed_child_abuse, -> { where('status = ?', 2) }
     scope :criminal_failed, -> { where('status = ?', 3) }
     scope :not_cleared, -> { where('status = ?', 4) }
+    scope :expired, -> { where('bg_checks.child_abuse_date <= ?', Date.today<<36)}
 
    	# Class Methods
    	# -------------

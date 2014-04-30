@@ -48,12 +48,8 @@ can accepts 2 arguments
           can :read, Organization
           can :show, Organization 
 
-          unless user.get_org_ids.nil?
-            user.get_org_ids.each do |i|
-              can :update, Organization do |o|
-                o.id == i
-              end
-            end
+          can :manage, Organization do |org|
+              user.is_orgUser_for_specific_org(org)
           end
 
           unless user.get_admin_prog_ids.nil?
@@ -64,9 +60,10 @@ can accepts 2 arguments
             end
           end
 
-          can :manage, Membership
-          can :manage, Organization
-
+          # if a Membership belongs to an Org that the User is an OrgUser for, they can manage that 
+          can :manage, Membership do |memberShip|
+              user.is_orgUser_for_specific_org(Organization.find_by(id: memberShip.organization_id))
+          end
 
        else
          can :read, :home # this is a guest

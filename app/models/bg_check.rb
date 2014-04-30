@@ -26,6 +26,7 @@ class BgCheck < ActiveRecord::Base
     scope :not_cleared, -> { where('status = ?', 4) }
     scope :expired, -> { where('bg_checks.child_abuse_date <= ?', Date.today<<36)}
 
+
    	# Class Methods
    	# -------------
 
@@ -71,7 +72,6 @@ class BgCheck < ActiveRecord::Base
 
     # Method to update the status of a bg_check if the date is updated
     def auto_update_status
-        #unless self.status > 1
             if self.child_abuse_date
                 if Date.today > self.child_abuse_date >> 36
                     self.status = 5
@@ -83,10 +83,6 @@ class BgCheck < ActiveRecord::Base
             else
                 self.status = 0
             end
-        #else             
-
-            
-        #end
     end
 
 end

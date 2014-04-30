@@ -1,7 +1,12 @@
-<p id="notice"><%= notice %></p>
-<h1>Editing program</h1>
 
-<%= render 'form' %>
+<div class="row" data-equalizer>
+	<div class="small-2 columns leftNav" data-equalizer-watch>
+		<%= render "sidebar_from_inside" %>
+	</div>
 
-<%= link_to 'Show', @program %> |
-<%= link_to 'Back', programs_path %>
+	<div class="small-10 columns rightContent" data-equalizer-watch>
+		<h1>New Program</h1>
+		<%= render 'form' %>
+	</div>
+	
+</div>

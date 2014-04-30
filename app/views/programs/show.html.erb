@@ -1,16 +1,7 @@
 
 <div class="row" data-equalizer>
     <div class="small-2 columns leftNav" data-equalizer-watch>
-        <img src="<%= asset_path( 'gelfandLogo.jpg' ) %>" /> 
-    
-        <ul class="side-nav">
-            <li><%= link_to 'Add a Program', new_program_path %></li>
-            <li><%= link_to 'Ongoing Programs', programs_path %></li>
-            <li><%= link_to 'Completed Programs', programs_path %></li>
-            <li><%= link_to 'All Programs', programs_path %></li>
-        </ul> 
-    
-        <br />    
+        <%= render 'sidebar_from_inside' %>  
     </div>
     <div class="small-10 columns rightContent" data-equalizer-watch>
         <p id="notice"><%= notice %></p>
@@ -30,48 +21,52 @@
             </div>
 
             <div class="row">
-                <h3>Participating Members</h3>
-                <% if @program.cleared_participants.empty? %>
-                    There is no one assigned to this program.
-                <% else %>
-                    <% @program.cleared_participants.each do |ind| %>
-                        <%= link_to ind.name, ind %> <br>
+                <div class="progShowPanel">
+                    <h3>Participating Members</h3>
+                    <% if @program.cleared_participants.empty? %>
+                        There is no one assigned to this program.
+                    <% else %>
+                        <% @program.cleared_participants.each do |ind| %>
+                            <%= link_to ind.name, ind %> <br>
+                        <% end %>
                     <% end %>
-                <% end %>
-                <br />
-                <%= link_to "See all members...", "#{@program.id}/individuals_list" %>
+                    <br />
+                    <%= link_to "See all members...", "#{@program.id}/individuals_list" %>
+                    <br />
+                </div>
             </div>
             
-            <div class="row">
+            <div class="row progShowPanel">
                 <h3>Affiliated Organizations</h3>
-                <% if @program.affiliations.empty? %>
+                <% if @program.organizations.empty? %>
                     There are no Organizations affiliated with this program.
                     <br />
                     <%= link_to "Check Organizations?", organizations_path %>
                 <% else %>
                     <% @program.organizations.each do |org| %>
-                        <% link_to org.name, org %> <br>
+                        <%= link_to org.name, org %> <br>
                     <% end %>
                 <% end %>
                 <br />
             </div>
+            <div class="row progShowPanel"><h3>Additional Information</h3></div>
             <p>
-              <strong>Cmu facilities:</strong>
+              <strong>Cmu Facilities:</strong>
               <%= @program.cmu_facilities %>
             </p>
 
             <p>
-              <strong>Off campus facilities:</strong>
+              <strong>Off Campus Facilities:</strong>
               <%= @program.off_campus_facilities %>
             </p>
 
             <p>
-              <strong>Num minors:</strong>
+              <strong>Number of Minors Involved:</strong>
               <%= @program.num_minors %>
             </p>
 
             <p>
-              <strong>Num adults supervising:</strong>
+              <strong>Number of Supervising Adults:</strong>
               <%= @program.num_adults_supervising %>
             </p>
         </div>

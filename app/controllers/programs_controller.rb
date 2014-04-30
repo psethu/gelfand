@@ -11,7 +11,18 @@ def individuals_list
   @program = Program.find(params[:id])
   @cleared = @program.cleared_participants
   @not_cleared = @program.uncleared_participants
+end
 
+def ongoing
+  @ongoing = Program.current
+end
+
+def completed
+  @completed = Program.completed
+end
+
+def upcoming
+  @upcoming = Program.upcoming
 end
 
   # GET /programs

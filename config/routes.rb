@@ -1,6 +1,10 @@
 Gelfand::Application.routes.draw do
-  resources :programs
   get 'programs/:id/individuals_list' => 'programs#individuals_list'
+  get 'programs/completed' => 'programs#completed'
+  get 'programs/ongoing' => 'programs#ongoing'
+  get 'programs/upcoming' => 'programs#upcoming'
+  resources :programs
+
 
   resources :individuals
 

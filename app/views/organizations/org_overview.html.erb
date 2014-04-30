@@ -1,0 +1,35 @@
+<div class="row" data-equalizer>
+  <div class="small-2 columns leftNav" data-equalizer-watch>
+    <%= render 'sidebar' %>
+  </div>
+
+  <div class="small-10 columns rightContent" data-equalizer-watch>
+      <h1>Overview of Org actions</h1>
+
+		  <% if (current_user && current_user.admin) %>
+		  		As an Admin user, you are allowed to perform any action.
+		  <% elsif current_user %>
+		  		As a member of the Gelfand Center, you can:
+		  		<ul>
+		  			<li>
+						<strong>Create:</strong><br>
+						<ul><li>Organizations</li></ul>
+						<ul><li>Programs</li></ul>
+		  			</li>
+		  			<br>
+		  			<li>
+						To an organization that you created:<br>
+						<ul><li><strong>Add: </strong> members or programs</li></ul>
+						<ul><li><strong>Edit: </strong>organizations or programs</li></ul>
+						<ul><li><strong>Remove: </strong>programs or members</li></ul>
+		  			</li>
+		  		</ul>
+		  		<br>
+		  		<h5>Note: </h5>
+		  		When adding a member to an Org, if he or she already exists in the system<br>
+		  		then he or she will be added. <br>
+		  		Otherwise a notice will be sent to that member to sign up. <br>
+		  <% else %>
+		  <% end %>
+  </div>
+</div>

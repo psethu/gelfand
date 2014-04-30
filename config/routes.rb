@@ -8,11 +8,15 @@ Gelfand::Application.routes.draw do
 
   resources :individuals
 
-  resources :organizations
+  resources :organizations do
+    collection do
+      get 'org_overview'
+    end
+  end
 
   resources :bg_checks 
 
-
+  #match 'organizations/overview' => 'organizations#overview', :via => [:get], :as => :org_overview
 
   # below is so I can add the 'delete_multiple' action and url along with the regular 7 we get from 
     # "resources :memberships"

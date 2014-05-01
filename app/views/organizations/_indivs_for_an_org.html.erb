@@ -9,7 +9,7 @@
                 <td class ="tableData"><%= mem.individual.l_name %>, <%= mem.individual.f_name %></td>
                 <td class ="tableData"><%= mem.individual.format_role %></td>
 
-                <td class ="tableData"><%= link_to "#{image_tag('list_bullets.png')}".html_safe, individual_path(mem.individual) %></td>
+                <td class ="tableData"><%= link_to "#{image_tag('tools.png', size: "24x24")}".html_safe, individual_path(mem.individual) %></td>
                   <% if current_user.admin || current_user.is_orgUser_for_specific_org(@organization) %>
                   <!-- For below "#{image_tag('remove.gif')} Remove"
                       helpful link: http://stackoverflow.com/questions/5387122/link-to-image-tag-with-text-in-rails

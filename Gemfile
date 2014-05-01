@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'chronic'
-gem 'mysql2'
+#gem 'mysql2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -45,8 +45,6 @@ gem 'hirb'
 #Validates_timeliness for date and time validations
 gem 'validates_timeliness'
 
-gem 'hirb'
-=======
 group :production do
 	#gem 'mysql2'
 end

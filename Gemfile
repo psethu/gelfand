@@ -49,7 +49,6 @@ group :production do
 	#gem 'mysql2'
 end
 
-#gem 'mysql2'
 
 group :test do
 	gem 'factory_girl_rails', '4.2.1'

@@ -6,6 +6,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     @organizations = Organization.alphabetical
+    @participant = Participant.new
   end
 
   def show

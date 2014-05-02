@@ -124,5 +124,61 @@ class User < ActiveRecord::Base
     return nil
   end
 
+def get_all_programIDs_a_user_is_part_of
+    # below gets ALL participants one is doing for a program
+    participations_to_different_programs = self.individual.participants
+    if participations_to_different_programs.nil?
+        return nil
+    end
+    all_programIDs_a_user_is_part_of = participations_to_different_programs.map {|partcp| partcp.program_id}
+end
+
+  def get_programs_user_participating_under_particular_org(org)
+    all_programIDs_a_user_is_part_of = self.get_all_programIDs_a_user_is_part_of
+      # but the program could also be part of many ogrs
+      # EX: toys for tots could point to org "SAE" or org "Volleyvall"
+    if get_programs_for_an_org(org).nil?
+      return nil
+    end
+    all_programIDs_an_org_is_affiliated_with = get_programs_for_an_org(org).map {|prog| prog.id}
+    programIDs = []
+    
+    all_programIDs_a_user_is_part_of.each do |p_id|
+        if all_programIDs_an_org_is_affiliated_with.include?(p_id)
+          programIDs << p_id
+        end
+    end
+    programIDs
+    if programIDs.nil?
+        return nil
+    end
+        programIDs.map {|p_id| Program.find(p_id)}
+  end
+
+  def get_all_programs_user_not_yet_participating_in_under_an_org(org)
+      all_programIDs_a_user_is_part_of = get_all_programIDs_a_user_is_part_of
+      if get_programs_for_an_org(org).nil?
+        return nil
+      end
+
+    puts "\n \n Programs WOW: "+ get_programs_for_an_org(org).size.to_s
+
+      all_programIDs_an_org_is_affiliated_with = get_programs_for_an_org(org).map {|prog| prog.id}
+
+      # return all programs under and org user is not participating in
+      programIDs = all_programIDs_an_org_is_affiliated_with.reject {|p_id| all_programIDs_a_user_is_part_of.include?(p_id)}
+
+    puts "\n \n scdsf"
+    puts "Programs WOW: "+ programIDs.size.to_s
+    puts "\n \n"
+
+      
+      if programIDs.nil?
+          return nil
+      end
+    programIDs.map {|p_id| Program.find(p_id)}
+
+
+  end
 
 end

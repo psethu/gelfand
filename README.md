@@ -1,5 +1,5 @@
 #Gelfand Center Application
-This application helps the Leonard Gelfand Center at Carnegie Mellon University manage and keep track of background checks across the . 
+This application helps the Leonard Gelfand Center at Carnegie Mellon University manage and keep track of background checks. 
 ## Running Locally
 
 Install git on your machine and clone the repository:

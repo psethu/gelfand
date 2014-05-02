@@ -57,6 +57,9 @@ can accepts 2 arguments
               can :update, Program do |p|
                 p.id == i
               end
+              can :show, Program do |p|
+                p.id == i
+              end
             end
           end
 

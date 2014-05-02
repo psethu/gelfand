@@ -22,11 +22,13 @@ Install the gem and setup your machine. Follow instructions from the console:
 gem install rhc
 rhc setup
 ```
+
 Now it's time to create the application on OpenShift. Make sure gem pg is in the Gemfile and run:
 ```console
 rhc app create gelfand ruby-1.9 postgresql-9.2 --from-code=https://github.com/sankalpk/gelfand.git
 ```
 The application is now hosted. We need to tell our git repository where to push code. Run the following and copy the git URL:
+
 ```console
 rhc app show openshift 
 ```
@@ -42,12 +44,13 @@ git push openshift master
 ```
 These notes were borrowed and summarized from various sources. Definitely check out the [Rails Girls Guide](http://guides.railsgirls.com/openshift/), the [OpenShift Blog](https://www.openshift.com/blogs/openshift-is-a-rails-friendly-paas-part-1), and [A Ruby Story Blog](http://arubystory.blogspot.com/2013/12/tutorial-todo-rails-openshift.html) for further help.
 
-## Debugging OpenShift
+## Maintaining OpenShift
 
 To view production logs run:
 ```console
 rhc tail gelfand
 ````
+
 To SSH into the server run:
 ```console
 rhc ssh todo
@@ -56,7 +59,7 @@ Once you're connected to the server, you can access your server by running the f
 ```console
 cd app-root/repo
 ```
-To run new migrations first SSH into the server, go to the app root and then run:
+To update the database with new migrations first SSH into the server, go to the app root and then run:
 ```console
 bundle exec rake db:migrate RAILS_ENV="production"
 ```

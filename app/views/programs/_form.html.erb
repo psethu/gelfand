@@ -18,19 +18,18 @@
 	    	</div>
 		</div>
 
-
-		<div class="row">
-			<div class="programField small-5 columns">
-				<%= f.input  :start_date, :label => 'Start Date', :as => :string, :input_html => {:class => 'datepicker'} %>
+		<div class="row" id="dates">
+			<div class="small-6 columns">
+				<%= f.label :start_date %>
+				<%= f.text_field :start_date, :as => :string, :class => "datepicker" %>
+			</div>
+			<div class="small-6 columns">
+				<%= f.label :end_date %>
+				<%= f.text_field :end_date, :as => :string, :class => "datepicker" %>
 			</div>
 
-			<div class="programField small-5 offset-1 columns">
-				<%= f.input  :end_date, :label => 'End Date', :as => :string, :input_html => {:class => 'datepicker'} %>
-			</div>
 		</div>
 
-		<br />
-		<br />
 		<br />
 
 		<%= simple_fields_for @contact do |contact_form| %>

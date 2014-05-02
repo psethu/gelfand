@@ -7,9 +7,16 @@
       <h1>Overview of Org actions</h1>
 
 		  <% if (current_user && current_user.admin) %>
-		  		As an Admin user, you are allowed to perform any action.
-		  <% elsif current_user %>
-		  		As a member of the Gelfand Center, you can:
+		  		As an Admin user, you are allowed to perform any action.<br>
+		  		Most of them are listed below. <br><br>
+		  <% end %>
+		  
+		  <% if current_user %>
+		  		<% if (current_user && current_user.admin) %>
+		  			As an Admin of the system, you can:
+		  		<% else %>
+		  			As a Member of the Gelfand Center, you can:
+		  		<% end %>
 		  		<ul>
 		  			<li>
 						<strong>Create:</strong><br>
@@ -25,11 +32,10 @@
 		  			</li>
 		  		</ul>
 		  		<br>
-		  		<h5>Note: </h5>
-		  		When adding a member to an Org, if he or she already exists in the system<br>
-		  		then he or she will be added. <br>
+		  		<h5><strong>Note: </strong></h5>
+		  		When adding a member to an Org, if he or she already exists in the system,<br>
+		  		he or she will be added. <br>
 		  		Otherwise a notice will be sent to that member to sign up. <br>
-		  <% else %>
 		  <% end %>
   </div>
 </div>

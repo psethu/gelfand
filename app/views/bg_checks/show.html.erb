@@ -6,6 +6,7 @@
         <li><%= link_to 'Edit', edit_bg_check_path(@bg_check) %></li>
         <li><%= link_to 'Back', bg_checks_path %></li>
       <%else%>
+        <li><a href="/bg_checks">Overview</a>
         <li><a href="http://www.cmu.edu/gelfand/clearance-forms/clearance-faq.html" target="_blank">FAQ</a></li>
       <%end%>
     </ul> 
@@ -34,12 +35,13 @@
       <%= link_to 'Back', bg_checks_path %>
 
     <% else %>
+        <h1>My Background Check Status</h1>
         <div class="bg-wrapper">
           <div class="bg-status-bar">
             <table>
               <tr>
                 <% if @bg_check.status == 0 %>
-                  <td><strong>Initiate Process</strong></td>
+                  <td><strong class="current-step">Initiate Process</strong></td>
                   <td> > </td>
                   <td>In Progress</td>
                   <td> > </td>
@@ -47,7 +49,7 @@
                 <% elsif @bg_check.status == 1 || @bg_check.status == 3%>
                   <td>Initiate Process</td>
                   <td> > </td>
-                  <td><strong>In Progress</strong></td>
+                  <td><strong class="current-step">In Progress</strong></td>
                   <td> > </td>
                   <td>Complete</td>
                 <% elsif @bg_check.status == 2 || @bg_check.status == 4%>
@@ -55,7 +57,7 @@
                   <td> > </td>
                   <td>In Progress</td>
                   <td> > </td>
-                  <td><strong>Complete</strong></td>
+                  <td><strong class="current-step">Complete</strong></td>
                 <% end %>
               </tr>
             </table>

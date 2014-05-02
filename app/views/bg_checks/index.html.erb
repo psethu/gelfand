@@ -5,6 +5,7 @@
       <%if current_user.admin?%>
       <%else%>
         <li><a href="http://www.cmu.edu/gelfand/clearance-forms/clearance-faq.html" target="_blank">FAQ</a></li>
+        <li><%= link_to 'My Status', bg_check_path(current_user.individual.bg_check) %></li>
       <%end%>
     </ul> 
     <br />
@@ -73,8 +74,15 @@
           <%= link_to 'Begin Process', new_bg_check_path, class: "button", id: "BeginProcess" %>
         </div>
       <%else%>
-        <h3>You shouldn't be here</h3>
-        <%= link_to 'View your own status', bg_check_path(current_user.individual.bg_check) %>
+        <h1>Background Check Overview</h1>
+
+        <p>The Gelfand Center will support the costs associated with obtaining Pennsylvania criminal and child abuse clearances for current faculty, students and staff of Carnegie Mellon who volunteer to provide services to improve educational opportunities for children in the community. This support is extended to members of organizations that serve the community and for students/faculty involved in service activities that are associated with university courses; i.e. service learning.</p>
+
+        <p>If your department charges a fee to the community for the programs that you provide for children or to educators, the Gelfand Center is not able to cover the costs of the clearances.  You can follow the steps below to process the Criminal and Child Abuse clearance requests.</p>
+
+        <p>Once you have received your clearances be sure to KEEP the certificates since you will need to show this to the school or agency where you volunteer. The certificates are then valid for one year.</p>
+
+        
       <%end%>
 
     <%end%>

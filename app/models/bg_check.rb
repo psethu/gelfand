@@ -6,12 +6,11 @@ class BgCheck < ActiveRecord::Base
     
 	# Validations
 	# -----------
-  	validates :status, :numericality => {:only_integer => true, :less_than_or_equal_to => 4, :greater_than_or_equal_to => 0}
+  	validates :status, :numericality => {:only_integer => true, :less_than_or_equal_to => 5, :greater_than_or_equal_to => 0}
     validates :individual_id, :presence => true, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0 }
     validates_date :date_requested, :allow_blank => true, :on_or_before => :today
     validates_date :criminal_date, :after => :date_requested, :allow_blank => true
     validates_date :child_abuse_date, :after => :criminal_date, :allow_blank => true
-
     # Callbacks
     # ---------
 
@@ -25,6 +24,8 @@ class BgCheck < ActiveRecord::Base
     scope :passed_child_abuse, -> { where('status = ?', 2) }
     scope :criminal_failed, -> { where('status = ?', 3) }
     scope :not_cleared, -> { where('status = ?', 4) }
+    scope :expired, -> { where('bg_checks.child_abuse_date <= ?', Date.today<<36)}
+
 
    	# Class Methods
    	# -------------
@@ -45,6 +46,8 @@ class BgCheck < ActiveRecord::Base
                 return "Criminal Failed, Under Review"
             when 4
                 return "Not Cleared"
+            when 5
+                return "Expired"
             else
                 return "attr_error"
         end
@@ -69,15 +72,17 @@ class BgCheck < ActiveRecord::Base
 
     # Method to update the status of a bg_check if the date is updated
     def auto_update_status
-        unless self.status > 1
             if self.child_abuse_date
-                self.status = 2
+                if Date.today > self.child_abuse_date >> 36
+                    self.status = 5
+                else
+                    self.status = 2
+                end
             elsif self.criminal_date
                 self.status = 1
             else
                 self.status = 0
             end
-        end
     end
 
 end

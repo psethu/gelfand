@@ -6,15 +6,15 @@ class Contact < ActiveRecord::Base
     
     #Valiations
     validates_format_of :phone, :with => /A\(?\d{3}\)?[-. ]?\d{3}[-.]?\d{4}Z/, :message => "should be 10 digits (area code needed) and delimited with dashes only", :allow_blank => true
-    validates_uniqueness_of :email, :case_sensitive => false
-    validates_format_of :email, :with => /A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))Z/i, :message => "is not a valid format"
+    #validates_uniqueness_of :email, :case_sensitive => false
+    #validates_format_of :email, :with => /A[\w]([^@\s,;]+)@(([\w-]+\.)+(com|edu|org|net|gov|mil|biz|info))Z/i, :message => "is not a valid format"
 
-    validates_presence_of :street, :city, :state, :zip, if: :address?
-    validates_inclusion_of :state, :in => STATES_LIST.map {|k, v| v}, :message => "is not a recognized state in the system"
-    validates_format_of :zip, :with => /A\d{5}Z/, :message => "should be five digits long"
+    #validates_presence_of :street, :city, :state, :zip, if: :address?
+    validates_inclusion_of :state, :in => STATES_LIST.map {|k, v| v}, :message => "is not a recognized state in the system", :allow_blank => true
+    validates_format_of :zip, :with => /A\d{5}Z/, :message => "should be five digits long", :allow_blank => true
     #Scopes
 
-    CONTACTS_LIST = Contact.all.map { |c| [c.title, city.id] }
+    #CONTACTS_LIST = Contact.all.map { |c| [c.title, city.id] }
 
     private
       def reformat_phone

@@ -16,8 +16,18 @@
                 </div>
             </div>
             <br />
+
             <div class="row text-center">
                 <i><%= @program.description %></i>
+            </div>
+
+            <div class="row">
+                <strong>Contact Email: </strong>
+                <% if @program.contact %>
+                    <%= @program.contact.email %>
+                <% else %>
+                    None assigned. <%= link_to "Edit Program?", edit_program_path(@program) %>
+                <% end %>
             </div>
 
             <div class="row">
@@ -49,26 +59,28 @@
                 <% end %>
                 <br />
             </div>
+
             <div class="row progShowPanel"><h3>Additional Information</h3></div>
-            <p>
-              <strong>Cmu Facilities:</strong>
-              <%= @program.cmu_facilities %>
-            </p>
 
-            <p>
-              <strong>Off Campus Facilities:</strong>
-              <%= @program.off_campus_facilities %>
-            </p>
+            <div class="row">
+                <p><strong>Cmu Facilities:</strong>
+                    <%= @program.cmu_facilities %></p>
+            </div>
 
-            <p>
-              <strong>Number of Minors Involved:</strong>
-              <%= @program.num_minors %>
-            </p>
+            <div class="row">
+                <p><strong>Off Campus Facilities:</strong>
+                    <%= @program.off_campus_facilities %></p>
+            </div>
 
-            <p>
-              <strong>Number of Supervising Adults:</strong>
-              <%= @program.num_adults_supervising %>
-            </p>
+            <div class="row">
+                <p><strong>Number of Minors Involved:</strong>
+                    <%= @program.num_minors %></p>
+            </div>
+
+            <div class="row">
+                <p><strong>Number of Supervising Adults:</strong>
+                    <%= @program.num_adults_supervising %></p>
+            </div>
         </div>
     </div>
 </div>

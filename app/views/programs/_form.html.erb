@@ -22,14 +22,16 @@
 			<%= f.text_field :description %>
 		</div>
 
-		<div class="field">
-			<%= f.label :start_date %>
-			<%= f.date_select :start_date %>
-		</div>
+		<div class="row" id="dates">
+			<div class="small-6 columns">
+				<%= f.label :start_date %>
+				<%= f.text_field :start_date, :as => :string, :class => "datepicker" %>
+			</div>
+			<div class="small-6 columns">
+				<%= f.label :end_date %>
+				<%= f.text_field :end_date, :as => :string, :class => "datepicker" %>
+			</div>
 
-		<div class="field">
-			<%= f.label :end_date %>
-			<%= f.date_select :end_date %>
 		</div>
 
 		<div class="field">

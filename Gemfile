@@ -31,6 +31,7 @@ gem 'font-awesome-rails'
 gem 'chronic'
 gem 'mysql2'
 
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

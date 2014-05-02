@@ -49,7 +49,7 @@ These notes were borrowed and summarized from various sources. Definitely check 
 To view production logs run:
 ```console
 rhc tail gelfand
-````
+```
 
 To SSH into the server run:
 ```console

@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'chronic'
-gem 'mysql2'
+
 
 
 group :doc do
@@ -47,8 +47,9 @@ gem 'hirb'
 gem 'validates_timeliness'
 
 group :production do
-	#gem 'mysql2'
+	gem 'mysql2'
 end
+	
 
 
 group :test do

@@ -55,7 +55,7 @@ To SSH into the server run:
 ```console
 rhc ssh todo
 ```
-Once you're connected to the server, you can access your server by running the following:
+Once you're connected to the server, you can access your code directory by running the following:
 ```console
 cd app-root/repo
 ```

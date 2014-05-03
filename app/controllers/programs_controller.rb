@@ -3,8 +3,8 @@ class ProgramsController < ApplicationController
   before_action :set_program, only: [:edit, :update, :destroy]
 
 def new
-    @program = Program.new
-
+  @program = Program.new
+  @contact = Contact.new
 end
 
 def individuals_list
@@ -42,12 +42,15 @@ end
   # POST /programs.json
   def create
     @program = Program.new(program_params)
-
+    @contact = Contact.new(contact_params)
+    @contact.save!
+    @program.contact_id = @contact.id
     respond_to do |format|
-      if @program.save
+      if @program.save        
         format.html { redirect_to @program, notice: 'Program was successfully created.' }
         format.json { render action: 'show', status: :created, location: @program }
       else
+        @contact.delete
         format.html { render action: 'new' }
         format.json { render json: @program.errors, status: :unprocessable_entity }
       end
@@ -87,5 +90,9 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
       params.require(:program).permit(:name, :description, :start_date, :end_date, :cmu_facilities, :off_campus_facilities, :num_minors, :num_adults_supervising, :irb_approval, :contact_id, affiliations_attributes: [:id, :organization_id, :program_id, :description, :followed_process, :_destroy])
+    end
+
+    def contact_params
+      params.require(:contact).permit(:title, :email, :street, :street2, :phone, :zip, :city, :state, :nickname, :notes)
     end
 end

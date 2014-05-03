@@ -5,6 +5,9 @@ Gelfand::Application.routes.draw do
   get 'programs/upcoming' => 'programs#upcoming'
   resources :programs
 
+  # just need these 2 routes for creating a participant
+  get 'participants', to: 'participants#index'
+  post 'participants', to: 'participants#create'
 
   resources :individuals
 

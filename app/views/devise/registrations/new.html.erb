@@ -13,11 +13,11 @@
         </div>
         <div class="small-4 columns">
           <div><%= f.label :password %><br />
-          <%= f.password_field :password %></div>
+          <%= f.password_field :password, :value => "" ,:placeholder => "placeholder text" %></div>
         </div>
         <div class="small-4 columns">
           <div><%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation %></div>
+          <%= f.password_field :password_confirmation, :placeholder=>"At least 8 characters" %></div>
         </div>
   </div>
 

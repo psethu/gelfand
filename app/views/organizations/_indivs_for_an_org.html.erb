@@ -16,7 +16,7 @@
                        - searched this in Google "image appear link_to next to rails"
                    -->
 
-                  <td class ="tableData"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove this member?")}".html_safe, mem, method: :delete,  :data => { :confirm => "Are you sure?" } %></td>
+                  <td class ="tableData"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove?")}".html_safe, mem, method: :delete,  :data => { :confirm => "Are you sure?" } %></td>
                        <!-- if having no last name for Indiv then u r dealing with a Membership that has a temp Individual, because waiting for a person to sign up with Gelfand since this is not a 'regular Membership' yet dont allow delete all-->
                       <% unless mem.individual.l_name == "Temp: " %>
                              <td ><%= check_box_tag "membership_ids[]", mem.id %> </td>

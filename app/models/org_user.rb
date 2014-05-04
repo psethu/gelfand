@@ -9,6 +9,9 @@ class OrgUser < ActiveRecord::Base
     validates_numericality_of :user_id, :only_integer => true, :greater_than => 0
     validates_numericality_of :organization_id, :only_integer => true, :greater_than => 0
 
+    # Scopes
+    scope :for_organization, lambda {|organization_id| where("organization_id = ?", organization_id) }
+
 =begin
 README
 Had to comment this out otherwise I get error 'no active method exists for class'

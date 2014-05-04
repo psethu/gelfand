@@ -11,15 +11,22 @@
                         <tr>
                           <th>Name</th>
                           <th>Is a partner</th>
+                          <th>Org head</th>
                           <th>Active</th>
                           <th>Contact</th>
                         </tr>
                       </thead>
-
                       <tbody>
                       <% @organizations.each do |org|  %>
                         <tr><td><%= link_to org.name, org %> </td>
                             <td><%= org.is_partner ? "Yes" : "No" %></td>
+                            <% orgUser = OrgUser.for_organization(org).first %>
+                            <% if orgUser.nil? %>
+                                <td> N/A </td>
+                            <% else %>
+                                <% indiv = orgUser.user.individual %>
+                                <td><%= link_to indiv.f_name, indiv  %></td>
+                            <% end %>
                             <td><%= org.active ? "Yes" : "No" %></td>                            
                             <td></td>
                             <td class="row_actions"><%= link_to "#{image_tag('pencil_edit.png', size: "20x20")}".html_safe, org %></td>

@@ -36,7 +36,11 @@ Gelfand::Application.routes.draw do
 
   # need this route so can delete an affiliation
   delete 'affiliations/:id' => 'affiliations#destroy'
+
+  # need this so can delete orgUser
+  resources :org_users
   
+
   # this route is for the form in Org show page
   match '/organization_mailers',     to: 'organizations#send_sign_up_notice_if_no_indiv_exists',  via: 'post'
 

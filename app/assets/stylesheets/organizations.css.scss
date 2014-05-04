@@ -19,11 +19,18 @@ table {
 	margin:10px 0 0 0;
 	position:relative; 
 	border: none;
+
 }
 
 table tbody tr td a:hover {
 	background-color: transparent;
 	color: black;
+}
+
+
+#org_home_table tbody tr td{
+	border-bottom:1px solid #ccc;
+
 }
 
 .OrgShow_title {

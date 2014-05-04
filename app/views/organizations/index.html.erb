@@ -6,29 +6,31 @@
       <h1>Organization home</h1>
   <br>
       <% if current_user.admin %>
-                    <table >
+                    <table id="org_home_table">
                       <thead>
                         <tr>
                           <th>Name</th>
                           <th>Is a partner</th>
-                          <th>Org head</th>
                           <th>Active</th>
-                          <th>Contact</th>
+                          <th>Org head</th>
                         </tr>
                       </thead>
                       <tbody>
                       <% @organizations.each do |org|  %>
                         <tr><td><%= link_to org.name, org %> </td>
                             <td><%= org.is_partner ? "Yes" : "No" %></td>
+                            <td><%= org.active ? "Yes" : "No" %></td> 
                             <% orgUser = OrgUser.for_organization(org).first %>
+
                             <% if orgUser.nil? %>
                                 <td> N/A </td>
                             <% else %>
                                 <% indiv = orgUser.user.individual %>
-                                <td><%= link_to indiv.f_name, indiv  %></td>
-                            <% end %>
-                            <td><%= org.active ? "Yes" : "No" %></td>                            
-                            <td></td>
+                                <td><%= link_to indiv.f_name, indiv %></td>
+                                
+                                 <td><%= link_to "#{image_tag('removeOrgUser_2.png', size: "75x30", alt: "Remove?")}".html_safe, org_user_path(orgUser), method: :delete, data: { confirm: 'Delete Assignment of Org head to this Org?' }, id: "removeOrgUser" %>
+                                </td>   
+                            <% end %>                           
                             <td class="row_actions"><%= link_to "#{image_tag('pencil_edit.png', size: "20x20")}".html_safe, org %></td>
                         </tr>
                       <% end %>

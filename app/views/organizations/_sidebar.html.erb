@@ -10,13 +10,24 @@
 <br>
 <br>
 
-<% unless current_user.orgs_that_user_is_Admin_for.empty? %>
-      <li><div id="activeHeading">Manage</a></li>
-      
-      <% current_user.orgs_that_user_is_Admin_for.each do |org| %>
-          <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
-      <% end %>
-  
+<% if current_user.admin %>
+	<% unless @organizations.empty? %>
+		      <li><div id="activeHeading">Manage</a></li>
+		      <% @organizations.each do |org| %>
+		          <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
+		      <% end %>
+	<% end %>
+
+<% elsif current_user.member%>
+		<% unless current_user.orgs_that_user_is_Admin_for.empty? %>
+		      <li><div id="activeHeading">Manage</a></li>
+		      
+		      <% current_user.orgs_that_user_is_Admin_for.each do |org| %>
+		          <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
+		      <% end %>
+		  
+		<% end %>
+
 <% end %>
 
 </ul> 

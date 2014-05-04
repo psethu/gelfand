@@ -17,7 +17,7 @@
                       </thead>
 
                       <tbody>
-                      <% Organization.alphabetical.each do |org|  %>
+                      <% @organizations.each do |org|  %>
                         <tr><td><%= link_to org.name, org %> </td>
                             <td><%= org.is_partner ? "Yes" : "No" %></td>
                             <td><%= org.active ? "Yes" : "No" %></td>                            

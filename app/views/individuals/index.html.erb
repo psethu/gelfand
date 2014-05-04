@@ -37,7 +37,7 @@
                     <td> </td>
                 <% end %>
             <td></td>
-            <td class="row_actions"><%= link_to "#{image_tag('tools.png')}".html_safe, edit_individual_path(individual) %></td>
+            <td class="row_actions"><%= link_to "#{image_tag('edit_pencil.png')}".html_safe, edit_individual_path(individual) %></td>
             <td class="row_actions"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove?")}".html_safe, individual, method: :delete, data: { confirm:        'Are you sure?' } %></td>   
           </tr>     
         <% end %>

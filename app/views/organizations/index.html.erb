@@ -31,7 +31,7 @@
                                  <td><%= link_to "#{image_tag('removeOrgUser_2.png', size: "75x30", alt: "Remove?")}".html_safe, org_user_path(orgUser), method: :delete, data: { confirm: 'Delete Assignment of Org head to this Org?' }, id: "removeOrgUser" %>
                                 </td>   
                             <% end %>                           
-                            <td class="row_actions"><%= link_to "#{image_tag('pencil_edit.png', size: "20x20")}".html_safe, org %></td>
+                            <td class="row_actions"><%= link_to "#{image_tag('pencil_edit.png', size: "20x20")}".html_safe, edit_organization_path(org) %></td>
                         </tr>
                       <% end %>
                     </tbody>

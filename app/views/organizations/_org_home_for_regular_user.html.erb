@@ -26,7 +26,7 @@
                         <!-- Start: form to create participation -->
                           <%= simple_form_for @participant, :html => { :class => 'form', :method => 'post'} do |f| %> 
                               <%= f.input :individual_id, :as => :hidden, :input_html => { :value => current_user.individual.id } %>
-                              <%= f.input :program_id, :label => "Join a program under #{org.name}", :collection => current_user.get_all_programs_user_not_yet_participating_in_under_an_org(org) %>
+                              <%= f.input :program_id, :label => "Join a program:", :collection => current_user.get_all_programs_user_not_yet_participating_in_under_an_org(org) %>
                                <%= f.button :submit, :value => "Add", :id => "addingFormButton" %>
                           <% end %>
                         <!-- End: form for participant-->  

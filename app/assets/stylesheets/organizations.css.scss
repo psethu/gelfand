@@ -27,10 +27,12 @@ table tbody tr td a:hover {
 	color: black;
 }
 
+#org_home_table {
+	margin: 0 0 20px 20px;
+}
 
 #org_home_table tbody tr td{
 	border-bottom:1px solid #ccc;
-
 }
 
 .OrgShow_title {
@@ -114,7 +116,7 @@ h1{
 .my_memberships_outerDiv {
 	border: 2px solid black;
 	margin-left: 20px;
-	padding: 10px 0 10px 30px;
+	padding: 10px 20px 10px 30px;
 	border-radius: 5px;
 	width: 300px; // remove makes responsive, but extends to width of entire nav
 	box-shadow: -7px 7px 5px #888888;

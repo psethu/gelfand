@@ -36,7 +36,7 @@ class MembershipsController < ApplicationController
 
   def delete_multiple
       mem_ids = params[:membership_ids]
-      org_id = params.key("Delete all")
+      org_id = params.key("Remove all")
       if mem_ids.nil?
           redirect_to organization_path(org_id)
           flash[:notice] = "\n \n No members were checked!"

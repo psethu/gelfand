@@ -31,7 +31,7 @@
                 <td></td>
           <% if current_user.is_orgUser_for_specific_org(@organization) %>
               <td>
-                  <%= submit_tag "Delete all",  :name => "#{@organization.id}", :class => "formDeleteButton" %>
+                  <%= submit_tag "Remove all",  :name => "#{@organization.id}", :class => "formDeleteButton" %>
               </td>
           <% end %>
 <% end %>

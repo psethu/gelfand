@@ -125,7 +125,7 @@ class User < ActiveRecord::Base
   end
 
 def get_all_programIDs_a_user_is_part_of
-    # below gets ALL participants one is doing for a program
+    # below gets ALL participations to programs for current user
     participations_to_different_programs = self.individual.participants
     if participations_to_different_programs.nil?
         return nil

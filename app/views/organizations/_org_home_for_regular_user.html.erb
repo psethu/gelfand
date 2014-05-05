@@ -18,18 +18,22 @@
                     <% if current_user.individual.participants.empty? %>
                     You are a member of <%= org.name %>, but not part of any programs under <%= org.name %>. Use below form to add yourself to a program. <br><br>
                     <% end %>
-                    <% unless current_user.get_programs_user_participating_under_particular_org(org).nil? %>
+                    <% if !current_user.get_programs_user_participating_under_particular_org(org).nil? %>
                           <% current_user.get_programs_user_participating_under_particular_org(org).each do |prog| %>
                           <%= link_to prog.name, prog %>
                           <% end %>
                         <% end %>
                         <!-- Start: form to create participation -->
+                    <% if org.affiliations.empty? %>
+                      -- No programs available --
+                    <% else %>
                           <%= simple_form_for @participant, :html => { :class => 'form', :method => 'post'} do |f| %> 
                               <%= f.input :individual_id, :as => :hidden, :input_html => { :value => current_user.individual.id } %>
                               <%= f.input :program_id, :label => "Join a program:", :collection => current_user.get_all_programs_user_not_yet_participating_in_under_an_org(org) %>
                                <%= f.button :submit, :value => "Add", :id => "addingFormButton" %>
                           <% end %>
                         <!-- End: form for participant-->  
+                    <% end %>
                   </li> 
           <% end %>
                   </ul>

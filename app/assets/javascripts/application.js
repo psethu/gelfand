@@ -68,6 +68,8 @@ $(document).ready(function(){
 
   // to add/delete orgUser
   $(".removeOrgUser").click(function() {
+    //var cssClass = $(this).css
+
       $(".orgUser_add_delete_form").toggle();
   })
 

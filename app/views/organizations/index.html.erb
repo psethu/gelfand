@@ -17,7 +17,7 @@
                       </thead>
                       <tbody>
                       <% @organizations.each do |org|  %>
-                        <tr><td><%= link_to org.name, org %> </td>
+                        <tr class="rows_in_admin_org_home"><td><%= link_to org.name, org %> </td>
                             <td><%= org.is_partner ? "Yes" : "No" %></td>
                             <td><%= org.active ? "Yes" : "No" %></td> 
                             <% orgUser = OrgUser.for_organization(org).first %>
@@ -28,11 +28,10 @@
                                 <% indiv = orgUser.user.individual %>
                                 <td><%= link_to indiv.f_name, indiv %></td>
                                 
-                                 <td><%= image_tag('removeOrgUser_2.png', size: "75x30", alt: "Remove?", :class => "removeOrgUser")   %>
-                                </td>   
-                                <td>
-
-<%= simple_form_for OrgUser.new, :html => { :class => 'orgUser_add_delete_form', :method => 'post'} do |f| %> 
+                                 <td class="removeOrgUser"><%= image_tag('removeOrgUser_2.png', size: "75x30", alt: "Remove?", :class => "ButtonRemoveOrgUser")   %>
+                                </td>
+                                <td style="display:none;">
+<%= simple_form_for OrgUser.new, :html => {:method => 'post'} do |f| %> 
     <%= f.input :organization_id, :as => :hidden, :input_html => { :value => org.id } %>
     <%= f.input :user_id, :label => "Create a new Org Admin:", :collection => @names_from_users %>
      <%= f.button :submit, :name => "fromOrgShowPage", :value => "Add", :id => "addingFormButton" %>

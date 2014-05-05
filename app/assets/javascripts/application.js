@@ -68,10 +68,10 @@ $(document).ready(function(){
 
   // to add/delete orgUser
   $(".removeOrgUser").click(function() {
-    //var cssClass = $(this).css
+    $(this).next().toggle();
 
-      $(".orgUser_add_delete_form").toggle();
-  })
+      //$(".orgUser_add_delete_form").toggle();
+  });
 
 });
 

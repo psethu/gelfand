@@ -5,7 +5,12 @@
     <li><div id="activeHeading">Actions </li>
 	<li><%= link_to 'Overview', org_overview_organizations_path %> </li>
     <li><%= link_to 'Create a Organization', new_organization_path %> </li>
-   <li><%= link_to 'Create a Program', new_program_path %></li>
+   	<!-- doing if @organization to check if @organization exists (so only works on org show page) -->
+   	<% if @organization %>
+   		<% if current_user.is_orgUser_for_specific_org(@organization)%>
+   			<li><%= link_to 'Create a Program', new_program_path %></li>
+   		<% end %>
+   	<% end %>
 
 <br>
 <br>

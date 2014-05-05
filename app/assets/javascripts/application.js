@@ -67,8 +67,8 @@ $(document).ready(function(){
   });
 
   // to add/delete orgUser
-  $("#removeOrgUser").click(function() {
-      $("#orgUser_add_delete_form").toggle("slow");
+  $(".removeOrgUser").click(function() {
+      $(".orgUser_add_delete_form").toggle();
   })
 
 });

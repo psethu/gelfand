@@ -1,6 +1,25 @@
 class OrgUsersController < ApplicationController
 
+  def create
+   @org_user = OrgUser.new(org_user_params)
 
+    puts "\n \n"
+    puts "Hello"
+    puts "\n \n"
+    # before saving the orgUser with new params, have to delete the one belonging to the org
+        @current_orgUser_to_delete = OrgUser.find_by(organization_id: @org_user.organization_id)
+        @current_orgUser_to_delete.delete
+
+    if @org_user.save!
+      # if saved to database
+      indiv = User.find(@org_user.user_id).individual
+      org = Organization.find(@org_user.organization_id)
+    
+      redirect_to organizations_path
+      flash[:notice] = "Successfully made #{indiv.name} as admin for: #{org.name} ."
+    end
+
+  end
 
   # DELETE
   # DELETE

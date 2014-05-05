@@ -65,15 +65,15 @@
 
           <div class="bg-body">
             <% if @bg_check.status == 0 %>
-              <%= render 'requested' %>
+                  <%= render 'requested' %>
             <% elsif @bg_check.status == 1 %>
-              <%= render 'crim_passed' %>
+                  <%= render 'crim_passed' %>
             <% elsif @bg_check.status == 2 %>
-              <%= render 'all_passed'%>
+                  <%= render 'all_passed'%>
             <% elsif @bg_check.status == 3 %>
-              <%= render 'under_review' %>
+                  <%= render 'under_review' %>
             <% elsif @bg_check.status == 4 %>
-              <%= render 'excluded'%>
+                  <%= render 'excluded'%>
             <% end %>
           </div>
         </div>

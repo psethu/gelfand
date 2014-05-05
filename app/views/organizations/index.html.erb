@@ -30,6 +30,13 @@
                                 
                                  <td><%= link_to "#{image_tag('removeOrgUser_2.png', size: "75x30", alt: "Remove?")}".html_safe, org_user_path(orgUser), method: :delete, data: { confirm: 'Delete Assignment of Org head to this Org?' }, id: "removeOrgUser" %>
                                 </td>   
+                                <td>
+<%= simple_form_for Affiliation.new, :html => { :class => 'form', :id => "orgUser_add_delete_form", :method => 'post'} do |f| %> 
+    <%= f.input :organization_id, :as => :hidden, :input_html => { :value => org.id } %>
+    <%= f.input :program_id, :label => "Affiliate a program with #{org.name}:", :collection => org.programs_not_already_part_of_org %>
+     <%= f.button :submit, :name => "fromOrgShowPage", :value => "Add", :id => "addingFormButton" %>
+<% end %>
+                                </td>
                             <% end %>                           
                             <td class="row_actions"><%= link_to "#{image_tag('pencil_edit.png', size: "20x20")}".html_safe, edit_organization_path(org) %></td>
                         </tr>

@@ -124,61 +124,41 @@ class User < ActiveRecord::Base
     return nil
   end
 
-def get_all_programIDs_a_user_is_part_of
-    # below gets ALL participations to programs for current user
-    participations_to_different_programs = self.individual.participants
-    if participations_to_different_programs.nil?
-        return nil
-    end
-    all_programIDs_a_user_is_part_of = participations_to_different_programs.map {|partcp| partcp.program_id}
-end
+  # method assumes: Org has at least 1 affiliation
+  #                 User has at least 1 participation                
+  def get_all_programs_user_not_yet_participating_in_under_an_org(org)
 
-  def get_programs_user_participating_under_particular_org(org)
-    all_programIDs_a_user_is_part_of = self.get_all_programIDs_a_user_is_part_of
-      # but the program could also be part of many ogrs
-      # EX: toys for tots could point to org "SAE" or org "Volleyvall"
-    if get_programs_for_an_org(org).nil?
-      return nil
+    # all_affiliations gets ALL affiliations to programs for 1 org
+    affiliated_programs = org.affiliations.map {|affil| Program.find(affil.program_id)}
+
+    dups = self.get_programs_user_participating_under_particular_org(org)
+    # return immediately since user not participating in any of orgs programs
+
+    if dups.empty?
+        return dups
     end
-    all_programIDs_an_org_is_affiliated_with = get_programs_for_an_org(org).map {|prog| prog.id}
-    programIDs = []
-    
-    all_programIDs_a_user_is_part_of.each do |p_id|
-        if all_programIDs_an_org_is_affiliated_with.include?(p_id)
-          programIDs << p_id
-        end
-    end
-    programIDs
-    if programIDs.nil?
-        return nil
-    end
-        programIDs.map {|p_id| Program.find(p_id)}
+
+    affiliated_programs - dups
   end
 
-  def get_all_programs_user_not_yet_participating_in_under_an_org(org)
-      all_programIDs_a_user_is_part_of = get_all_programIDs_a_user_is_part_of
-      if get_programs_for_an_org(org).nil?
-        return nil
-      end
+  # method assumes: Org has at least 1 affiliation
+  #                 User has at least 1 participation
+  def get_programs_user_participating_under_particular_org(org)
+    # all_participations: gets ALL participations to programs from ANY org
+    all_participations = self.individual.participants
+    # all_affiliations: gets ALL affiliations to programs for 1 org
+    all_affiliations = org.affiliations
 
-    puts "\n \n Programs WOW: "+ get_programs_for_an_org(org).size.to_s
+    # get program_ids from each above
+    p_ids_prtcpnts = all_participations.map {|prtcpnt| prtcpnt.program_id}
+    p_ids_affils = all_affiliations.map {|affil| affil.program_id}
 
-      all_programIDs_an_org_is_affiliated_with = get_programs_for_an_org(org).map {|prog| prog.id}
+    # get the program_ids that overlap in the above
+      # '&' will return nil if there are no duplicates else returns array with dup elemnts
+    p_ids = p_ids_prtcpnts & p_ids_affils
 
-      # return all programs under and org user is not participating in
-      programIDs = all_programIDs_an_org_is_affiliated_with.reject {|p_id| all_programIDs_a_user_is_part_of.include?(p_id)}
-
-    puts "\n \n scdsf"
-    puts "Programs WOW: "+ programIDs.size.to_s
-    puts "\n \n"
-
-      
-      if programIDs.nil?
-          return nil
-      end
-    programIDs.map {|p_id| Program.find(p_id)}
-
-
+    # return a list of programs from each id
+    p_ids.map{|p_id| Program.find(p_id)}
   end
 
 end

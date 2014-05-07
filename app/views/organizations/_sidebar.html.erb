@@ -18,7 +18,7 @@
 <% if current_user.admin %>
 	<% unless Organization.all.empty? %>
 		      <li><div id="activeHeading">Manage</a></li>
-		      <% @organizations.each do |org| %>
+		      <% Organization.all.each do |org| %>
 		          <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
 		      <% end %>
 	<% end %>

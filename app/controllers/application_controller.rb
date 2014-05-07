@@ -20,5 +20,5 @@ class ApplicationController < ActionController::Base
     return nil if string.blank?
     Chronic.parse(string).to_date
   end
-
+  
 end

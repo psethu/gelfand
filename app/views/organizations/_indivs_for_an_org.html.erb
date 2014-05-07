@@ -9,14 +9,14 @@
                 <td class ="tableData"><%= mem.individual.l_name %>, <%= mem.individual.f_name %></td>
                 <td class ="tableData"><%= mem.individual.format_role %></td>
 
-                <td class ="tableData"><%= link_to "#{image_tag('tools.png', size: "24x24")}".html_safe, individual_path(mem.individual) %></td>
+                <td class ="tableData"><%= link_to "#{image_tag('pencil_edit.png', size: "24x24")}".html_safe, edit_individual_path(mem.individual) %></td>
                   <% if current_user.admin || current_user.is_orgUser_for_specific_org(@organization) %>
                   <!-- For below "#{image_tag('remove.gif')} Remove"
                       helpful link: http://stackoverflow.com/questions/5387122/link-to-image-tag-with-text-in-rails
                        - searched this in Google "image appear link_to next to rails"
                    -->
 
-                  <td class ="tableData"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove?")}".html_safe, mem, method: :delete,  :data => { :confirm => "Are you sure?" } %></td>
+                  <td class ="tableData"><%= link_to "#{image_tag('remove_gray_bg.png', size: "16x16", alt: "Remove?")}".html_safe, mem, method: :delete,  :data => { :confirm => "Are you sure?" } %></td>
                        <!-- if having no last name for Indiv then u r dealing with a Membership that has a temp Individual, because waiting for a person to sign up with Gelfand since this is not a 'regular Membership' yet dont allow delete all-->
                       <% unless mem.individual.l_name == "Temp: " %>
                              <td ><%= check_box_tag "membership_ids[]", mem.id %> </td>
@@ -31,7 +31,7 @@
                 <td></td>
           <% if current_user.is_orgUser_for_specific_org(@organization) %>
               <td>
-                  <%= submit_tag "Delete all",  :name => "#{@organization.id}", :class => "formDeleteButton" %>
+                  <%= submit_tag "Remove all",  :name => "#{@organization.id}", :class => "formDeleteButton" %>
               </td>
           <% end %>
 <% end %>

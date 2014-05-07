@@ -3,13 +3,11 @@
 	<tr><td>  <%= render 'quick_affiliate_program_on_Org_Show_page' %> </td></tr>
 	    <% @organization.affiliated_progs.each do |prog| %>
 	    		<tr > <td  class ="tableData"> <%= link_to prog.name, program_path(prog) %> </td>
-                  <% if current_user.is_orgUser_for_specific_org(@organization) %>
                      <td class ="tableData">
-                     	<%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove this program?")}".html_safe, 
+                     	<%= link_to "#{image_tag('remove_gray_bg.png', size: "16x16", alt: "Remove this program?")}".html_safe, 
                      	   {:controller => "affiliations", :action => "destroy", 
                             :organization_id => @organization.id, :program_id => prog.id }, 
                      method: :delete %></td>
-                  <% end %>
 	    		</tr>
 	    <% end %>
 </tbody>

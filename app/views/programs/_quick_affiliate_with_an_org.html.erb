@@ -1,0 +1,5 @@
+<%= simple_form_for @affiliation, :html => { :class => 'form', :method => 'post'} do |f| %>	
+		<%= f.input :organization_id, :label => "Affiliate an org with #{@program.name}:", :collection => @program.orgs_not_already_affiliated %>
+		<%= f.input :program_id, :as => :hidden, :input_html => { :value => @program.id } %>
+		 <%= f.button :submit, :class => "button", id: "addingFormButton" %>
+<% end %>

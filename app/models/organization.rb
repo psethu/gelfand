@@ -51,5 +51,4 @@ class Organization < ActiveRecord::Base
   def programs_not_already_part_of_org
       Program.all - self.affiliated_progs
   end
-
 end

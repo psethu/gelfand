@@ -19,8 +19,6 @@
           <th>Role</th>
           <th>Active</th>
           <th>Bg check link</th>
-          <th>Contact</th>
-
         </tr>
       </thead>
 
@@ -34,11 +32,10 @@
                 <% unless individual.bg_check.nil? %>
                     <td><%= link_to 'Bg Check', bg_check_path(individual.bg_check) %></td>
                 <% else %>
-                    <td> </td>
+                    <td> N/A </td>
                 <% end %>
-            <td></td>
-            <td class="row_actions"><%= link_to "#{image_tag('tools.png')}".html_safe, edit_individual_path(individual) %></td>
-            <td class="row_actions"><%= link_to "#{image_tag('remove.gif', size: "16x16", alt: "Remove?")}".html_safe, individual, method: :delete, data: { confirm:        'Are you sure?' } %></td>   
+            <td class="row_actions"><%= link_to "#{image_tag('pencil_edit.png')}".html_safe, edit_individual_path(individual) %></td>
+            <td class="row_actions"><%= link_to "#{image_tag('remove.png', size: "16x16", alt: "Remove?")}".html_safe, individual, method: :delete, data: { confirm:        'Are you sure?' } %></td>   
           </tr>     
         <% end %>
       </tbody>      

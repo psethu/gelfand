@@ -1,0 +1,50 @@
+
+<% if current_user.get_all_memberships.empty? %>
+      Hi <%= current_user.get_first_name %>. <br>
+      Currently you are not part of any Organizations and consequently programs. <br>
+      Click on the side bar to create an Organization or Program. <br>
+      Or wait until someone adds you to their Organization and/or Program.
+
+
+<% else  %>
+<div class="my_memberships_outerDiv">
+<h3> Memberships </h3>
+     <!-- user has at least 1 membership -->
+     <% current_user.orgs_that_user_is_part_of.each do |org| %>
+     <ul class="my_memberships_list"><%= link_to org.name, organization_path(org) %>        
+     <li id="prog_under_org">
+          <% if org.affiliations.empty? %>
+          -- is not affiliated with any programs
+          <% elsif current_user.individual.participants.empty? %>
+              You are a member of <%= org.name %>, but not part of any programs under <%= org.name %>. Use below form to add yourself to a program. <br><br>
+
+          <% else %>
+          <!-- Inside this "else" both conditions are true:
+                the Org  is affiliated with  at least 1 program 
+                the User is participating in at least 1 program -->
+
+                    <% if !current_user.get_programs_user_participating_under_particular_org(org).nil? %>
+                          <% current_user.get_programs_user_participating_under_particular_org(org).each do |prog| %>
+                          <%= link_to prog.name, prog %> ,
+                          <% end %>
+                        <% end %>
+          
+          <% end %>
+
+          <% if !org.affiliations.empty? %>
+                   <!-- Start: form to create participation -->
+                      <%= simple_form_for @participant, :html => { :class => 'form', :method => 'post'} do |f| %> 
+                          <%= f.input :individual_id, :as => :hidden, :input_html => { :value => current_user.individual.id } %>
+                          <%= f.input :program_id, :label => "Join a program:", :collection => current_user.get_all_programs_user_not_yet_participating_in_under_an_org(org) %>
+                           <%= f.button :submit, :value => "Add", :id => "addingFormButton" %>
+
+                      <% end %>
+                       <!-- end form for participant-->  
+          <% end %>
+    </li> 
+    </ul>
+
+    <% end %>
+    <!-- end 'do' loop for each Membership -->
+</div>
+<% end %>

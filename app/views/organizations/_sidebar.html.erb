@@ -5,18 +5,34 @@
     <li><div id="activeHeading">Actions </li>
 	<li><%= link_to 'Overview', org_overview_organizations_path %> </li>
     <li><%= link_to 'Create a Organization', new_organization_path %> </li>
-   <li><%= link_to 'Create a Program', new_program_path %></li>
+   	<!-- doing if @organization to check if @organization exists (so only works on org show page) -->
+   	<% if @organization %>
+   		<% if current_user.is_orgUser_for_specific_org(@organization)%>
+   			<li><%= link_to 'Create a Program', new_program_path %></li>
+   		<% end %>
+   	<% end %>
 
 <br>
 <br>
 
-<% unless current_user.orgs_that_user_is_Admin_for.empty? %>
-      <li><div id="activeHeading">Manage</a></li>
-      
-      <% current_user.orgs_that_user_is_Admin_for.each do |org| %>
-          <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
-      <% end %>
-  
+<% if current_user.admin %>
+	<% unless @organizations.empty? %>
+		      <li><div id="activeHeading">Manage</a></li>
+		      <% @organizations.each do |org| %>
+		          <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
+		      <% end %>
+	<% end %>
+
+<% elsif current_user.member%>
+		<% unless current_user.orgs_that_user_is_Admin_for.empty? %>
+		      <li><div id="activeHeading">Manage</a></li>
+		      
+		      <% current_user.orgs_that_user_is_Admin_for.each do |org| %>
+		          <li id="underManage"><%= link_to org.name, edit_organization_path(org) %> </li>
+		      <% end %>
+		  
+		<% end %>
+
 <% end %>
 
 </ul> 

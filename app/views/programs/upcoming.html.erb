@@ -23,7 +23,7 @@
                             <td><%= prog.start_date.strftime("%m/%d/%y") %></td>
                             <td class="text-center"><%= link_to prog.num_uncleared_participants, "programs/#{prog.id}/individuals_list" %></td>
                             <td><%= "Contact Email" %></td>
-                            <td><%= link_to image_tag('tools.png'), edit_program_path(prog) %></td>
+                            <td><%= link_to image_tag('pencil_edit.png'), edit_program_path(prog) %></td>
                         </tr>
                     <% end %>
                 </tbody>

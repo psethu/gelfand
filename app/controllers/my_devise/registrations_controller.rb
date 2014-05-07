@@ -18,14 +18,7 @@ class MyDevise::RegistrationsController < Devise::RegistrationsController
 			indiv_Objects.each do |indiv|
 				indiv_ids << indiv.id
 			end
-			puts "\n \n "
-			puts "\n \n "
-			puts "\n \n "
-			puts "Indiv Objects size" + indiv_Objects.size.to_s
-			puts "indiv_ids size" + indiv_ids.size.to_s
-			puts "Individual_ids of temp Indivs: "
 			indiv_ids.each do |i_id|
-				puts "ID "+ i_id.to_s
 				membership_ids << Membership.find_by(individual_id: i_id).id
 			end
 			# By here should have populated indiv_ids and membership_ids

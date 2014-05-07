@@ -66,7 +66,13 @@ $(document).ready(function(){
     format: 'yyyy-mm-dd'
   });
 
-  
+  // to add/delete orgUser
+  $(".removeOrgUser").click(function() {
+    $(this).next().toggle();
+
+      //$(".orgUser_add_delete_form").toggle();
+  });
+
 });
 
 $(function(){ $(document).foundation(); });

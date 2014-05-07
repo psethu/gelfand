@@ -14,6 +14,7 @@ class Program < ActiveRecord::Base
     # -----------
     
     validates :name, :presence => true
+    validates_uniqueness_of :name
     validates :num_minors, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}
 
     validates_date :start_date, :presence => true
@@ -69,4 +70,12 @@ class Program < ActiveRecord::Base
     def individuals_in_org_without_bg_check(org_id)
         self.individuals_in_org(org_id).select{ |i| i.bg_check_complete? }
     end
+
+  def affiliated_orgs
+      self.affiliations.map {|affil| Organization.find(affil.organization_id)}
+  end
+
+  def orgs_not_already_affiliated
+      Organization.all - self.affiliated_orgs
+  end
 end

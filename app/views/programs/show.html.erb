@@ -48,15 +48,18 @@
             
             <div class="row progShowPanel">
                 <h3>Affiliated Organizations</h3>
-                <% if @program.organizations.empty? %>
-                    There are no Organizations affiliated with this program.
-                    <br />
-                    <%= link_to "Check Organizations?", organizations_path %>
-                <% else %>
-                    <% @program.organizations.each do |org| %>
-                        <%= link_to org.name, org %> <br>
+                    <% if @program.organizations.empty? %>
+                        <!-- do nothing -->
+                    <% else %>
+                        <% @program.organizations.each do |org| %>
+                            <%= link_to org.name, org %> <br>
+                        <% end %>
                     <% end %>
-                <% end %>
+                <div class="small-4 columns rightContent" data-equalizer-watch>
+                    <%= render 'quick_affiliate_with_an_org' %>
+                </div>
+                <div class="small-8 columns rightContent" data-equalizer-watch>
+                </div>
                 <br />
             </div>
 

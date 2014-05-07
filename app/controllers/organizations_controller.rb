@@ -5,8 +5,19 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.alphabetical
+    @organizations = Organization.all.alphabetical
     @participant = Participant.new
+    @users = User.all.map{|user| user} #Individual.all.map{|indiv| indiv.user.id}
+    @names_from_users = []
+    @users.each do |user|
+        # if user does not have an individual, then just use email
+        if user.individual.nil?
+          @names_from_users << [user.email, user.id]
+        else
+          @names_from_users << [user.individual.name, user.id]
+        end
+    end
+    @names_from_users.sort!
   end
 
   def show
